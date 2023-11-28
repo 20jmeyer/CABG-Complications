@@ -11,8 +11,8 @@ cabg
 ```
 
 ```{r}
-cab_counts = cab %>% subset(category=="All") %>% arrange(Year, complication) %>% select(-c(category, Strata))
-cab_counts
+cabg_counts = cabg %>% subset(category=="All") %>% arrange(Year, complication) %>% select(-c(category, Strata))
+cabg_counts
 ```
 
 ```{r}
