@@ -6,8 +6,8 @@ library(dplyr)
 library(ggalluvial)
 library(RColorBrewer)
 
-cab = read.csv("cab.csv")
-cab
+cabg = read.csv("cab.csv")
+cabg
 ```
 
 ```{r}
