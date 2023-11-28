@@ -6,11 +6,11 @@ execute:
   echo: true
 
 book:
-  title: "YOUR PROJECT TITLE"
+  title: "Coronary Artery Bypass Graft (CABG) Complications"
   author:
-    - AUTHOR1 (UNI1)
-    - AUTHOR2 (UNI2)
-  repo-url: https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME
+    - Jordan Jomsky (jj3379)
+    - Jacob Meyer (jtm2217)
+  repo-url: https://github.com/20jmeyer/CABG-Complications
   date: today
   page-footer:
     right: |
