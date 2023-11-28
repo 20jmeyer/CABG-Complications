@@ -1,0 +1,1009 @@
+﻿Year,complication,category,Strata,readmission,Yes,Count
+2018-2019,Deep Sternal Infection,Age,0 to 40,N,0,0
+2018-2019,Deep Sternal Infection,Age,41-65,N,0.00109,11
+2018-2019,Deep Sternal Infection,Age,66 to Max,N,0.00081,11
+2018-2019,Deep Sternal Infection,All,All,N,0.00093,22
+2018-2019,Deep Sternal Infection,CABG type,CABG+Valve,N,0.00169,5
+2018-2019,Deep Sternal Infection,CABG type,Isolated CABG,N,0.00082,16
+2018-2019,Deep Sternal Infection,CABG type,Other Non-Isolated CABG,N,0.00075,1
+2018-2019,Deep Sternal Infection,Gender,Female,N,0.00122,6
+2018-2019,Deep Sternal Infection,Gender,Male,N,0.00085,16
+2018-2019,Deep Sternal Infection,PayorType,Medi-Cal,N,0.00162,1
+2018-2019,Deep Sternal Infection,PayorType,Medicare,N,0.00237,7
+2018-2019,Deep Sternal Infection,PayorType,Other Insurance,N,0.00057,11
+2018-2019,Deep Sternal Infection,PayorType,Private Insurance,N,0.00374,3
+2018-2019,Deep Sternal Infection,PayorType,Uninsured,N,0,0
+2018-2019,Deep Sternal Infection,Race,Asian,N,0.00031,1
+2018-2019,Deep Sternal Infection,Race,Black,N,0.00109,1
+2018-2019,Deep Sternal Infection,Race,Hispanic,N,0.00061,3
+2018-2019,Deep Sternal Infection,Race,Native,N,0,0
+2018-2019,Deep Sternal Infection,Race,Others,N,0.00162,2
+2018-2019,Deep Sternal Infection,Race,Pacific,N,0.00498,1
+2018-2019,Deep Sternal Infection,Race,White,N,0.00106,14
+2018-2019,Post-Operative Atrial Fibrillation,Age,0 to 40,N,0.07853,15
+2018-2019,Post-Operative Atrial Fibrillation,Age,41-65,N,0.1951,1960
+2018-2019,Post-Operative Atrial Fibrillation,Age,66 to Max,N,0.32809,4442
+2018-2019,Post-Operative Atrial Fibrillation,All,All,N,0.26989,6417
+2018-2019,Post-Operative Atrial Fibrillation,CABG type,CABG+Valve,N,0.37504,1109
+2018-2019,Post-Operative Atrial Fibrillation,CABG type,Isolated CABG,N,0.25141,4898
+2018-2019,Post-Operative Atrial Fibrillation,CABG type,Other Non-Isolated CABG,N,0.30666,410
+2018-2019,Post-Operative Atrial Fibrillation,Gender,Female,N,0.24302,1193
+2018-2019,Post-Operative Atrial Fibrillation,Gender,Male,N,0.27689,5224
+2018-2019,Post-Operative Atrial Fibrillation,PayorType,Medi-Cal,N,0.17208,106
+2018-2019,Post-Operative Atrial Fibrillation,PayorType,Medicare,N,0.33502,991
+2018-2019,Post-Operative Atrial Fibrillation,PayorType,Other Insurance,N,0.26435,5121
+2018-2019,Post-Operative Atrial Fibrillation,PayorType,Private Insurance,N,0.24035,193
+2018-2019,Post-Operative Atrial Fibrillation,PayorType,Uninsured,N,0.22222,6
+2018-2019,Post-Operative Atrial Fibrillation,Race,Asian,N,0.25301,820
+2018-2019,Post-Operative Atrial Fibrillation,Race,Black,N,0.22732,208
+2018-2019,Post-Operative Atrial Fibrillation,Race,Hispanic,N,0.19774,979
+2018-2019,Post-Operative Atrial Fibrillation,Race,Native,N,0.13514,10
+2018-2019,Post-Operative Atrial Fibrillation,Race,Others,N,0.27287,337
+2018-2019,Post-Operative Atrial Fibrillation,Race,Pacific,N,0.23383,47
+2018-2019,Post-Operative Atrial Fibrillation,Race,White,N,0.30519,4016
+2018-2019,Post-Operative Dialysis,Age,0 to 40,N,0.01047,2
+2018-2019,Post-Operative Dialysis,Age,41-65,N,0.00737,74
+2018-2019,Post-Operative Dialysis,Age,66 to Max,N,0.01529,207
+2018-2019,Post-Operative Dialysis,All,All,N,0.0119,283
+2018-2019,Post-Operative Dialysis,CABG type,CABG+Valve,N,0.01826,54
+2018-2019,Post-Operative Dialysis,CABG type,Isolated CABG,N,0.00991,193
+2018-2019,Post-Operative Dialysis,CABG type,Other Non-Isolated CABG,N,0.02693,36
+2018-2019,Post-Operative Dialysis,Gender,Female,N,0.01691,83
+2018-2019,Post-Operative Dialysis,Gender,Male,N,0.0106,200
+2018-2019,Post-Operative Dialysis,PayorType,Medi-Cal,N,0.02273,14
+2018-2019,Post-Operative Dialysis,PayorType,Medicare,N,0.02603,77
+2018-2019,Post-Operative Dialysis,PayorType,Other Insurance,N,0.00914,177
+2018-2019,Post-Operative Dialysis,PayorType,Private Insurance,N,0.01868,15
+2018-2019,Post-Operative Dialysis,PayorType,Uninsured,N,0,0
+2018-2019,Post-Operative Dialysis,Race,Asian,N,0.01234,40
+2018-2019,Post-Operative Dialysis,Race,Black,N,0.01749,16
+2018-2019,Post-Operative Dialysis,Race,Hispanic,N,0.01171,58
+2018-2019,Post-Operative Dialysis,Race,Native,N,0,0
+2018-2019,Post-Operative Dialysis,Race,Others,N,0.01619,20
+2018-2019,Post-Operative Dialysis,Race,Pacific,N,0.01493,3
+2018-2019,Post-Operative Dialysis,Race,White,N,0.0111,146
+2018-2019,Post-Operative Renal Failure,Age,0 to 40,N,0.01571,3
+2018-2019,Post-Operative Renal Failure,Age,41-65,N,0.01284,129
+2018-2019,Post-Operative Renal Failure,Age,66 to Max,N,0.02327,315
+2018-2019,Post-Operative Renal Failure,All,All,N,0.0188,447
+2018-2019,Post-Operative Renal Failure,CABG type,CABG+Valve,N,0.03044,90
+2018-2019,Post-Operative Renal Failure,CABG type,Isolated CABG,N,0.0155,302
+2018-2019,Post-Operative Renal Failure,CABG type,Other Non-Isolated CABG,N,0.04114,55
+2018-2019,Post-Operative Renal Failure,Gender,Female,N,0.02506,123
+2018-2019,Post-Operative Renal Failure,Gender,Male,N,0.01717,324
+2018-2019,Post-Operative Renal Failure,PayorType,Medi-Cal,N,0.03734,23
+2018-2019,Post-Operative Renal Failure,PayorType,Medicare,N,0.0355,105
+2018-2019,Post-Operative Renal Failure,PayorType,Other Insurance,N,0.01512,293
+2018-2019,Post-Operative Renal Failure,PayorType,Private Insurance,N,0.03238,26
+2018-2019,Post-Operative Renal Failure,PayorType,Uninsured,N,0,0
+2018-2019,Post-Operative Renal Failure,Race,Asian,N,0.02098,68
+2018-2019,Post-Operative Renal Failure,Race,Black,N,0.02514,23
+2018-2019,Post-Operative Renal Failure,Race,Hispanic,N,0.01939,96
+2018-2019,Post-Operative Renal Failure,Race,Native,N,0,0
+2018-2019,Post-Operative Renal Failure,Race,Others,N,0.0251,31
+2018-2019,Post-Operative Renal Failure,Race,Pacific,N,0.01493,3
+2018-2019,Post-Operative Renal Failure,Race,White,N,0.01717,226
+2018-2019,Post-Operative Stroke,Age,0 to 40,N,0.01047,2
+2018-2019,Post-Operative Stroke,Age,41-65,N,0.01005,101
+2018-2019,Post-Operative Stroke,Age,66 to Max,N,0.0175,237
+2018-2019,Post-Operative Stroke,All,All,N,0.0143,340
+2018-2019,Post-Operative Stroke,CABG type,CABG+Valve,N,0.01725,51
+2018-2019,Post-Operative Stroke,CABG type,Isolated CABG,N,0.01247,243
+2018-2019,Post-Operative Stroke,CABG type,Other Non-Isolated CABG,N,0.03441,46
+2018-2019,Post-Operative Stroke,Gender,Female,N,0.02057,101
+2018-2019,Post-Operative Stroke,Gender,Male,N,0.01267,239
+2018-2019,Post-Operative Stroke,PayorType,Medi-Cal,N,0.02273,14
+2018-2019,Post-Operative Stroke,PayorType,Medicare,N,0.02941,87
+2018-2019,Post-Operative Stroke,PayorType,Other Insurance,N,0.01146,222
+2018-2019,Post-Operative Stroke,PayorType,Private Insurance,N,0.01993,16
+2018-2019,Post-Operative Stroke,PayorType,Uninsured,N,0.03704,1
+2018-2019,Post-Operative Stroke,Race,Asian,N,0.01604,52
+2018-2019,Post-Operative Stroke,Race,Black,N,0.02186,20
+2018-2019,Post-Operative Stroke,Race,Hispanic,N,0.01414,70
+2018-2019,Post-Operative Stroke,Race,Native,N,0,0
+2018-2019,Post-Operative Stroke,Race,Others,N,0.017,21
+2018-2019,Post-Operative Stroke,Race,Pacific,N,0.03483,7
+2018-2019,Post-Operative Stroke,Race,White,N,0.01292,170
+2018-2019,Prolonged Ventilation,Age,0 to 40,N,0.08901,17
+2018-2019,Prolonged Ventilation,Age,41-65,N,0.05574,560
+2018-2019,Prolonged Ventilation,Age,66 to Max,N,0.07032,952
+2018-2019,Prolonged Ventilation,All,All,N,0.06431,1529
+2018-2019,Prolonged Ventilation,CABG type,CABG+Valve,N,0.09638,285
+2018-2019,Prolonged Ventilation,CABG type,Isolated CABG,N,0.0539,1050
+2018-2019,Prolonged Ventilation,CABG type,Other Non-Isolated CABG,N,0.1451,194
+2018-2019,Prolonged Ventilation,Gender,Female,N,0.08515,418
+2018-2019,Prolonged Ventilation,Gender,Male,N,0.05889,1111
+2018-2019,Prolonged Ventilation,PayorType,Medi-Cal,N,0.09091,56
+2018-2019,Prolonged Ventilation,PayorType,Medicare,N,0.11055,327
+2018-2019,Prolonged Ventilation,PayorType,Other Insurance,N,0.05513,1068
+2018-2019,Prolonged Ventilation,PayorType,Private Insurance,N,0.09589,77
+2018-2019,Prolonged Ventilation,PayorType,Uninsured,N,0.03704,1
+2018-2019,Prolonged Ventilation,Race,Asian,N,0.06418,208
+2018-2019,Prolonged Ventilation,Race,Black,N,0.08634,79
+2018-2019,Prolonged Ventilation,Race,Hispanic,N,0.06403,317
+2018-2019,Prolonged Ventilation,Race,Native,N,0.04054,3
+2018-2019,Prolonged Ventilation,Race,Others,N,0.07449,92
+2018-2019,Prolonged Ventilation,Race,Pacific,N,0.0995,20
+2018-2019,Prolonged Ventilation,Race,White,N,0.06155,810
+2018-2019,Re-Operative for Bleed,Age,0 to 40,N,0.02618,5
+2018-2019,Re-Operative for Bleed,Age,41-65,N,0.01463,147
+2018-2019,Re-Operative for Bleed,Age,66 to Max,N,0.02031,275
+2018-2019,Re-Operative for Bleed,All,All,N,0.01796,427
+2018-2019,Re-Operative for Bleed,CABG type,CABG+Valve,N,0.03213,95
+2018-2019,Re-Operative for Bleed,CABG type,Isolated CABG,N,0.01453,283
+2018-2019,Re-Operative for Bleed,CABG type,Other Non-Isolated CABG,N,0.03665,49
+2018-2019,Re-Operative for Bleed,Gender,Female,N,0.01182,58
+2018-2019,Re-Operative for Bleed,Gender,Male,N,0.01956,369
+2018-2019,Re-Operative for Bleed,PayorType,Medi-Cal,N,0.0276,17
+2018-2019,Re-Operative for Bleed,PayorType,Medicare,N,0.02299,68
+2018-2019,Re-Operative for Bleed,PayorType,Other Insurance,N,0.01647,319
+2018-2019,Re-Operative for Bleed,PayorType,Private Insurance,N,0.02864,23
+2018-2019,Re-Operative for Bleed,PayorType,Uninsured,N,0,0
+2018-2019,Re-Operative for Bleed,Race,Asian,N,0.0216,70
+2018-2019,Re-Operative for Bleed,Race,Black,N,0.01311,12
+2018-2019,Re-Operative for Bleed,Race,Hispanic,N,0.0202,100
+2018-2019,Re-Operative for Bleed,Race,Native,N,0.01351,1
+2018-2019,Re-Operative for Bleed,Race,Others,N,0.01619,20
+2018-2019,Re-Operative for Bleed,Race,Pacific,N,0.02488,5
+2018-2019,Re-Operative for Bleed,Race,White,N,0.01664,219
+2018-2019,Reintervention for Myocardial Ischemia,Age,0 to 40,N,0,0
+2018-2019,Reintervention for Myocardial Ischemia,Age,41-65,N,0.00169,17
+2018-2019,Reintervention for Myocardial Ischemia,Age,66 to Max,N,0.00222,30
+2018-2019,Reintervention for Myocardial Ischemia,All,All,N,0.00198,47
+2018-2019,Reintervention for Myocardial Ischemia,CABG type,CABG+Valve,N,0.00034,1
+2018-2019,Reintervention for Myocardial Ischemia,CABG type,Isolated CABG,N,0.00226,44
+2018-2019,Reintervention for Myocardial Ischemia,CABG type,Other Non-Isolated CABG,N,0.0015,2
+2018-2019,Reintervention for Myocardial Ischemia,Gender,Female,N,0.00346,17
+2018-2019,Reintervention for Myocardial Ischemia,Gender,Male,N,0.00159,30
+2018-2019,Reintervention for Myocardial Ischemia,PayorType,Medi-Cal,N,0.00325,2
+2018-2019,Reintervention for Myocardial Ischemia,PayorType,Medicare,N,0.0027,8
+2018-2019,Reintervention for Myocardial Ischemia,PayorType,Other Insurance,N,0.0016,31
+2018-2019,Reintervention for Myocardial Ischemia,PayorType,Private Insurance,N,0.00747,6
+2018-2019,Reintervention for Myocardial Ischemia,PayorType,Uninsured,N,0,0
+2018-2019,Reintervention for Myocardial Ischemia,Race,Asian,N,0.00216,7
+2018-2019,Reintervention for Myocardial Ischemia,Race,Black,N,0.00219,2
+2018-2019,Reintervention for Myocardial Ischemia,Race,Hispanic,N,0.00242,12
+2018-2019,Reintervention for Myocardial Ischemia,Race,Native,N,0,0
+2018-2019,Reintervention for Myocardial Ischemia,Race,Others,N,0.00162,2
+2018-2019,Reintervention for Myocardial Ischemia,Race,Pacific,N,0,0
+2018-2019,Reintervention for Myocardial Ischemia,Race,White,N,0.00182,24
+2019-2020,Deep Sternal Infection,Age,0 to 40,N,0,0
+2019-2020,Deep Sternal Infection,Age,41-65,N,0.00065,6
+2019-2020,Deep Sternal Infection,Age,66 to Max,N,0.00057,7
+2019-2020,Deep Sternal Infection,All,All,N,0.0006,13
+2019-2020,Deep Sternal Infection,CABG type,CABG+Valve,N,0.00122,3
+2019-2020,Deep Sternal Infection,CABG type,Isolated CABG,N,0.0005,9
+2019-2020,Deep Sternal Infection,CABG type,Other Non-Isolated CABG,N,0.00083,1
+2019-2020,Deep Sternal Infection,Gender,Female,N,0.00022,1
+2019-2020,Deep Sternal Infection,Gender,Male,N,0.0007,12
+2019-2020,Deep Sternal Infection,PayorType,Medi-Cal,N,0,0
+2019-2020,Deep Sternal Infection,PayorType,Medicare,N,0.00156,4
+2019-2020,Deep Sternal Infection,PayorType,Other Insurance,N,0.0005,9
+2019-2020,Deep Sternal Infection,PayorType,Private Insurance,N,0,0
+2019-2020,Deep Sternal Infection,PayorType,Uninsured,N,0,0
+2019-2020,Deep Sternal Infection,Race,Asian,N,0.00033,1
+2019-2020,Deep Sternal Infection,Race,Black,N,0,0
+2019-2020,Deep Sternal Infection,Race,Hispanic,N,0.00022,1
+2019-2020,Deep Sternal Infection,Race,Native,N,0,0
+2019-2020,Deep Sternal Infection,Race,Others,N,0,0
+2019-2020,Deep Sternal Infection,Race,Pacific,N,0,0
+2019-2020,Deep Sternal Infection,Race,White,N,0.00093,11
+2019-2020,Post-Operative Atrial Fibrillation,Age,0 to 40,N,0.07303,13
+2019-2020,Post-Operative Atrial Fibrillation,Age,41-65,N,0.20071,1865
+2019-2020,Post-Operative Atrial Fibrillation,Age,66 to Max,N,0.33164,4055
+2019-2020,Post-Operative Atrial Fibrillation,All,All,N,0.27345,5933
+2019-2020,Post-Operative Atrial Fibrillation,CABG type,CABG+Valve,N,0.38749,954
+2019-2020,Post-Operative Atrial Fibrillation,CABG type,Isolated CABG,N,0.25492,4596
+2019-2020,Post-Operative Atrial Fibrillation,CABG type,Other Non-Isolated CABG,N,0.31758,383
+2019-2020,Post-Operative Atrial Fibrillation,Gender,Female,N,0.24642,1102
+2019-2020,Post-Operative Atrial Fibrillation,Gender,Male,N,0.28046,4831
+2019-2020,Post-Operative Atrial Fibrillation,PayorType,Medi-Cal,N,0.16824,89
+2019-2020,Post-Operative Atrial Fibrillation,PayorType,Medicare,N,0.34916,897
+2019-2020,Post-Operative Atrial Fibrillation,PayorType,Other Insurance,N,0.26742,4767
+2019-2020,Post-Operative Atrial Fibrillation,PayorType,Private Insurance,N,0.23364,175
+2019-2020,Post-Operative Atrial Fibrillation,PayorType,Uninsured,N,0.20833,5
+2019-2020,Post-Operative Atrial Fibrillation,Race,Asian,N,0.25875,776
+2019-2020,Post-Operative Atrial Fibrillation,Race,Black,N,0.23564,201
+2019-2020,Post-Operative Atrial Fibrillation,Race,Hispanic,N,0.19477,872
+2019-2020,Post-Operative Atrial Fibrillation,Race,Native,N,0.26389,19
+2019-2020,Post-Operative Atrial Fibrillation,Race,Others,N,0.28195,364
+2019-2020,Post-Operative Atrial Fibrillation,Race,Pacific,N,0.2426,41
+2019-2020,Post-Operative Atrial Fibrillation,Race,White,N,0.30923,3660
+2019-2020,Post-Operative Dialysis,Age,0 to 40,N,0.00562,1
+2019-2020,Post-Operative Dialysis,Age,41-65,N,0.00829,77
+2019-2020,Post-Operative Dialysis,Age,66 to Max,N,0.01456,178
+2019-2020,Post-Operative Dialysis,All,All,N,0.0118,256
+2019-2020,Post-Operative Dialysis,CABG type,CABG+Valve,N,0.01543,38
+2019-2020,Post-Operative Dialysis,CABG type,Isolated CABG,N,0.00993,179
+2019-2020,Post-Operative Dialysis,CABG type,Other Non-Isolated CABG,N,0.03234,39
+2019-2020,Post-Operative Dialysis,Gender,Female,N,0.01811,81
+2019-2020,Post-Operative Dialysis,Gender,Male,N,0.01016,175
+2019-2020,Post-Operative Dialysis,PayorType,Medi-Cal,N,0.01701,9
+2019-2020,Post-Operative Dialysis,PayorType,Medicare,N,0.02608,67
+2019-2020,Post-Operative Dialysis,PayorType,Other Insurance,N,0.0092,164
+2019-2020,Post-Operative Dialysis,PayorType,Private Insurance,N,0.02136,16
+2019-2020,Post-Operative Dialysis,PayorType,Uninsured,N,0,0
+2019-2020,Post-Operative Dialysis,Race,Asian,N,0.01367,41
+2019-2020,Post-Operative Dialysis,Race,Black,N,0.01641,14
+2019-2020,Post-Operative Dialysis,Race,Hispanic,N,0.01139,51
+2019-2020,Post-Operative Dialysis,Race,Native,N,0,0
+2019-2020,Post-Operative Dialysis,Race,Others,N,0.01549,20
+2019-2020,Post-Operative Dialysis,Race,Pacific,N,0.01775,3
+2019-2020,Post-Operative Dialysis,Race,White,N,0.01073,127
+2019-2020,Post-Operative Renal Failure,Age,0 to 40,N,0.01124,2
+2019-2020,Post-Operative Renal Failure,Age,41-65,N,0.01378,128
+2019-2020,Post-Operative Renal Failure,Age,66 to Max,N,0.02126,260
+2019-2020,Post-Operative Renal Failure,All,All,N,0.01797,390
+2019-2020,Post-Operative Renal Failure,CABG type,CABG+Valve,N,0.02437,60
+2019-2020,Post-Operative Renal Failure,CABG type,Isolated CABG,N,0.01536,277
+2019-2020,Post-Operative Renal Failure,CABG type,Other Non-Isolated CABG,N,0.04395,53
+2019-2020,Post-Operative Renal Failure,Gender,Female,N,0.02348,105
+2019-2020,Post-Operative Renal Failure,Gender,Male,N,0.01655,285
+2019-2020,Post-Operative Renal Failure,PayorType,Medi-Cal,N,0.03592,19
+2019-2020,Post-Operative Renal Failure,PayorType,Medicare,N,0.03542,91
+2019-2020,Post-Operative Renal Failure,PayorType,Other Insurance,N,0.01425,254
+2019-2020,Post-Operative Renal Failure,PayorType,Private Insurance,N,0.03471,26
+2019-2020,Post-Operative Renal Failure,PayorType,Uninsured,N,0,0
+2019-2020,Post-Operative Renal Failure,Race,Asian,N,0.02134,64
+2019-2020,Post-Operative Renal Failure,Race,Black,N,0.02579,22
+2019-2020,Post-Operative Renal Failure,Race,Hispanic,N,0.01742,78
+2019-2020,Post-Operative Renal Failure,Race,Native,N,0.01389,1
+2019-2020,Post-Operative Renal Failure,Race,Others,N,0.02479,32
+2019-2020,Post-Operative Renal Failure,Race,Pacific,N,0.01775,3
+2019-2020,Post-Operative Renal Failure,Race,White,N,0.01605,190
+2019-2020,Post-Operative Stroke,Age,0 to 40,N,0.01124,2
+2019-2020,Post-Operative Stroke,Age,41-65,N,0.01087,101
+2019-2020,Post-Operative Stroke,Age,66 to Max,N,0.01677,205
+2019-2020,Post-Operative Stroke,All,All,N,0.0142,308
+2019-2020,Post-Operative Stroke,CABG type,CABG+Valve,N,0.01706,42
+2019-2020,Post-Operative Stroke,CABG type,Isolated CABG,N,0.01231,222
+2019-2020,Post-Operative Stroke,CABG type,Other Non-Isolated CABG,N,0.03648,44
+2019-2020,Post-Operative Stroke,Gender,Female,N,0.02124,95
+2019-2020,Post-Operative Stroke,Gender,Male,N,0.01237,213
+2019-2020,Post-Operative Stroke,PayorType,Medi-Cal,N,0.02647,14
+2019-2020,Post-Operative Stroke,PayorType,Medicare,N,0.02764,71
+2019-2020,Post-Operative Stroke,PayorType,Other Insurance,N,0.01161,207
+2019-2020,Post-Operative Stroke,PayorType,Private Insurance,N,0.02003,15
+2019-2020,Post-Operative Stroke,PayorType,Uninsured,N,0.04167,1
+2019-2020,Post-Operative Stroke,Race,Asian,N,0.01934,58
+2019-2020,Post-Operative Stroke,Race,Black,N,0.02345,20
+2019-2020,Post-Operative Stroke,Race,Hispanic,N,0.01229,55
+2019-2020,Post-Operative Stroke,Race,Native,N,0.01389,1
+2019-2020,Post-Operative Stroke,Race,Others,N,0.02014,26
+2019-2020,Post-Operative Stroke,Race,Pacific,N,0.02367,4
+2019-2020,Post-Operative Stroke,Race,White,N,0.01217,144
+2019-2020,Prolonged Ventilation,Age,0 to 40,N,0.10674,19
+2019-2020,Prolonged Ventilation,Age,41-65,N,0.0593,551
+2019-2020,Prolonged Ventilation,Age,66 to Max,N,0.06813,833
+2019-2020,Prolonged Ventilation,All,All,N,0.06466,1403
+2019-2020,Prolonged Ventilation,CABG type,CABG+Valve,N,0.10479,258
+2019-2020,Prolonged Ventilation,CABG type,Isolated CABG,N,0.05386,971
+2019-2020,Prolonged Ventilation,CABG type,Other Non-Isolated CABG,N,0.14428,174
+2019-2020,Prolonged Ventilation,Gender,Female,N,0.08631,386
+2019-2020,Prolonged Ventilation,Gender,Male,N,0.05904,1017
+2019-2020,Prolonged Ventilation,PayorType,Medi-Cal,N,0.08507,45
+2019-2020,Prolonged Ventilation,PayorType,Medicare,N,0.11522,296
+2019-2020,Prolonged Ventilation,PayorType,Other Insurance,N,0.05537,987
+2019-2020,Prolonged Ventilation,PayorType,Private Insurance,N,0.0988,74
+2019-2020,Prolonged Ventilation,PayorType,Uninsured,N,0.04167,1
+2019-2020,Prolonged Ventilation,Race,Asian,N,0.06669,200
+2019-2020,Prolonged Ventilation,Race,Black,N,0.10434,89
+2019-2020,Prolonged Ventilation,Race,Hispanic,N,0.06321,283
+2019-2020,Prolonged Ventilation,Race,Native,N,0.02778,2
+2019-2020,Prolonged Ventilation,Race,Others,N,0.07746,100
+2019-2020,Prolonged Ventilation,Race,Pacific,N,0.08284,14
+2019-2020,Prolonged Ventilation,Race,White,N,0.06041,715
+2019-2020,Re-Operative for Bleed,Age,0 to 40,N,0.00562,1
+2019-2020,Re-Operative for Bleed,Age,41-65,N,0.01614,150
+2019-2020,Re-Operative for Bleed,Age,66 to Max,N,0.02159,264
+2019-2020,Re-Operative for Bleed,All,All,N,0.01913,415
+2019-2020,Re-Operative for Bleed,CABG type,CABG+Valve,N,0.03452,85
+2019-2020,Re-Operative for Bleed,CABG type,Isolated CABG,N,0.01575,284
+2019-2020,Re-Operative for Bleed,CABG type,Other Non-Isolated CABG,N,0.03814,46
+2019-2020,Re-Operative for Bleed,Gender,Female,N,0.01521,68
+2019-2020,Re-Operative for Bleed,Gender,Male,N,0.02015,347
+2019-2020,Re-Operative for Bleed,PayorType,Medi-Cal,N,0.02836,15
+2019-2020,Re-Operative for Bleed,PayorType,Medicare,N,0.02608,67
+2019-2020,Re-Operative for Bleed,PayorType,Other Insurance,N,0.01761,314
+2019-2020,Re-Operative for Bleed,PayorType,Private Insurance,N,0.02537,19
+2019-2020,Re-Operative for Bleed,PayorType,Uninsured,N,0,0
+2019-2020,Re-Operative for Bleed,Race,Asian,N,0.02267,68
+2019-2020,Re-Operative for Bleed,Race,Black,N,0.01758,15
+2019-2020,Re-Operative for Bleed,Race,Hispanic,N,0.02122,95
+2019-2020,Re-Operative for Bleed,Race,Native,N,0,0
+2019-2020,Re-Operative for Bleed,Race,Others,N,0.01472,19
+2019-2020,Re-Operative for Bleed,Race,Pacific,N,0.02367,4
+2019-2020,Re-Operative for Bleed,Race,White,N,0.01808,214
+2019-2020,Reintervention for Myocardial Ischemia,Age,0 to 40,N,0,0
+2019-2020,Reintervention for Myocardial Ischemia,Age,41-65,N,0.00258,24
+2019-2020,Reintervention for Myocardial Ischemia,Age,66 to Max,N,0.00204,25
+2019-2020,Reintervention for Myocardial Ischemia,All,All,N,0.00226,49
+2019-2020,Reintervention for Myocardial Ischemia,CABG type,CABG+Valve,N,0.00081,2
+2019-2020,Reintervention for Myocardial Ischemia,CABG type,Isolated CABG,N,0.0025,45
+2019-2020,Reintervention for Myocardial Ischemia,CABG type,Other Non-Isolated CABG,N,0.00166,2
+2019-2020,Reintervention for Myocardial Ischemia,Gender,Female,N,0.00335,15
+2019-2020,Reintervention for Myocardial Ischemia,Gender,Male,N,0.00197,34
+2019-2020,Reintervention for Myocardial Ischemia,PayorType,Medi-Cal,N,0.00567,3
+2019-2020,Reintervention for Myocardial Ischemia,PayorType,Medicare,N,0.00234,6
+2019-2020,Reintervention for Myocardial Ischemia,PayorType,Other Insurance,N,0.00185,33
+2019-2020,Reintervention for Myocardial Ischemia,PayorType,Private Insurance,N,0.00935,7
+2019-2020,Reintervention for Myocardial Ischemia,PayorType,Uninsured,N,0,0
+2019-2020,Reintervention for Myocardial Ischemia,Race,Asian,N,0.00333,10
+2019-2020,Reintervention for Myocardial Ischemia,Race,Black,N,0.00352,3
+2019-2020,Reintervention for Myocardial Ischemia,Race,Hispanic,N,0.00246,11
+2019-2020,Reintervention for Myocardial Ischemia,Race,Native,N,0,0
+2019-2020,Reintervention for Myocardial Ischemia,Race,Others,N,0.00387,5
+2019-2020,Reintervention for Myocardial Ischemia,Race,Pacific,N,0,0
+2019-2020,Reintervention for Myocardial Ischemia,Race,White,N,0.00169,20
+2020-2021,Deep Sternal Infection,Age,41-65,N,0.00069,6
+2020-2021,Deep Sternal Infection,Age,Over 65,N,0.00085,10
+2020-2021,Deep Sternal Infection,Age,Under 40,N,0,0
+2020-2021,Deep Sternal Infection,All,All,N,0.00078,16
+2020-2021,Deep Sternal Infection,CABG type,CABG+Valve,N,0.00045,1
+2020-2021,Deep Sternal Infection,CABG type,Isolated CABG,N,0.00076,13
+2020-2021,Deep Sternal Infection,CABG type,Other Non-Isolated CABG,N,0.00172,2
+2020-2021,Deep Sternal Infection,Gender,Female,N,0.00047,2
+2020-2021,Deep Sternal Infection,Gender,Male,N,0.00086,14
+2020-2021,Deep Sternal Infection,PayorType,Medi-Cal,N,0.00185,1
+2020-2021,Deep Sternal Infection,PayorType,Medicare,N,0.00206,5
+2020-2021,Deep Sternal Infection,PayorType,Other Insurance,N,0.00059,10
+2020-2021,Deep Sternal Infection,PayorType,Private Insurance,N,0,0
+2020-2021,Deep Sternal Infection,PayorType,Uninsured,N,0,0
+2020-2021,Deep Sternal Infection,Race,Asian,N,0.00104,3
+2020-2021,Deep Sternal Infection,Race,Black,N,0,0
+2020-2021,Deep Sternal Infection,Race,Hispanic,N,0.00072,3
+2020-2021,Deep Sternal Infection,Race,Native,N,0,0
+2020-2021,Deep Sternal Infection,Race,Others,N,0.00143,2
+2020-2021,Deep Sternal Infection,Race,Pacific,N,0,0
+2020-2021,Deep Sternal Infection,Race,White,N,0.00072,8
+2020-2021,Post-Operative Atrial Fibrillation,Age,41-65,N,0.20328,1760
+2020-2021,Post-Operative Atrial Fibrillation,Age,Over 65,N,0.3402,3981
+2020-2021,Post-Operative Atrial Fibrillation,Age,Under 40,N,0.03804,7
+2020-2021,Post-Operative Atrial Fibrillation,All,All,N,0.27979,5748
+2020-2021,Post-Operative Atrial Fibrillation,CABG type,CABG+Valve,N,0.39214,878
+2020-2021,Post-Operative Atrial Fibrillation,CABG type,Isolated CABG,N,0.26235,4498
+2020-2021,Post-Operative Atrial Fibrillation,CABG type,Other Non-Isolated CABG,N,0.32069,372
+2020-2021,Post-Operative Atrial Fibrillation,Gender,Female,N,0.25653,1081
+2020-2021,Post-Operative Atrial Fibrillation,Gender,Male,N,0.28579,4667
+2020-2021,Post-Operative Atrial Fibrillation,PayorType,Medi-Cal,N,0.18819,102
+2020-2021,Post-Operative Atrial Fibrillation,PayorType,Medicare,N,0.35488,862
+2020-2021,Post-Operative Atrial Fibrillation,PayorType,Other Insurance,N,0.27313,4605
+2020-2021,Post-Operative Atrial Fibrillation,PayorType,Private Insurance,N,0.24964,173
+2020-2021,Post-Operative Atrial Fibrillation,PayorType,Uninsured,N,0.3,6
+2020-2021,Post-Operative Atrial Fibrillation,Race,Asian,N,0.26683,773
+2020-2021,Post-Operative Atrial Fibrillation,Race,Black,N,0.22059,165
+2020-2021,Post-Operative Atrial Fibrillation,Race,Hispanic,N,0.18914,791
+2020-2021,Post-Operative Atrial Fibrillation,Race,Native,N,0.27692,18
+2020-2021,Post-Operative Atrial Fibrillation,Race,Others,N,0.26576,371
+2020-2021,Post-Operative Atrial Fibrillation,Race,Pacific,N,0.25325,39
+2020-2021,Post-Operative Atrial Fibrillation,Race,White,N,0.32346,3591
+2020-2021,Post-Operative Dialysis,Age,41-65,N,0.00832,72
+2020-2021,Post-Operative Dialysis,Age,Over 65,N,0.01589,186
+2020-2021,Post-Operative Dialysis,Age,Under 40,N,0,0
+2020-2021,Post-Operative Dialysis,All,All,N,0.01256,258
+2020-2021,Post-Operative Dialysis,CABG type,CABG+Valve,N,0.02144,48
+2020-2021,Post-Operative Dialysis,CABG type,Isolated CABG,N,0.01021,175
+2020-2021,Post-Operative Dialysis,CABG type,Other Non-Isolated CABG,N,0.03017,35
+2020-2021,Post-Operative Dialysis,Gender,Female,N,0.01732,73
+2020-2021,Post-Operative Dialysis,Gender,Male,N,0.01133,185
+2020-2021,Post-Operative Dialysis,PayorType,Medi-Cal,N,0.01107,6
+2020-2021,Post-Operative Dialysis,PayorType,Medicare,N,0.03211,78
+2020-2021,Post-Operative Dialysis,PayorType,Other Insurance,N,0.00937,158
+2020-2021,Post-Operative Dialysis,PayorType,Private Insurance,N,0.02309,16
+2020-2021,Post-Operative Dialysis,PayorType,Uninsured,N,0,0
+2020-2021,Post-Operative Dialysis,Race,Asian,N,0.01243,36
+2020-2021,Post-Operative Dialysis,Race,Black,N,0.02005,15
+2020-2021,Post-Operative Dialysis,Race,Hispanic,N,0.01411,59
+2020-2021,Post-Operative Dialysis,Race,Native,N,0,0
+2020-2021,Post-Operative Dialysis,Race,Others,N,0.01576,22
+2020-2021,Post-Operative Dialysis,Race,Pacific,N,0.01299,2
+2020-2021,Post-Operative Dialysis,Race,White,N,0.01117,124
+2020-2021,Post-Operative Renal Failure,Age,41-65,N,0.01444,125
+2020-2021,Post-Operative Renal Failure,Age,Over 65,N,0.02316,271
+2020-2021,Post-Operative Renal Failure,Age,Under 40,N,0.00543,1
+2020-2021,Post-Operative Renal Failure,All,All,N,0.01932,397
+2020-2021,Post-Operative Renal Failure,CABG type,CABG+Valve,N,0.03037,68
+2020-2021,Post-Operative Renal Failure,CABG type,Isolated CABG,N,0.01627,279
+2020-2021,Post-Operative Renal Failure,CABG type,Other Non-Isolated CABG,N,0.0431,50
+2020-2021,Post-Operative Renal Failure,Gender,Female,N,0.02634,111
+2020-2021,Post-Operative Renal Failure,Gender,Male,N,0.01751,286
+2020-2021,Post-Operative Renal Failure,PayorType,Medi-Cal,N,0.02399,13
+2020-2021,Post-Operative Renal Failure,PayorType,Medicare,N,0.04323,105
+2020-2021,Post-Operative Renal Failure,PayorType,Other Insurance,N,0.01507,254
+2020-2021,Post-Operative Renal Failure,PayorType,Private Insurance,N,0.03608,25
+2020-2021,Post-Operative Renal Failure,PayorType,Uninsured,N,0,0
+2020-2021,Post-Operative Renal Failure,Race,Asian,N,0.02002,58
+2020-2021,Post-Operative Renal Failure,Race,Black,N,0.03877,29
+2020-2021,Post-Operative Renal Failure,Race,Hispanic,N,0.01841,77
+2020-2021,Post-Operative Renal Failure,Race,Native,N,0.01538,1
+2020-2021,Post-Operative Renal Failure,Race,Others,N,0.02436,34
+2020-2021,Post-Operative Renal Failure,Race,Pacific,N,0.01299,2
+2020-2021,Post-Operative Renal Failure,Race,White,N,0.01765,196
+2020-2021,Post-Operative Stroke,Age,41-65,N,0.01132,98
+2020-2021,Post-Operative Stroke,Age,Over 65,N,0.01444,169
+2020-2021,Post-Operative Stroke,Age,Under 40,N,0.02717,5
+2020-2021,Post-Operative Stroke,All,All,N,0.01324,272
+2020-2021,Post-Operative Stroke,CABG type,CABG+Valve,N,0.02144,48
+2020-2021,Post-Operative Stroke,CABG type,Isolated CABG,N,0.01108,190
+2020-2021,Post-Operative Stroke,CABG type,Other Non-Isolated CABG,N,0.02931,34
+2020-2021,Post-Operative Stroke,Gender,Female,N,0.01851,78
+2020-2021,Post-Operative Stroke,Gender,Male,N,0.01188,194
+2020-2021,Post-Operative Stroke,PayorType,Medi-Cal,N,0.0203,11
+2020-2021,Post-Operative Stroke,PayorType,Medicare,N,0.02264,55
+2020-2021,Post-Operative Stroke,PayorType,Other Insurance,N,0.01115,188
+2020-2021,Post-Operative Stroke,PayorType,Private Insurance,N,0.02597,18
+2020-2021,Post-Operative Stroke,PayorType,Uninsured,N,0,0
+2020-2021,Post-Operative Stroke,Race,Asian,N,0.01726,50
+2020-2021,Post-Operative Stroke,Race,Black,N,0.02273,17
+2020-2021,Post-Operative Stroke,Race,Hispanic,N,0.01459,61
+2020-2021,Post-Operative Stroke,Race,Native,N,0.01538,1
+2020-2021,Post-Operative Stroke,Race,Others,N,0.01719,24
+2020-2021,Post-Operative Stroke,Race,Pacific,N,0.00649,1
+2020-2021,Post-Operative Stroke,Race,White,N,0.01063,118
+2020-2021,Prolonged Ventilation,Age,41-65,N,0.06179,535
+2020-2021,Prolonged Ventilation,Age,Over 65,N,0.0664,777
+2020-2021,Prolonged Ventilation,Age,Under 40,N,0.07609,14
+2020-2021,Prolonged Ventilation,All,All,N,0.06454,1326
+2020-2021,Prolonged Ventilation,CABG type,CABG+Valve,N,0.11076,248
+2020-2021,Prolonged Ventilation,CABG type,Isolated CABG,N,0.05284,906
+2020-2021,Prolonged Ventilation,CABG type,Other Non-Isolated CABG,N,0.14828,172
+2020-2021,Prolonged Ventilation,Gender,Female,N,0.08282,349
+2020-2021,Prolonged Ventilation,Gender,Male,N,0.05983,977
+2020-2021,Prolonged Ventilation,PayorType,Medi-Cal,N,0.07749,42
+2020-2021,Prolonged Ventilation,PayorType,Medicare,N,0.11445,278
+2020-2021,Prolonged Ventilation,PayorType,Other Insurance,N,0.05581,941
+2020-2021,Prolonged Ventilation,PayorType,Private Insurance,N,0.0938,65
+2020-2021,Prolonged Ventilation,PayorType,Uninsured,N,0,0
+2020-2021,Prolonged Ventilation,Race,Asian,N,0.07076,205
+2020-2021,Prolonged Ventilation,Race,Black,N,0.1016,76
+2020-2021,Prolonged Ventilation,Race,Hispanic,N,0.0648,271
+2020-2021,Prolonged Ventilation,Race,Native,N,0.06154,4
+2020-2021,Prolonged Ventilation,Race,Others,N,0.06877,96
+2020-2021,Prolonged Ventilation,Race,Pacific,N,0.08442,13
+2020-2021,Prolonged Ventilation,Race,White,N,0.05954,661
+2020-2021,Re-Operative for Bleed,Age,41-65,N,0.01871,162
+2020-2021,Re-Operative for Bleed,Age,Over 65,N,0.02051,240
+2020-2021,Re-Operative for Bleed,Age,Under 40,N,0.00543,1
+2020-2021,Re-Operative for Bleed,All,All,N,0.01962,403
+2020-2021,Re-Operative for Bleed,CABG type,CABG+Valve,N,0.03394,76
+2020-2021,Re-Operative for Bleed,CABG type,Isolated CABG,N,0.01662,285
+2020-2021,Re-Operative for Bleed,CABG type,Other Non-Isolated CABG,N,0.03621,42
+2020-2021,Re-Operative for Bleed,Gender,Female,N,0.01875,79
+2020-2021,Re-Operative for Bleed,Gender,Male,N,0.01984,324
+2020-2021,Re-Operative for Bleed,PayorType,Medi-Cal,N,0.02399,13
+2020-2021,Re-Operative for Bleed,PayorType,Medicare,N,0.02429,59
+2020-2021,Re-Operative for Bleed,PayorType,Other Insurance,N,0.01892,319
+2020-2021,Re-Operative for Bleed,PayorType,Private Insurance,N,0.01732,12
+2020-2021,Re-Operative for Bleed,PayorType,Uninsured,N,0,0
+2020-2021,Re-Operative for Bleed,Race,Asian,N,0.02244,65
+2020-2021,Re-Operative for Bleed,Race,Black,N,0.02406,18
+2020-2021,Re-Operative for Bleed,Race,Hispanic,N,0.01889,79
+2020-2021,Re-Operative for Bleed,Race,Native,N,0,0
+2020-2021,Re-Operative for Bleed,Race,Others,N,0.01791,25
+2020-2021,Re-Operative for Bleed,Race,Pacific,N,0.01299,2
+2020-2021,Re-Operative for Bleed,Race,White,N,0.01928,214
+2020-2021,Reintervention for Myocardial Ischemia,Age,41-65,N,0.00266,23
+2020-2021,Reintervention for Myocardial Ischemia,Age,Over 65,N,0.00299,35
+2020-2021,Reintervention for Myocardial Ischemia,Age,Under 40,N,0,0
+2020-2021,Reintervention for Myocardial Ischemia,All,All,N,0.00282,58
+2020-2021,Reintervention for Myocardial Ischemia,CABG type,CABG+Valve,N,0.00089,2
+2020-2021,Reintervention for Myocardial Ischemia,CABG type,Isolated CABG,N,0.00315,54
+2020-2021,Reintervention for Myocardial Ischemia,CABG type,Other Non-Isolated CABG,N,0.00172,2
+2020-2021,Reintervention for Myocardial Ischemia,Gender,Female,N,0.00356,15
+2020-2021,Reintervention for Myocardial Ischemia,Gender,Male,N,0.00263,43
+2020-2021,Reintervention for Myocardial Ischemia,PayorType,Medi-Cal,N,0.00554,3
+2020-2021,Reintervention for Myocardial Ischemia,PayorType,Medicare,N,0.00329,8
+2020-2021,Reintervention for Myocardial Ischemia,PayorType,Other Insurance,N,0.00261,44
+2020-2021,Reintervention for Myocardial Ischemia,PayorType,Private Insurance,N,0.00433,3
+2020-2021,Reintervention for Myocardial Ischemia,PayorType,Uninsured,N,0,0
+2020-2021,Reintervention for Myocardial Ischemia,Race,Asian,N,0.00311,9
+2020-2021,Reintervention for Myocardial Ischemia,Race,Black,N,0.00535,4
+2020-2021,Reintervention for Myocardial Ischemia,Race,Hispanic,N,0.00311,13
+2020-2021,Reintervention for Myocardial Ischemia,Race,Native,N,0,0
+2020-2021,Reintervention for Myocardial Ischemia,Race,Others,N,0.0043,6
+2020-2021,Reintervention for Myocardial Ischemia,Race,Pacific,N,0,0
+2020-2021,Reintervention for Myocardial Ischemia,Race,White,N,0.00234,26
+2018-2019,Deep Sternal Infection,Age,0 to 40,Y,0,0
+2018-2019,Deep Sternal Infection,Age,41-65,Y,0.02053,28
+2018-2019,Deep Sternal Infection,Age,66 to Max,Y,0.0148,32
+2018-2019,Deep Sternal Infection,All,All,Y,0.01687,60
+2018-2019,Deep Sternal Infection,CABG type,CABG+Valve,Y,0.01211,7
+2018-2019,Deep Sternal Infection,CABG type,Isolated CABG,Y,0.01741,47
+2018-2019,Deep Sternal Infection,CABG type,Other Non-Isolated CABG,Y,0.02143,6
+2018-2019,Deep Sternal Infection,Gender,Female,Y,0.02067,21
+2018-2019,Deep Sternal Infection,Gender,Male,Y,0.01535,39
+2018-2019,Deep Sternal Infection,PayorType,Medi-Cal,Y,0.02386,12
+2018-2019,Deep Sternal Infection,PayorType,Medicare,Y,0.01487,34
+2018-2019,Deep Sternal Infection,PayorType,Other Insurance,Y,0.01389,1
+2018-2019,Deep Sternal Infection,PayorType,Private Insurance,Y,0.0194,13
+2018-2019,Deep Sternal Infection,PayorType,Uninsured,Y,0,0
+2018-2019,Deep Sternal Infection,Race,Asian,Y,0.01839,8
+2018-2019,Deep Sternal Infection,Race,Black,Y,0.00641,1
+2018-2019,Deep Sternal Infection,Race,Hispanic,Y,0.01603,13
+2018-2019,Deep Sternal Infection,Race,Native,Y,0,0
+2018-2019,Deep Sternal Infection,Race,Others,Y,0.02116,4
+2018-2019,Deep Sternal Infection,Race,Pacific,Y,0,0
+2018-2019,Deep Sternal Infection,Race,White,Y,0.01762,34
+2018-2019,Post-Operative Atrial Fibrillation,Age,0 to 40,Y,0.03226,1
+2018-2019,Post-Operative Atrial Fibrillation,Age,41-65,Y,0.22654,309
+2018-2019,Post-Operative Atrial Fibrillation,Age,66 to Max,Y,0.3765,814
+2018-2019,Post-Operative Atrial Fibrillation,All,All,Y,0.316,1124
+2018-2019,Post-Operative Atrial Fibrillation,CABG type,CABG+Valve,Y,0.40138,232
+2018-2019,Post-Operative Atrial Fibrillation,CABG type,Isolated CABG,Y,0.29492,796
+2018-2019,Post-Operative Atrial Fibrillation,CABG type,Other Non-Isolated CABG,Y,0.34286,96
+2018-2019,Post-Operative Atrial Fibrillation,Gender,Female,Y,0.30906,314
+2018-2019,Post-Operative Atrial Fibrillation,Gender,Male,Y,0.31877,810
+2018-2019,Post-Operative Atrial Fibrillation,PayorType,Medi-Cal,Y,0.21272,107
+2018-2019,Post-Operative Atrial Fibrillation,PayorType,Medicare,Y,0.35461,811
+2018-2019,Post-Operative Atrial Fibrillation,PayorType,Other Insurance,Y,0.34722,25
+2018-2019,Post-Operative Atrial Fibrillation,PayorType,Private Insurance,Y,0.26567,178
+2018-2019,Post-Operative Atrial Fibrillation,PayorType,Uninsured,Y,0.12,3
+2018-2019,Post-Operative Atrial Fibrillation,Race,Asian,Y,0.35402,154
+2018-2019,Post-Operative Atrial Fibrillation,Race,Black,Y,0.24359,38
+2018-2019,Post-Operative Atrial Fibrillation,Race,Hispanic,Y,0.24661,200
+2018-2019,Post-Operative Atrial Fibrillation,Race,Native,Y,0.3,3
+2018-2019,Post-Operative Atrial Fibrillation,Race,Others,Y,0.28042,53
+2018-2019,Post-Operative Atrial Fibrillation,Race,Pacific,Y,0.30769,8
+2018-2019,Post-Operative Atrial Fibrillation,Race,White,Y,0.34611,668
+2018-2019,Post-Operative Dialysis,Age,0 to 40,Y,0,0
+2018-2019,Post-Operative Dialysis,Age,41-65,Y,0.02933,40
+2018-2019,Post-Operative Dialysis,Age,66 to Max,Y,0.03006,65
+2018-2019,Post-Operative Dialysis,All,All,Y,0.02952,105
+2018-2019,Post-Operative Dialysis,CABG type,CABG+Valve,Y,0.03633,21
+2018-2019,Post-Operative Dialysis,CABG type,Isolated CABG,Y,0.02594,70
+2018-2019,Post-Operative Dialysis,CABG type,Other Non-Isolated CABG,Y,0.05,14
+2018-2019,Post-Operative Dialysis,Gender,Female,Y,0.0374,38
+2018-2019,Post-Operative Dialysis,Gender,Male,Y,0.02637,67
+2018-2019,Post-Operative Dialysis,PayorType,Medi-Cal,Y,0.03976,20
+2018-2019,Post-Operative Dialysis,PayorType,Medicare,Y,0.02886,66
+2018-2019,Post-Operative Dialysis,PayorType,Other Insurance,Y,0.05556,4
+2018-2019,Post-Operative Dialysis,PayorType,Private Insurance,Y,0.02239,15
+2018-2019,Post-Operative Dialysis,PayorType,Uninsured,Y,0,0
+2018-2019,Post-Operative Dialysis,Race,Asian,Y,0.03678,16
+2018-2019,Post-Operative Dialysis,Race,Black,Y,0.04487,7
+2018-2019,Post-Operative Dialysis,Race,Hispanic,Y,0.03453,28
+2018-2019,Post-Operative Dialysis,Race,Native,Y,0.1,1
+2018-2019,Post-Operative Dialysis,Race,Others,Y,0.02646,5
+2018-2019,Post-Operative Dialysis,Race,Pacific,Y,0.03846,1
+2018-2019,Post-Operative Dialysis,Race,White,Y,0.02435,47
+2018-2019,Post-Operative Renal Failure,Age,0 to 40,Y,0.03226,1
+2018-2019,Post-Operative Renal Failure,Age,41-65,Y,0.03886,53
+2018-2019,Post-Operative Renal Failure,Age,66 to Max,Y,0.05319,115
+2018-2019,Post-Operative Renal Failure,All,All,Y,0.04751,169
+2018-2019,Post-Operative Renal Failure,CABG type,CABG+Valve,Y,0.0692,40
+2018-2019,Post-Operative Renal Failure,CABG type,Isolated CABG,Y,0.04039,109
+2018-2019,Post-Operative Renal Failure,CABG type,Other Non-Isolated CABG,Y,0.07143,20
+2018-2019,Post-Operative Renal Failure,Gender,Female,Y,0.05512,56
+2018-2019,Post-Operative Renal Failure,Gender,Male,Y,0.04447,113
+2018-2019,Post-Operative Renal Failure,PayorType,Medi-Cal,Y,0.05169,26
+2018-2019,Post-Operative Renal Failure,PayorType,Medicare,Y,0.04941,113
+2018-2019,Post-Operative Renal Failure,PayorType,Other Insurance,Y,0.05556,4
+2018-2019,Post-Operative Renal Failure,PayorType,Private Insurance,Y,0.03881,26
+2018-2019,Post-Operative Renal Failure,PayorType,Uninsured,Y,0,0
+2018-2019,Post-Operative Renal Failure,Race,Asian,Y,0.05977,26
+2018-2019,Post-Operative Renal Failure,Race,Black,Y,0.04487,7
+2018-2019,Post-Operative Renal Failure,Race,Hispanic,Y,0.05919,48
+2018-2019,Post-Operative Renal Failure,Race,Native,Y,0.1,1
+2018-2019,Post-Operative Renal Failure,Race,Others,Y,0.0582,11
+2018-2019,Post-Operative Renal Failure,Race,Pacific,Y,0.07692,2
+2018-2019,Post-Operative Renal Failure,Race,White,Y,0.03834,74
+2018-2019,Post-Operative Stroke,Age,0 to 40,Y,0.03226,1
+2018-2019,Post-Operative Stroke,Age,41-65,Y,0.02346,32
+2018-2019,Post-Operative Stroke,Age,66 to Max,Y,0.03053,66
+2018-2019,Post-Operative Stroke,All,All,Y,0.02783,99
+2018-2019,Post-Operative Stroke,CABG type,CABG+Valve,Y,0.03114,18
+2018-2019,Post-Operative Stroke,CABG type,Isolated CABG,Y,0.02519,68
+2018-2019,Post-Operative Stroke,CABG type,Other Non-Isolated CABG,Y,0.04643,13
+2018-2019,Post-Operative Stroke,Gender,Female,Y,0.03543,36
+2018-2019,Post-Operative Stroke,Gender,Male,Y,0.02479,63
+2018-2019,Post-Operative Stroke,PayorType,Medi-Cal,Y,0.02982,15
+2018-2019,Post-Operative Stroke,PayorType,Medicare,Y,0.03017,69
+2018-2019,Post-Operative Stroke,PayorType,Other Insurance,Y,0,0
+2018-2019,Post-Operative Stroke,PayorType,Private Insurance,Y,0.0209,14
+2018-2019,Post-Operative Stroke,PayorType,Uninsured,Y,0.04,1
+2018-2019,Post-Operative Stroke,Race,Asian,Y,0.05517,24
+2018-2019,Post-Operative Stroke,Race,Black,Y,0.03846,6
+2018-2019,Post-Operative Stroke,Race,Hispanic,Y,0.02713,22
+2018-2019,Post-Operative Stroke,Race,Native,Y,0,0
+2018-2019,Post-Operative Stroke,Race,Others,Y,0.03704,7
+2018-2019,Post-Operative Stroke,Race,Pacific,Y,0.03846,1
+2018-2019,Post-Operative Stroke,Race,White,Y,0.02021,39
+2018-2019,Prolonged Ventilation,Age,0 to 40,Y,0.06452,2
+2018-2019,Prolonged Ventilation,Age,41-65,Y,0.14663,200
+2018-2019,Prolonged Ventilation,Age,66 to Max,Y,0.13228,286
+2018-2019,Prolonged Ventilation,All,All,Y,0.13719,488
+2018-2019,Prolonged Ventilation,CABG type,CABG+Valve,Y,0.19377,112
+2018-2019,Prolonged Ventilation,CABG type,Isolated CABG,Y,0.11819,319
+2018-2019,Prolonged Ventilation,CABG type,Other Non-Isolated CABG,Y,0.20357,57
+2018-2019,Prolonged Ventilation,Gender,Female,Y,0.16634,169
+2018-2019,Prolonged Ventilation,Gender,Male,Y,0.12554,319
+2018-2019,Prolonged Ventilation,PayorType,Medi-Cal,Y,0.12922,65
+2018-2019,Prolonged Ventilation,PayorType,Medicare,Y,0.14254,326
+2018-2019,Prolonged Ventilation,PayorType,Other Insurance,Y,0.16667,12
+2018-2019,Prolonged Ventilation,PayorType,Private Insurance,Y,0.1194,80
+2018-2019,Prolonged Ventilation,PayorType,Uninsured,Y,0.2,5
+2018-2019,Prolonged Ventilation,Race,Asian,Y,0.17701,77
+2018-2019,Prolonged Ventilation,Race,Black,Y,0.13462,21
+2018-2019,Prolonged Ventilation,Race,Hispanic,Y,0.1307,106
+2018-2019,Prolonged Ventilation,Race,Native,Y,0.2,2
+2018-2019,Prolonged Ventilation,Race,Others,Y,0.15344,29
+2018-2019,Prolonged Ventilation,Race,Pacific,Y,0.19231,5
+2018-2019,Prolonged Ventilation,Race,White,Y,0.1285,248
+2018-2019,Re-Operative for Bleed,Age,0 to 40,Y,0.03226,1
+2018-2019,Re-Operative for Bleed,Age,41-65,Y,0.02566,35
+2018-2019,Re-Operative for Bleed,Age,66 to Max,Y,0.02868,62
+2018-2019,Re-Operative for Bleed,All,All,Y,0.02755,98
+2018-2019,Re-Operative for Bleed,CABG type,CABG+Valve,Y,0.03287,19
+2018-2019,Re-Operative for Bleed,CABG type,Isolated CABG,Y,0.02408,65
+2018-2019,Re-Operative for Bleed,CABG type,Other Non-Isolated CABG,Y,0.05,14
+2018-2019,Re-Operative for Bleed,Gender,Female,Y,0.0187,19
+2018-2019,Re-Operative for Bleed,Gender,Male,Y,0.03109,79
+2018-2019,Re-Operative for Bleed,PayorType,Medi-Cal,Y,0.0159,8
+2018-2019,Re-Operative for Bleed,PayorType,Medicare,Y,0.03148,72
+2018-2019,Re-Operative for Bleed,PayorType,Other Insurance,Y,0.02778,2
+2018-2019,Re-Operative for Bleed,PayorType,Private Insurance,Y,0.02388,16
+2018-2019,Re-Operative for Bleed,PayorType,Uninsured,Y,0,0
+2018-2019,Re-Operative for Bleed,Race,Asian,Y,0.03908,17
+2018-2019,Re-Operative for Bleed,Race,Black,Y,0.01923,3
+2018-2019,Re-Operative for Bleed,Race,Hispanic,Y,0.02959,24
+2018-2019,Re-Operative for Bleed,Race,Native,Y,0,0
+2018-2019,Re-Operative for Bleed,Race,Others,Y,0.02116,4
+2018-2019,Re-Operative for Bleed,Race,Pacific,Y,0,0
+2018-2019,Re-Operative for Bleed,Race,White,Y,0.02591,50
+2018-2019,Reintervention for Myocardial Ischemia,Age,0 to 40,Y,0,0
+2018-2019,Reintervention for Myocardial Ischemia,Age,41-65,Y,0.00587,8
+2018-2019,Reintervention for Myocardial Ischemia,Age,66 to Max,Y,0.00185,4
+2018-2019,Reintervention for Myocardial Ischemia,All,All,Y,0.00337,12
+2018-2019,Reintervention for Myocardial Ischemia,CABG type,CABG+Valve,Y,0.00173,1
+2018-2019,Reintervention for Myocardial Ischemia,CABG type,Isolated CABG,Y,0.00371,10
+2018-2019,Reintervention for Myocardial Ischemia,CABG type,Other Non-Isolated CABG,Y,0.00357,1
+2018-2019,Reintervention for Myocardial Ischemia,Gender,Female,Y,0.00492,5
+2018-2019,Reintervention for Myocardial Ischemia,Gender,Male,Y,0.00275,7
+2018-2019,Reintervention for Myocardial Ischemia,PayorType,Medi-Cal,Y,0.00398,2
+2018-2019,Reintervention for Myocardial Ischemia,PayorType,Medicare,Y,0.00262,6
+2018-2019,Reintervention for Myocardial Ischemia,PayorType,Other Insurance,Y,0,0
+2018-2019,Reintervention for Myocardial Ischemia,PayorType,Private Insurance,Y,0.00597,4
+2018-2019,Reintervention for Myocardial Ischemia,PayorType,Uninsured,Y,0,0
+2018-2019,Reintervention for Myocardial Ischemia,Race,Asian,Y,0.0046,2
+2018-2019,Reintervention for Myocardial Ischemia,Race,Black,Y,0,0
+2018-2019,Reintervention for Myocardial Ischemia,Race,Hispanic,Y,0.0037,3
+2018-2019,Reintervention for Myocardial Ischemia,Race,Native,Y,0,0
+2018-2019,Reintervention for Myocardial Ischemia,Race,Others,Y,0.01058,2
+2018-2019,Reintervention for Myocardial Ischemia,Race,Pacific,Y,0,0
+2018-2019,Reintervention for Myocardial Ischemia,Race,White,Y,0.00259,5
+2019-2020,Deep Sternal Infection,Age,0 to 40,Y,0.03226,1
+2019-2020,Deep Sternal Infection,Age,41-65,Y,0.01901,23
+2019-2020,Deep Sternal Infection,Age,66 to Max,Y,0.01444,28
+2019-2020,Deep Sternal Infection,All,All,Y,0.01635,52
+2019-2020,Deep Sternal Infection,CABG type,CABG+Valve,Y,0.00413,2
+2019-2020,Deep Sternal Infection,CABG type,Isolated CABG,Y,0.01814,44
+2019-2020,Deep Sternal Infection,CABG type,Other Non-Isolated CABG,Y,0.02214,6
+2019-2020,Deep Sternal Infection,Gender,Female,Y,0.02025,18
+2019-2020,Deep Sternal Infection,Gender,Male,Y,0.01484,34
+2019-2020,Deep Sternal Infection,PayorType,Medi-Cal,Y,0.01794,8
+2019-2020,Deep Sternal Infection,PayorType,Medicare,Y,0.01572,32
+2019-2020,Deep Sternal Infection,PayorType,Other Insurance,Y,0,0
+2019-2020,Deep Sternal Infection,PayorType,Private Insurance,Y,0.01987,12
+2019-2020,Deep Sternal Infection,PayorType,Uninsured,Y,0,0
+2019-2020,Deep Sternal Infection,Race,Asian,Y,0.01733,7
+2019-2020,Deep Sternal Infection,Race,Black,Y,0.0137,2
+2019-2020,Deep Sternal Infection,Race,Hispanic,Y,0.01114,8
+2019-2020,Deep Sternal Infection,Race,Native,Y,0,0
+2019-2020,Deep Sternal Infection,Race,Others,Y,0.01075,2
+2019-2020,Deep Sternal Infection,Race,Pacific,Y,0,0
+2019-2020,Deep Sternal Infection,Race,White,Y,0.0196,33
+2019-2020,Post-Operative Atrial Fibrillation,Age,0 to 40,Y,0.03226,1
+2019-2020,Post-Operative Atrial Fibrillation,Age,41-65,Y,0.24132,292
+2019-2020,Post-Operative Atrial Fibrillation,Age,66 to Max,Y,0.38473,746
+2019-2020,Post-Operative Atrial Fibrillation,All,All,Y,0.32673,1039
+2019-2020,Post-Operative Atrial Fibrillation,CABG type,CABG+Valve,Y,0.39256,190
+2019-2020,Post-Operative Atrial Fibrillation,CABG type,Isolated CABG,Y,0.31052,753
+2019-2020,Post-Operative Atrial Fibrillation,CABG type,Other Non-Isolated CABG,Y,0.35424,96
+2019-2020,Post-Operative Atrial Fibrillation,Gender,Female,Y,0.30259,269
+2019-2020,Post-Operative Atrial Fibrillation,Gender,Male,Y,0.3361,770
+2019-2020,Post-Operative Atrial Fibrillation,PayorType,Medi-Cal,Y,0.20628,92
+2019-2020,Post-Operative Atrial Fibrillation,PayorType,Medicare,Y,0.36395,741
+2019-2020,Post-Operative Atrial Fibrillation,PayorType,Other Insurance,Y,0.44286,31
+2019-2020,Post-Operative Atrial Fibrillation,PayorType,Private Insurance,Y,0.28311,171
+2019-2020,Post-Operative Atrial Fibrillation,PayorType,Uninsured,Y,0.16667,4
+2019-2020,Post-Operative Atrial Fibrillation,Race,Asian,Y,0.37129,150
+2019-2020,Post-Operative Atrial Fibrillation,Race,Black,Y,0.30137,44
+2019-2020,Post-Operative Atrial Fibrillation,Race,Hispanic,Y,0.23816,171
+2019-2020,Post-Operative Atrial Fibrillation,Race,Native,Y,0.2,2
+2019-2020,Post-Operative Atrial Fibrillation,Race,Others,Y,0.30108,56
+2019-2020,Post-Operative Atrial Fibrillation,Race,Pacific,Y,0.4375,14
+2019-2020,Post-Operative Atrial Fibrillation,Race,White,Y,0.35748,602
+2019-2020,Post-Operative Dialysis,Age,0 to 40,Y,0,0
+2019-2020,Post-Operative Dialysis,Age,41-65,Y,0.02893,35
+2019-2020,Post-Operative Dialysis,Age,66 to Max,Y,0.02837,55
+2019-2020,Post-Operative Dialysis,All,All,Y,0.0283,90
+2019-2020,Post-Operative Dialysis,CABG type,CABG+Valve,Y,0.03099,15
+2019-2020,Post-Operative Dialysis,CABG type,Isolated CABG,Y,0.02474,60
+2019-2020,Post-Operative Dialysis,CABG type,Other Non-Isolated CABG,Y,0.05535,15
+2019-2020,Post-Operative Dialysis,Gender,Female,Y,0.03712,33
+2019-2020,Post-Operative Dialysis,Gender,Male,Y,0.02488,57
+2019-2020,Post-Operative Dialysis,PayorType,Medi-Cal,Y,0.03812,17
+2019-2020,Post-Operative Dialysis,PayorType,Medicare,Y,0.03094,63
+2019-2020,Post-Operative Dialysis,PayorType,Other Insurance,Y,0,0
+2019-2020,Post-Operative Dialysis,PayorType,Private Insurance,Y,0.01656,10
+2019-2020,Post-Operative Dialysis,PayorType,Uninsured,Y,0,0
+2019-2020,Post-Operative Dialysis,Race,Asian,Y,0.03218,13
+2019-2020,Post-Operative Dialysis,Race,Black,Y,0.06164,9
+2019-2020,Post-Operative Dialysis,Race,Hispanic,Y,0.03482,25
+2019-2020,Post-Operative Dialysis,Race,Native,Y,0,0
+2019-2020,Post-Operative Dialysis,Race,Others,Y,0.02688,5
+2019-2020,Post-Operative Dialysis,Race,Pacific,Y,0.03125,1
+2019-2020,Post-Operative Dialysis,Race,White,Y,0.02197,37
+2019-2020,Post-Operative Renal Failure,Age,0 to 40,Y,0,0
+2019-2020,Post-Operative Renal Failure,Age,41-65,Y,0.03802,46
+2019-2020,Post-Operative Renal Failure,Age,66 to Max,Y,0.04848,94
+2019-2020,Post-Operative Renal Failure,All,All,Y,0.04403,140
+2019-2020,Post-Operative Renal Failure,CABG type,CABG+Valve,Y,0.04752,23
+2019-2020,Post-Operative Renal Failure,CABG type,Isolated CABG,Y,0.03835,93
+2019-2020,Post-Operative Renal Failure,CABG type,Other Non-Isolated CABG,Y,0.08856,24
+2019-2020,Post-Operative Renal Failure,Gender,Female,Y,0.05512,49
+2019-2020,Post-Operative Renal Failure,Gender,Male,Y,0.03972,91
+2019-2020,Post-Operative Renal Failure,PayorType,Medi-Cal,Y,0.05157,23
+2019-2020,Post-Operative Renal Failure,PayorType,Medicare,Y,0.04764,97
+2019-2020,Post-Operative Renal Failure,PayorType,Other Insurance,Y,0.01429,1
+2019-2020,Post-Operative Renal Failure,PayorType,Private Insurance,Y,0.03146,19
+2019-2020,Post-Operative Renal Failure,PayorType,Uninsured,Y,0,0
+2019-2020,Post-Operative Renal Failure,Race,Asian,Y,0.05198,21
+2019-2020,Post-Operative Renal Failure,Race,Black,Y,0.06849,10
+2019-2020,Post-Operative Renal Failure,Race,Hispanic,Y,0.05571,40
+2019-2020,Post-Operative Renal Failure,Race,Native,Y,0,0
+2019-2020,Post-Operative Renal Failure,Race,Others,Y,0.05376,10
+2019-2020,Post-Operative Renal Failure,Race,Pacific,Y,0.0625,2
+2019-2020,Post-Operative Renal Failure,Race,White,Y,0.03385,57
+2019-2020,Post-Operative Stroke,Age,0 to 40,Y,0,0
+2019-2020,Post-Operative Stroke,Age,41-65,Y,0.02149,26
+2019-2020,Post-Operative Stroke,Age,66 to Max,Y,0.0263,51
+2019-2020,Post-Operative Stroke,All,All,Y,0.02421,77
+2019-2020,Post-Operative Stroke,CABG type,CABG+Valve,Y,0.03512,17
+2019-2020,Post-Operative Stroke,CABG type,Isolated CABG,Y,0.01979,48
+2019-2020,Post-Operative Stroke,CABG type,Other Non-Isolated CABG,Y,0.04428,12
+2019-2020,Post-Operative Stroke,Gender,Female,Y,0.02925,26
+2019-2020,Post-Operative Stroke,Gender,Male,Y,0.02226,51
+2019-2020,Post-Operative Stroke,PayorType,Medi-Cal,Y,0.02691,12
+2019-2020,Post-Operative Stroke,PayorType,Medicare,Y,0.02358,48
+2019-2020,Post-Operative Stroke,PayorType,Other Insurance,Y,0.04286,3
+2019-2020,Post-Operative Stroke,PayorType,Private Insurance,Y,0.02318,14
+2019-2020,Post-Operative Stroke,PayorType,Uninsured,Y,0,0
+2019-2020,Post-Operative Stroke,Race,Asian,Y,0.03713,15
+2019-2020,Post-Operative Stroke,Race,Black,Y,0.03425,5
+2019-2020,Post-Operative Stroke,Race,Hispanic,Y,0.03203,23
+2019-2020,Post-Operative Stroke,Race,Native,Y,0.2,2
+2019-2020,Post-Operative Stroke,Race,Others,Y,0.01613,3
+2019-2020,Post-Operative Stroke,Race,Pacific,Y,0.03125,1
+2019-2020,Post-Operative Stroke,Race,White,Y,0.01663,28
+2019-2020,Prolonged Ventilation,Age,0 to 40,Y,0.06452,2
+2019-2020,Prolonged Ventilation,Age,41-65,Y,0.12893,156
+2019-2020,Prolonged Ventilation,Age,66 to Max,Y,0.12481,242
+2019-2020,Prolonged Ventilation,All,All,Y,0.12579,400
+2019-2020,Prolonged Ventilation,CABG type,CABG+Valve,Y,0.19008,92
+2019-2020,Prolonged Ventilation,CABG type,Isolated CABG,Y,0.10309,250
+2019-2020,Prolonged Ventilation,CABG type,Other Non-Isolated CABG,Y,0.21402,58
+2019-2020,Prolonged Ventilation,Gender,Female,Y,0.15411,137
+2019-2020,Prolonged Ventilation,Gender,Male,Y,0.1148,263
+2019-2020,Prolonged Ventilation,PayorType,Medi-Cal,Y,0.1278,57
+2019-2020,Prolonged Ventilation,PayorType,Medicare,Y,0.13261,270
+2019-2020,Prolonged Ventilation,PayorType,Other Insurance,Y,0.14286,10
+2019-2020,Prolonged Ventilation,PayorType,Private Insurance,Y,0.09934,60
+2019-2020,Prolonged Ventilation,PayorType,Uninsured,Y,0.125,3
+2019-2020,Prolonged Ventilation,Race,Asian,Y,0.16089,65
+2019-2020,Prolonged Ventilation,Race,Black,Y,0.13014,19
+2019-2020,Prolonged Ventilation,Race,Hispanic,Y,0.13092,94
+2019-2020,Prolonged Ventilation,Race,Native,Y,0.2,2
+2019-2020,Prolonged Ventilation,Race,Others,Y,0.13978,26
+2019-2020,Prolonged Ventilation,Race,Pacific,Y,0.25,8
+2019-2020,Prolonged Ventilation,Race,White,Y,0.11045,186
+2019-2020,Re-Operative for Bleed,Age,0 to 40,Y,0.09677,3
+2019-2020,Re-Operative for Bleed,Age,41-65,Y,0.01818,22
+2019-2020,Re-Operative for Bleed,Age,66 to Max,Y,0.03198,62
+2019-2020,Re-Operative for Bleed,All,All,Y,0.02736,87
+2019-2020,Re-Operative for Bleed,CABG type,CABG+Valve,Y,0.04959,24
+2019-2020,Re-Operative for Bleed,CABG type,Isolated CABG,Y,0.01979,48
+2019-2020,Re-Operative for Bleed,CABG type,Other Non-Isolated CABG,Y,0.05535,15
+2019-2020,Re-Operative for Bleed,Gender,Female,Y,0.02587,23
+2019-2020,Re-Operative for Bleed,Gender,Male,Y,0.02794,64
+2019-2020,Re-Operative for Bleed,PayorType,Medi-Cal,Y,0.03139,14
+2019-2020,Re-Operative for Bleed,PayorType,Medicare,Y,0.03143,64
+2019-2020,Re-Operative for Bleed,PayorType,Other Insurance,Y,0.02857,2
+2019-2020,Re-Operative for Bleed,PayorType,Private Insurance,Y,0.01159,7
+2019-2020,Re-Operative for Bleed,PayorType,Uninsured,Y,0,0
+2019-2020,Re-Operative for Bleed,Race,Asian,Y,0.04208,17
+2019-2020,Re-Operative for Bleed,Race,Black,Y,0.0137,2
+2019-2020,Re-Operative for Bleed,Race,Hispanic,Y,0.03064,22
+2019-2020,Re-Operative for Bleed,Race,Native,Y,0.1,1
+2019-2020,Re-Operative for Bleed,Race,Others,Y,0.02151,4
+2019-2020,Re-Operative for Bleed,Race,Pacific,Y,0.09375,3
+2019-2020,Re-Operative for Bleed,Race,White,Y,0.02257,38
+2019-2020,Reintervention for Myocardial Ischemia,Age,0 to 40,Y,0,0
+2019-2020,Reintervention for Myocardial Ischemia,Age,41-65,Y,0.00496,6
+2019-2020,Reintervention for Myocardial Ischemia,Age,66 to Max,Y,0.00155,3
+2019-2020,Reintervention for Myocardial Ischemia,All,All,Y,0.00283,9
+2019-2020,Reintervention for Myocardial Ischemia,CABG type,CABG+Valve,Y,0,0
+2019-2020,Reintervention for Myocardial Ischemia,CABG type,Isolated CABG,Y,0.0033,8
+2019-2020,Reintervention for Myocardial Ischemia,CABG type,Other Non-Isolated CABG,Y,0.00369,1
+2019-2020,Reintervention for Myocardial Ischemia,Gender,Female,Y,0.00337,3
+2019-2020,Reintervention for Myocardial Ischemia,Gender,Male,Y,0.00262,6
+2019-2020,Reintervention for Myocardial Ischemia,PayorType,Medi-Cal,Y,0,0
+2019-2020,Reintervention for Myocardial Ischemia,PayorType,Medicare,Y,0.00246,5
+2019-2020,Reintervention for Myocardial Ischemia,PayorType,Other Insurance,Y,0,0
+2019-2020,Reintervention for Myocardial Ischemia,PayorType,Private Insurance,Y,0.00662,4
+2019-2020,Reintervention for Myocardial Ischemia,PayorType,Uninsured,Y,0,0
+2019-2020,Reintervention for Myocardial Ischemia,Race,Asian,Y,0,0
+2019-2020,Reintervention for Myocardial Ischemia,Race,Black,Y,0.00685,1
+2019-2020,Reintervention for Myocardial Ischemia,Race,Hispanic,Y,0.00279,2
+2019-2020,Reintervention for Myocardial Ischemia,Race,Native,Y,0,0
+2019-2020,Reintervention for Myocardial Ischemia,Race,Others,Y,0.00538,1
+2019-2020,Reintervention for Myocardial Ischemia,Race,Pacific,Y,0,0
+2019-2020,Reintervention for Myocardial Ischemia,Race,White,Y,0.00297,5
+2020-2021,Deep Sternal Infection,Age,41-65,Y,0.03041,33
+2020-2021,Deep Sternal Infection,Age,Over 65,Y,0.01807,32
+2020-2021,Deep Sternal Infection,Age,Under 40,Y,0.03226,1
+2020-2021,Deep Sternal Infection,All,All,Y,0.02286,66
+2020-2021,Deep Sternal Infection,CABG type,CABG+Valve,Y,0.01523,6
+2020-2021,Deep Sternal Infection,CABG type,Isolated CABG,Y,0.02525,56
+2020-2021,Deep Sternal Infection,CABG type,Other Non-Isolated CABG,Y,0.01455,4
+2020-2021,Deep Sternal Infection,Gender,Female,Y,0.03253,27
+2020-2021,Deep Sternal Infection,Gender,Male,Y,0.01896,39
+2020-2021,Deep Sternal Infection,PayorType,Medi-Cal,Y,0.04092,16
+2020-2021,Deep Sternal Infection,PayorType,Medicare,Y,0.01787,33
+2020-2021,Deep Sternal Infection,PayorType,Other Insurance,Y,0.01667,1
+2020-2021,Deep Sternal Infection,PayorType,Private Insurance,Y,0.02797,16
+2020-2021,Deep Sternal Infection,PayorType,Uninsured,Y,0,0
+2020-2021,Deep Sternal Infection,Race,Asian,Y,0.01351,5
+2020-2021,Deep Sternal Infection,Race,Black,Y,0.0137,2
+2020-2021,Deep Sternal Infection,Race,Hispanic,Y,0.01858,12
+2020-2021,Deep Sternal Infection,Race,Native,Y,0,0
+2020-2021,Deep Sternal Infection,Race,Others,Y,0.01105,2
+2020-2021,Deep Sternal Infection,Race,Pacific,Y,0.03226,1
+2020-2021,Deep Sternal Infection,Race,White,Y,0.02937,44
+2020-2021,Post-Operative Atrial Fibrillation,Age,41-65,Y,0.23963,260
+2020-2021,Post-Operative Atrial Fibrillation,Age,Over 65,Y,0.39356,697
+2020-2021,Post-Operative Atrial Fibrillation,Age,Under 40,Y,0.03226,1
+2020-2021,Post-Operative Atrial Fibrillation,All,All,Y,0.33183,958
+2020-2021,Post-Operative Atrial Fibrillation,CABG type,CABG+Valve,Y,0.44162,174
+2020-2021,Post-Operative Atrial Fibrillation,CABG type,Isolated CABG,Y,0.30839,684
+2020-2021,Post-Operative Atrial Fibrillation,CABG type,Other Non-Isolated CABG,Y,0.36364,100
+2020-2021,Post-Operative Atrial Fibrillation,Gender,Female,Y,0.31446,261
+2020-2021,Post-Operative Atrial Fibrillation,Gender,Male,Y,0.33884,697
+2020-2021,Post-Operative Atrial Fibrillation,PayorType,Medi-Cal,Y,0.19437,76
+2020-2021,Post-Operative Atrial Fibrillation,PayorType,Medicare,Y,0.37466,692
+2020-2021,Post-Operative Atrial Fibrillation,PayorType,Other Insurance,Y,0.4,24
+2020-2021,Post-Operative Atrial Fibrillation,PayorType,Private Insurance,Y,0.27972,160
+2020-2021,Post-Operative Atrial Fibrillation,PayorType,Uninsured,Y,0.35294,6
+2020-2021,Post-Operative Atrial Fibrillation,Race,Asian,Y,0.36216,134
+2020-2021,Post-Operative Atrial Fibrillation,Race,Black,Y,0.31507,46
+2020-2021,Post-Operative Atrial Fibrillation,Race,Hispanic,Y,0.24613,159
+2020-2021,Post-Operative Atrial Fibrillation,Race,Native,Y,0.2,3
+2020-2021,Post-Operative Atrial Fibrillation,Race,Others,Y,0.28177,51
+2020-2021,Post-Operative Atrial Fibrillation,Race,Pacific,Y,0.41935,13
+2020-2021,Post-Operative Atrial Fibrillation,Race,White,Y,0.36849,552
+2020-2021,Post-Operative Dialysis,Age,41-65,Y,0.0212,23
+2020-2021,Post-Operative Dialysis,Age,Over 65,Y,0.03049,54
+2020-2021,Post-Operative Dialysis,Age,Under 40,Y,0,0
+2020-2021,Post-Operative Dialysis,All,All,Y,0.02667,77
+2020-2021,Post-Operative Dialysis,CABG type,CABG+Valve,Y,0.03807,15
+2020-2021,Post-Operative Dialysis,CABG type,Isolated CABG,Y,0.02119,47
+2020-2021,Post-Operative Dialysis,CABG type,Other Non-Isolated CABG,Y,0.05455,15
+2020-2021,Post-Operative Dialysis,Gender,Female,Y,0.03614,30
+2020-2021,Post-Operative Dialysis,Gender,Male,Y,0.02285,47
+2020-2021,Post-Operative Dialysis,PayorType,Medi-Cal,Y,0.03581,14
+2020-2021,Post-Operative Dialysis,PayorType,Medicare,Y,0.02815,52
+2020-2021,Post-Operative Dialysis,PayorType,Other Insurance,Y,0.01667,1
+2020-2021,Post-Operative Dialysis,PayorType,Private Insurance,Y,0.01399,8
+2020-2021,Post-Operative Dialysis,PayorType,Uninsured,Y,0.11765,2
+2020-2021,Post-Operative Dialysis,Race,Asian,Y,0.02432,9
+2020-2021,Post-Operative Dialysis,Race,Black,Y,0.06164,9
+2020-2021,Post-Operative Dialysis,Race,Hispanic,Y,0.03406,22
+2020-2021,Post-Operative Dialysis,Race,Native,Y,0,0
+2020-2021,Post-Operative Dialysis,Race,Others,Y,0.02762,5
+2020-2021,Post-Operative Dialysis,Race,Pacific,Y,0.03226,1
+2020-2021,Post-Operative Dialysis,Race,White,Y,0.02069,31
+2020-2021,Post-Operative Renal Failure,Age,41-65,Y,0.02949,32
+2020-2021,Post-Operative Renal Failure,Age,Over 65,Y,0.048,85
+2020-2021,Post-Operative Renal Failure,Age,Under 40,Y,0,0
+2020-2021,Post-Operative Renal Failure,All,All,Y,0.04053,117
+2020-2021,Post-Operative Renal Failure,CABG type,CABG+Valve,Y,0.06091,24
+2020-2021,Post-Operative Renal Failure,CABG type,Isolated CABG,Y,0.03201,71
+2020-2021,Post-Operative Renal Failure,CABG type,Other Non-Isolated CABG,Y,0.08,22
+2020-2021,Post-Operative Renal Failure,Gender,Female,Y,0.05422,45
+2020-2021,Post-Operative Renal Failure,Gender,Male,Y,0.035,72
+2020-2021,Post-Operative Renal Failure,PayorType,Medi-Cal,Y,0.04859,19
+2020-2021,Post-Operative Renal Failure,PayorType,Medicare,Y,0.04277,79
+2020-2021,Post-Operative Renal Failure,PayorType,Other Insurance,Y,0.03333,2
+2020-2021,Post-Operative Renal Failure,PayorType,Private Insurance,Y,0.02797,16
+2020-2021,Post-Operative Renal Failure,PayorType,Uninsured,Y,0.05882,1
+2020-2021,Post-Operative Renal Failure,Race,Asian,Y,0.04324,16
+2020-2021,Post-Operative Renal Failure,Race,Black,Y,0.08219,12
+2020-2021,Post-Operative Renal Failure,Race,Hispanic,Y,0.04644,30
+2020-2021,Post-Operative Renal Failure,Race,Native,Y,0,0
+2020-2021,Post-Operative Renal Failure,Race,Others,Y,0.03867,7
+2020-2021,Post-Operative Renal Failure,Race,Pacific,Y,0.03226,1
+2020-2021,Post-Operative Renal Failure,Race,White,Y,0.03405,51
+2020-2021,Post-Operative Stroke,Age,41-65,Y,0.02028,22
+2020-2021,Post-Operative Stroke,Age,Over 65,Y,0.02767,49
+2020-2021,Post-Operative Stroke,Age,Under 40,Y,0,0
+2020-2021,Post-Operative Stroke,All,All,Y,0.02459,71
+2020-2021,Post-Operative Stroke,CABG type,CABG+Valve,Y,0.03046,12
+2020-2021,Post-Operative Stroke,CABG type,Isolated CABG,Y,0.02164,48
+2020-2021,Post-Operative Stroke,CABG type,Other Non-Isolated CABG,Y,0.04,11
+2020-2021,Post-Operative Stroke,Gender,Female,Y,0.03133,26
+2020-2021,Post-Operative Stroke,Gender,Male,Y,0.02188,45
+2020-2021,Post-Operative Stroke,PayorType,Medi-Cal,Y,0.03069,12
+2020-2021,Post-Operative Stroke,PayorType,Medicare,Y,0.02436,45
+2020-2021,Post-Operative Stroke,PayorType,Other Insurance,Y,0.06667,4
+2020-2021,Post-Operative Stroke,PayorType,Private Insurance,Y,0.01748,10
+2020-2021,Post-Operative Stroke,PayorType,Uninsured,Y,0,0
+2020-2021,Post-Operative Stroke,Race,Asian,Y,0.02162,8
+2020-2021,Post-Operative Stroke,Race,Black,Y,0.0411,6
+2020-2021,Post-Operative Stroke,Race,Hispanic,Y,0.03406,22
+2020-2021,Post-Operative Stroke,Race,Native,Y,0.2,3
+2020-2021,Post-Operative Stroke,Race,Others,Y,0.01657,3
+2020-2021,Post-Operative Stroke,Race,Pacific,Y,0.03226,1
+2020-2021,Post-Operative Stroke,Race,White,Y,0.01869,28
+2020-2021,Prolonged Ventilation,Age,41-65,Y,0.11797,128
+2020-2021,Prolonged Ventilation,Age,Over 65,Y,0.12987,230
+2020-2021,Prolonged Ventilation,Age,Under 40,Y,0.06452,2
+2020-2021,Prolonged Ventilation,All,All,Y,0.1247,360
+2020-2021,Prolonged Ventilation,CABG type,CABG+Valve,Y,0.19543,77
+2020-2021,Prolonged Ventilation,CABG type,Isolated CABG,Y,0.09874,219
+2020-2021,Prolonged Ventilation,CABG type,Other Non-Isolated CABG,Y,0.23273,64
+2020-2021,Prolonged Ventilation,Gender,Female,Y,0.13855,115
+2020-2021,Prolonged Ventilation,Gender,Male,Y,0.11911,245
+2020-2021,Prolonged Ventilation,PayorType,Medi-Cal,Y,0.14834,58
+2020-2021,Prolonged Ventilation,PayorType,Medicare,Y,0.13265,245
+2020-2021,Prolonged Ventilation,PayorType,Other Insurance,Y,0.18333,11
+2020-2021,Prolonged Ventilation,PayorType,Private Insurance,Y,0.07692,44
+2020-2021,Prolonged Ventilation,PayorType,Uninsured,Y,0.11765,2
+2020-2021,Prolonged Ventilation,Race,Asian,Y,0.14054,52
+2020-2021,Prolonged Ventilation,Race,Black,Y,0.15753,23
+2020-2021,Prolonged Ventilation,Race,Hispanic,Y,0.12384,80
+2020-2021,Prolonged Ventilation,Race,Native,Y,0.2,3
+2020-2021,Prolonged Ventilation,Race,Others,Y,0.1326,24
+2020-2021,Prolonged Ventilation,Race,Pacific,Y,0.22581,7
+2020-2021,Prolonged Ventilation,Race,White,Y,0.11415,171
+2020-2021,Re-Operative for Bleed,Age,41-65,Y,0.02212,24
+2020-2021,Re-Operative for Bleed,Age,Over 65,Y,0.03162,56
+2020-2021,Re-Operative for Bleed,Age,Under 40,Y,0.09677,3
+2020-2021,Re-Operative for Bleed,All,All,Y,0.02875,83
+2020-2021,Re-Operative for Bleed,CABG type,CABG+Valve,Y,0.06091,24
+2020-2021,Re-Operative for Bleed,CABG type,Isolated CABG,Y,0.02029,45
+2020-2021,Re-Operative for Bleed,CABG type,Other Non-Isolated CABG,Y,0.05091,14
+2020-2021,Re-Operative for Bleed,Gender,Female,Y,0.0253,21
+2020-2021,Re-Operative for Bleed,Gender,Male,Y,0.03014,62
+2020-2021,Re-Operative for Bleed,PayorType,Medi-Cal,Y,0.04092,16
+2020-2021,Re-Operative for Bleed,PayorType,Medicare,Y,0.02978,55
+2020-2021,Re-Operative for Bleed,PayorType,Other Insurance,Y,0.03333,2
+2020-2021,Re-Operative for Bleed,PayorType,Private Insurance,Y,0.01573,9
+2020-2021,Re-Operative for Bleed,PayorType,Uninsured,Y,0.05882,1
+2020-2021,Re-Operative for Bleed,Race,Asian,Y,0.04865,18
+2020-2021,Re-Operative for Bleed,Race,Black,Y,0.00685,1
+2020-2021,Re-Operative for Bleed,Race,Hispanic,Y,0.02786,18
+2020-2021,Re-Operative for Bleed,Race,Native,Y,0.06667,1
+2020-2021,Re-Operative for Bleed,Race,Others,Y,0.01657,3
+2020-2021,Re-Operative for Bleed,Race,Pacific,Y,0.09677,3
+2020-2021,Re-Operative for Bleed,Race,White,Y,0.02603,39
+2020-2021,Reintervention for Myocardial Ischemia,Age,41-65,Y,0.00829,9
+2020-2021,Reintervention for Myocardial Ischemia,Age,Over 65,Y,0.00169,3
+2020-2021,Reintervention for Myocardial Ischemia,Age,Under 40,Y,0,0
+2020-2021,Reintervention for Myocardial Ischemia,All,All,Y,0.00416,12
+2020-2021,Reintervention for Myocardial Ischemia,CABG type,CABG+Valve,Y,0.00254,1
+2020-2021,Reintervention for Myocardial Ischemia,CABG type,Isolated CABG,Y,0.00406,9
+2020-2021,Reintervention for Myocardial Ischemia,CABG type,Other Non-Isolated CABG,Y,0.00727,2
+2020-2021,Reintervention for Myocardial Ischemia,Gender,Female,Y,0.00482,4
+2020-2021,Reintervention for Myocardial Ischemia,Gender,Male,Y,0.00389,8
+2020-2021,Reintervention for Myocardial Ischemia,PayorType,Medi-Cal,Y,0.00767,3
+2020-2021,Reintervention for Myocardial Ischemia,PayorType,Medicare,Y,0.00271,5
+2020-2021,Reintervention for Myocardial Ischemia,PayorType,Other Insurance,Y,0,0
+2020-2021,Reintervention for Myocardial Ischemia,PayorType,Private Insurance,Y,0.00524,3
+2020-2021,Reintervention for Myocardial Ischemia,PayorType,Uninsured,Y,0.05882,1
+2020-2021,Reintervention for Myocardial Ischemia,Race,Asian,Y,0.0027,1
+2020-2021,Reintervention for Myocardial Ischemia,Race,Black,Y,0.00685,1
+2020-2021,Reintervention for Myocardial Ischemia,Race,Hispanic,Y,0.00619,4
+2020-2021,Reintervention for Myocardial Ischemia,Race,Native,Y,0,0
+2020-2021,Reintervention for Myocardial Ischemia,Race,Others,Y,0,0
+2020-2021,Reintervention for Myocardial Ischemia,Race,Pacific,Y,0,0
+2020-2021,Reintervention for Myocardial Ischemia,Race,White,Y,0.00401,6
