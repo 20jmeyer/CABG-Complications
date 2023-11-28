@@ -12,7 +12,6 @@ cab
 
 ```{r}
 cab_counts = cab %>% subset(category=="All") %>% arrange(Year, complication) %>% select(-c(category, Strata))
-cab_counts
 ```
 
 ```{r}
