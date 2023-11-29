@@ -7,7 +7,8 @@ library(ggalluvial)
 library(RColorBrewer)
 
 cab = read.csv("cab.csv")
-cab
+str(cab)
+head(cab)
 ```
 
 ```{r}

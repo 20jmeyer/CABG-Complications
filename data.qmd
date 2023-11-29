@@ -2,4 +2,69 @@
 
 ## Description
 
+We found multiple datasets on the California Health and Human Services Agency's (CalHHS) Open Data Portal. In particular, to explore cardiovascular health of different demographics, we found a dataset called "Readmissions for Isolated Coronary Artery Bypass Graft (CABG) Complications". 
+
+https://data.chhs.ca.gov/dataset/readmissions-for-isolated-coronary-artery-bypass-graft-cabg-complications
+
+The dataset includes the latest publicly available data from the California Coronary Artery Bypass Graft (CABG) Outcomes Reporting Program (CCORP), used for its annual performance reporting requirements. Every six months, hospitals submit clinical data through a secure online web application to the Office of Statewide Health Planning and Development (OSHPD). A "Data Contact" person at each hospital acts as a liaison between CCORP and cardiac surgeons. Once the data is finalized and officially submitted to the state, CCORP requires surgeons to review their data and sign a "Surgeon Certification Form." This certification affirms that surgeons have reviewed their data, ensuring the accuracy and completeness of the cases assigned to them.
+
+https://hcai.ca.gov/wp-content/uploads/2020/10/Cardiac-Surgeons-Guide-to-CCORP.pdf
+
+The initial dataset was created two years ago but got updated as recently as 2 weeks ago. It is unclear how long it will take for more recent years to get added to the dataset. 
+
+The data is published as a CSV file which makes importing it a simple task. We can just use R's built-in read.csv function to import the data after downloading the dataset onto our local computer. We can see that there are 1008 observations (rows) and 7 variables (columns) in the data frame after importing the dataset.
+
+```{r}
+cab = read.csv("cab.csv")
+str(cab)
+```
+
+Each row contains the count of a complication, given a certain category and strata within that category. This can be seen clearly by printing out the first couple of rows:
+
+```{r}
+head(cab)
+```
+One issue we can see right away is that some strata do not have any counts for complications.
+```{r}
+library(dplyr)
+filtered = cab |> filter(Count == 0)
+head(filtered)
+```
+From this selection, we can see that there are certain groups that are either underrepresented or are generally less at risk for heart disease and therefore less in need of the CABG surgical procedure. It makes sense that the youngest age group - "0 to 40" - is less at risk than older age groups but we would still expect perhaps a few rare cases of heart disease. Additionally, we can see that patients that are uninsured seem to have fewer instances of heart disease. This seems paradoxical, as uninsured patients are generally more at risk for health issues and worse health outcomes than insured patients. However, it is also known that "uninsured individuals are less likely than those with insurance to receive preventive care and services for major health conditions and chronic diseases".
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2881446/
+https://www.kff.org/uninsured/issue-brief/key-facts-about-the-uninsured-population/
+
+Similarly, we would also expect there to be some cases of heart disease for the Native American group, but it is likely an underrepresented population in this data.
+
+## Research Plan
+
+To determine the most common complications associated with CABG, we can use the data to identify and visualize the most frequent complications by focusing on the "Complication" variable.
+
+To address which complications most often lead to readmission to the hospital, we will examine the relationship between complications and readmission. We can create a visual such as a bar chart to display this.
+
+In order to understand how demographic data impacts the likelihood to face a complication from a CABG procedure, we will use the chi-squared test. We can also visualize this with a mosaic plot.
+
+Finally, to investigate how demographic data impacts the likelihood of readmission given any particular complication, we can use another mosaic plot.
+
 ## Missing value analysis
+
+We can see that there are no missing values in our dataset.
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+	
+missing_data <- cab %>%
+  mutate_all(~is.na(.)) |> 
+  mutate(row_id=row_number()) %>%
+  pivot_longer(-row_id, names_to="feature", values_to="values") 
+
+
+ggplot(missing_data, aes(x = feature, y = row_id, fill = values)) +
+  geom_tile(color = "white") +
+  scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "green"),labels = c("Missing", "Not Missing"),limits = c("TRUE", "FALSE"), guide_legend(title = ""))+
+  labs(title = "Heatmap of Missing Values", x = "Feature", y = "Row ID") +
+  theme_minimal()
+
+```
