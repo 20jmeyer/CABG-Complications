@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complications Visualization</title>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <style>
+    /* Add your CSS styling here */
+  </style>
+</head>
+<body>
+  <svg width="800" height="500"></svg>
+
+  <script>
+    // Sample data (Replace this with your actual data)
+    const data = [
+      1,2,3,4,5
+    ];
+
+    // Define the dimensions for the chart
+    const margin = { top: 50, right: 50, bottom: 50, left: 50 };
+    const width = 800 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+
+    // Select the SVG element
+    const svg = d3.select("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Extract unique categories and complications
+    const categories = [...new Set(data.map(d => d.category))];
+    const complications = [...new Set(data.map(d => d.complication))];
+
+    // Define color scale for complications
+    const colorScale = d3.scaleOrdinal()
+      .domain(complications)
+      .range(d3.schemeCategory10);
+
+    // X and Y scales
+    const xScale = d3.scaleBand()
+      .domain(categories)
+      .range([0, width])
+      .paddingInner(0.1)
+      .paddingOuter(0.1);
+
+    const yScale = d3.scaleLinear()
+      .domain([0, d3.max(data, d => +d.Count)])
+      .range([height, 0]);
+
+    // Create X and Y axes
+    const xAxis = d3.axisBottom(xScale);
+    const yAxis = d3.axisLeft(yScale);
+
+    // Append X axis to the chart
+    svg.append("g")
+      .attr("transform", `translate(0, ${height})`)
+      .call(xAxis)
+      .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("transform", "rotate(-45)");
+
+    // Append Y axis to the chart
+    svg.append("g")
+      .call(yAxis);
+
+    // Create groups for each complication
+    const groups = svg.selectAll(".complication")
+      .data(complications)
+      .enter()
+      .append("g")
+      .attr("class", "complication")
+      .style("fill", d => colorScale(d));
+
+    // Create bars within each group
+    groups.selectAll("rect")
+      .data(d => {
+        return categories.map(category => {
+          const filteredData = data.filter(item => item.complication === d && item.category === category);
+          return {
+            category,
+            count: filteredData.length > 0 ? +filteredData[0].Count : 0
+          };
+        });
+      })
+      .enter()
+      .append("rect")
+      .attr("x", d => xScale(d.category))
+      .attr("y", d => yScale(d.count))
+      .attr("width", xScale.bandwidth())
+      .attr("height", d => height - yScale(d.count));
+
+    // Add legend
+    const legend = svg.selectAll(".legend")
+      .data(complications)
+      .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", (d, i) => `translate(0,${i * 20})`);
+
+    legend.append("rect")
+      .attr("x", width - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", d => colorScale(d));
+
+    legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(d => d);
+
+  </script>
+</body>
+</html>
