@@ -25,14 +25,14 @@
     "href": "index.html#research-questions",
     "title": "Coronary Artery Bypass Graft (CABG) Complications",
     "section": "1.3 Research Questions",
-    "text": "1.3 Research Questions\nTo briefly discuss our data, we will explore a dataset that reports a subset of complications and readmission counts associated with CABG surgeries in the state of California over the years of 2018-2021. This dataset is one of the only de-identified datasets with age, race, and gender data included with a fairly exhaustive categorization of the various complications as well as information about how many of each demographic did or did not face these complications and subsequent readmission. With the context of the surgery’s significance and this data, we hope to answer the following questions:\n\nWhat are the most common complications associated with CABG?\nWhat complications most often lead to readmission to the hospital?\nDoes your demographic data impact your likelihood to face a complication from a CABG procedure?\nDoes your demographic data impact your likelihood that you will be readmitted to the hospital regardless of complication?\nDoes your demographic data and complication impact your likelihood that you will be readmitted to the hospital?"
+    "text": "1.3 Research Questions\nTo briefly discuss our data, we will explore a dataset that reports a subset of complications and readmission counts associated with CABG surgeries in the state of California over the years of 2018-2021. This dataset is one of the only de-identified datasets with age, race, and gender data included with a fairly exhaustive categorization of the various complications as well as information about how many of each demographic did or did not face these complications and subsequent readmission. With the context of the surgery’s significance and this data, we hope to answer the following questions:\n\nDoes our data change over time in terms of frequency of complications, readmissions, and demographics/medical information?\nWhat are the most common complications associated with CABG?\nWhat complications most often lead to readmission to the hospital?\nDoes your demographic data and medical information impact your likelihood to face a complication from a CABG procedure?\nDoes your demographic data and medical information impact your likelihood that you will be readmitted to the hospital regardless of complication?\nDoes your demographic data, medical information, and complication impact your likelihood that you will be readmitted to the hospital?"
   },
   {
     "objectID": "index.html#footnotes",
     "href": "index.html#footnotes",
     "title": "Coronary Artery Bypass Graft (CABG) Complications",
     "section": "",
-    "text": "Mayo Clinic Article on CABG↩︎\nCedars-Sinai Article on Traditional Heart Surgery↩︎\nCDC Statistics on Leading Causes of Death in the US↩︎\nPaper on Coronary artery bypass graft surgery complications↩︎"
+    "text": "Mayo Clinic Article on CABG↩︎\nCedars-Sinai Article on Traditional Heart Surgery↩︎\nCDC Statistics on Leading Causes of Death in the US↩︎\nNIH Paper on Coronary artery bypass graft surgery complications↩︎"
   },
   {
     "objectID": "data.html#description",
