@@ -56,7 +56,6 @@ heatmap_data <- cabg %>% subset(category!="All") %>%
 
 ggplot(data = heatmap_data, aes(x = Strata, y = Strata)) +
   geom_tile() +
-  scale_fill_gradient(low = "white", high = "red") +
   labs(title = "Overlap of Strata in Data Heatmap", x = "Strata", y = "Strata") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))

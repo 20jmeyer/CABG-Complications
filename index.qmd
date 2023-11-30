@@ -19,7 +19,9 @@ To briefly discuss our data, we will explore a dataset that reports a subset of 
 
 - Does your demographic data impact your likelihood to face a complication from a CABG procedure?
 
-- Does your demographic data impact your likelihood that you will be readmitted to the hospital given any particular complication?
+- Does your demographic data impact your likelihood that you will be readmitted to the hospital regardless of complication?
+
+- Does your demographic data and complication impact your likelihood that you will be readmitted to the hospital?
 
 
 [^index-1]: [Mayo Clinic Article on CABG](https://www.mayoclinic.org/tests-procedures/coronary-bypass-surgery/about/pac-20384589)
