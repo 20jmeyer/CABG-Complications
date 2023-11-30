@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -159,6 +193,2058 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ lubridate 1.9.2     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalluvial)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cab <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"cab.csv"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1008 obs. of  7 variables:
+ $ Year        : chr  "2018-2019" "2018-2019" "2018-2019" "2018-2019" ...
+ $ complication: chr  "Deep Sternal Infection" "Deep Sternal Infection" "Deep Sternal Infection" "Deep Sternal Infection" ...
+ $ category    : chr  "Age" "Age" "Age" "All" ...
+ $ Strata      : chr  "0 to 40" "41-65" "66 to Max" "All" ...
+ $ readmission : chr  "N" "N" "N" "N" ...
+ $ Yes         : num  0 0.00109 0.00081 0.00093 0.00169 0.00082 0.00075 0.00122 0.00085 0.00162 ...
+ $ Count       : int  0 11 11 22 5 16 1 6 16 1 ...</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Year           complication  category        Strata readmission     Yes
+1 2018-2019 Deep Sternal Infection       Age       0 to 40           N 0.00000
+2 2018-2019 Deep Sternal Infection       Age         41-65           N 0.00109
+3 2018-2019 Deep Sternal Infection       Age     66 to Max           N 0.00081
+4 2018-2019 Deep Sternal Infection       All           All           N 0.00093
+5 2018-2019 Deep Sternal Infection CABG type    CABG+Valve           N 0.00169
+6 2018-2019 Deep Sternal Infection CABG type Isolated CABG           N 0.00082
+  Count
+1     0
+2    11
+3    11
+4    22
+5     5
+6    16</code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cab_counts <span class="ot">=</span> cab <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category<span class="sc">==</span><span class="st">"All"</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Year, complication) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(category, Strata))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>alluvial_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Year, complication) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">Freq=</span><span class="fu">sum</span>(Count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Year'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>readmission_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Year, readmission) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">Freq=</span><span class="fu">sum</span>(Count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Year'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(alluvial_counts, <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>Freq, <span class="at">alluvium=</span>complication, <span class="at">fill=</span>complication, <span class="at">label=</span>complication)) <span class="sc">+</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>, <span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_flow</span>(<span class="at">stat =</span> <span class="st">"alluvium"</span>, <span class="at">width=</span><span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(readmission_counts, <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>Freq, <span class="at">alluvium=</span>readmission, <span class="at">fill=</span>readmission, <span class="at">label=</span>readmission)) <span class="sc">+</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>, <span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_flow</span>(<span class="at">stat =</span> <span class="st">"alluvium"</span>, <span class="at">width=</span><span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">=</span> cab <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category<span class="sc">!=</span><span class="st">"All"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Yes)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>raw_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Year                           complication  category
+1    2018-2019                 Deep Sternal Infection       Age
+2    2018-2019                 Deep Sternal Infection       Age
+3    2018-2019                 Deep Sternal Infection       Age
+5    2018-2019                 Deep Sternal Infection CABG type
+6    2018-2019                 Deep Sternal Infection CABG type
+7    2018-2019                 Deep Sternal Infection CABG type
+8    2018-2019                 Deep Sternal Infection    Gender
+9    2018-2019                 Deep Sternal Infection    Gender
+10   2018-2019                 Deep Sternal Infection PayorType
+11   2018-2019                 Deep Sternal Infection PayorType
+12   2018-2019                 Deep Sternal Infection PayorType
+13   2018-2019                 Deep Sternal Infection PayorType
+14   2018-2019                 Deep Sternal Infection PayorType
+15   2018-2019                 Deep Sternal Infection      Race
+16   2018-2019                 Deep Sternal Infection      Race
+17   2018-2019                 Deep Sternal Infection      Race
+18   2018-2019                 Deep Sternal Infection      Race
+19   2018-2019                 Deep Sternal Infection      Race
+20   2018-2019                 Deep Sternal Infection      Race
+21   2018-2019                 Deep Sternal Infection      Race
+22   2018-2019     Post-Operative Atrial Fibrillation       Age
+23   2018-2019     Post-Operative Atrial Fibrillation       Age
+24   2018-2019     Post-Operative Atrial Fibrillation       Age
+26   2018-2019     Post-Operative Atrial Fibrillation CABG type
+27   2018-2019     Post-Operative Atrial Fibrillation CABG type
+28   2018-2019     Post-Operative Atrial Fibrillation CABG type
+29   2018-2019     Post-Operative Atrial Fibrillation    Gender
+30   2018-2019     Post-Operative Atrial Fibrillation    Gender
+31   2018-2019     Post-Operative Atrial Fibrillation PayorType
+32   2018-2019     Post-Operative Atrial Fibrillation PayorType
+33   2018-2019     Post-Operative Atrial Fibrillation PayorType
+34   2018-2019     Post-Operative Atrial Fibrillation PayorType
+35   2018-2019     Post-Operative Atrial Fibrillation PayorType
+36   2018-2019     Post-Operative Atrial Fibrillation      Race
+37   2018-2019     Post-Operative Atrial Fibrillation      Race
+38   2018-2019     Post-Operative Atrial Fibrillation      Race
+39   2018-2019     Post-Operative Atrial Fibrillation      Race
+40   2018-2019     Post-Operative Atrial Fibrillation      Race
+41   2018-2019     Post-Operative Atrial Fibrillation      Race
+42   2018-2019     Post-Operative Atrial Fibrillation      Race
+43   2018-2019                Post-Operative Dialysis       Age
+44   2018-2019                Post-Operative Dialysis       Age
+45   2018-2019                Post-Operative Dialysis       Age
+47   2018-2019                Post-Operative Dialysis CABG type
+48   2018-2019                Post-Operative Dialysis CABG type
+49   2018-2019                Post-Operative Dialysis CABG type
+50   2018-2019                Post-Operative Dialysis    Gender
+51   2018-2019                Post-Operative Dialysis    Gender
+52   2018-2019                Post-Operative Dialysis PayorType
+53   2018-2019                Post-Operative Dialysis PayorType
+54   2018-2019                Post-Operative Dialysis PayorType
+55   2018-2019                Post-Operative Dialysis PayorType
+56   2018-2019                Post-Operative Dialysis PayorType
+57   2018-2019                Post-Operative Dialysis      Race
+58   2018-2019                Post-Operative Dialysis      Race
+59   2018-2019                Post-Operative Dialysis      Race
+60   2018-2019                Post-Operative Dialysis      Race
+61   2018-2019                Post-Operative Dialysis      Race
+62   2018-2019                Post-Operative Dialysis      Race
+63   2018-2019                Post-Operative Dialysis      Race
+64   2018-2019           Post-Operative Renal Failure       Age
+65   2018-2019           Post-Operative Renal Failure       Age
+66   2018-2019           Post-Operative Renal Failure       Age
+68   2018-2019           Post-Operative Renal Failure CABG type
+69   2018-2019           Post-Operative Renal Failure CABG type
+70   2018-2019           Post-Operative Renal Failure CABG type
+71   2018-2019           Post-Operative Renal Failure    Gender
+72   2018-2019           Post-Operative Renal Failure    Gender
+73   2018-2019           Post-Operative Renal Failure PayorType
+74   2018-2019           Post-Operative Renal Failure PayorType
+75   2018-2019           Post-Operative Renal Failure PayorType
+76   2018-2019           Post-Operative Renal Failure PayorType
+77   2018-2019           Post-Operative Renal Failure PayorType
+78   2018-2019           Post-Operative Renal Failure      Race
+79   2018-2019           Post-Operative Renal Failure      Race
+80   2018-2019           Post-Operative Renal Failure      Race
+81   2018-2019           Post-Operative Renal Failure      Race
+82   2018-2019           Post-Operative Renal Failure      Race
+83   2018-2019           Post-Operative Renal Failure      Race
+84   2018-2019           Post-Operative Renal Failure      Race
+85   2018-2019                  Post-Operative Stroke       Age
+86   2018-2019                  Post-Operative Stroke       Age
+87   2018-2019                  Post-Operative Stroke       Age
+89   2018-2019                  Post-Operative Stroke CABG type
+90   2018-2019                  Post-Operative Stroke CABG type
+91   2018-2019                  Post-Operative Stroke CABG type
+92   2018-2019                  Post-Operative Stroke    Gender
+93   2018-2019                  Post-Operative Stroke    Gender
+94   2018-2019                  Post-Operative Stroke PayorType
+95   2018-2019                  Post-Operative Stroke PayorType
+96   2018-2019                  Post-Operative Stroke PayorType
+97   2018-2019                  Post-Operative Stroke PayorType
+98   2018-2019                  Post-Operative Stroke PayorType
+99   2018-2019                  Post-Operative Stroke      Race
+100  2018-2019                  Post-Operative Stroke      Race
+101  2018-2019                  Post-Operative Stroke      Race
+102  2018-2019                  Post-Operative Stroke      Race
+103  2018-2019                  Post-Operative Stroke      Race
+104  2018-2019                  Post-Operative Stroke      Race
+105  2018-2019                  Post-Operative Stroke      Race
+106  2018-2019                  Prolonged Ventilation       Age
+107  2018-2019                  Prolonged Ventilation       Age
+108  2018-2019                  Prolonged Ventilation       Age
+110  2018-2019                  Prolonged Ventilation CABG type
+111  2018-2019                  Prolonged Ventilation CABG type
+112  2018-2019                  Prolonged Ventilation CABG type
+113  2018-2019                  Prolonged Ventilation    Gender
+114  2018-2019                  Prolonged Ventilation    Gender
+115  2018-2019                  Prolonged Ventilation PayorType
+116  2018-2019                  Prolonged Ventilation PayorType
+117  2018-2019                  Prolonged Ventilation PayorType
+118  2018-2019                  Prolonged Ventilation PayorType
+119  2018-2019                  Prolonged Ventilation PayorType
+120  2018-2019                  Prolonged Ventilation      Race
+121  2018-2019                  Prolonged Ventilation      Race
+122  2018-2019                  Prolonged Ventilation      Race
+123  2018-2019                  Prolonged Ventilation      Race
+124  2018-2019                  Prolonged Ventilation      Race
+125  2018-2019                  Prolonged Ventilation      Race
+126  2018-2019                  Prolonged Ventilation      Race
+127  2018-2019                 Re-Operative for Bleed       Age
+128  2018-2019                 Re-Operative for Bleed       Age
+129  2018-2019                 Re-Operative for Bleed       Age
+131  2018-2019                 Re-Operative for Bleed CABG type
+132  2018-2019                 Re-Operative for Bleed CABG type
+133  2018-2019                 Re-Operative for Bleed CABG type
+134  2018-2019                 Re-Operative for Bleed    Gender
+135  2018-2019                 Re-Operative for Bleed    Gender
+136  2018-2019                 Re-Operative for Bleed PayorType
+137  2018-2019                 Re-Operative for Bleed PayorType
+138  2018-2019                 Re-Operative for Bleed PayorType
+139  2018-2019                 Re-Operative for Bleed PayorType
+140  2018-2019                 Re-Operative for Bleed PayorType
+141  2018-2019                 Re-Operative for Bleed      Race
+142  2018-2019                 Re-Operative for Bleed      Race
+143  2018-2019                 Re-Operative for Bleed      Race
+144  2018-2019                 Re-Operative for Bleed      Race
+145  2018-2019                 Re-Operative for Bleed      Race
+146  2018-2019                 Re-Operative for Bleed      Race
+147  2018-2019                 Re-Operative for Bleed      Race
+148  2018-2019 Reintervention for Myocardial Ischemia       Age
+149  2018-2019 Reintervention for Myocardial Ischemia       Age
+150  2018-2019 Reintervention for Myocardial Ischemia       Age
+152  2018-2019 Reintervention for Myocardial Ischemia CABG type
+153  2018-2019 Reintervention for Myocardial Ischemia CABG type
+154  2018-2019 Reintervention for Myocardial Ischemia CABG type
+155  2018-2019 Reintervention for Myocardial Ischemia    Gender
+156  2018-2019 Reintervention for Myocardial Ischemia    Gender
+157  2018-2019 Reintervention for Myocardial Ischemia PayorType
+158  2018-2019 Reintervention for Myocardial Ischemia PayorType
+159  2018-2019 Reintervention for Myocardial Ischemia PayorType
+160  2018-2019 Reintervention for Myocardial Ischemia PayorType
+161  2018-2019 Reintervention for Myocardial Ischemia PayorType
+162  2018-2019 Reintervention for Myocardial Ischemia      Race
+163  2018-2019 Reintervention for Myocardial Ischemia      Race
+164  2018-2019 Reintervention for Myocardial Ischemia      Race
+165  2018-2019 Reintervention for Myocardial Ischemia      Race
+166  2018-2019 Reintervention for Myocardial Ischemia      Race
+167  2018-2019 Reintervention for Myocardial Ischemia      Race
+168  2018-2019 Reintervention for Myocardial Ischemia      Race
+169  2019-2020                 Deep Sternal Infection       Age
+170  2019-2020                 Deep Sternal Infection       Age
+171  2019-2020                 Deep Sternal Infection       Age
+173  2019-2020                 Deep Sternal Infection CABG type
+174  2019-2020                 Deep Sternal Infection CABG type
+175  2019-2020                 Deep Sternal Infection CABG type
+176  2019-2020                 Deep Sternal Infection    Gender
+177  2019-2020                 Deep Sternal Infection    Gender
+178  2019-2020                 Deep Sternal Infection PayorType
+179  2019-2020                 Deep Sternal Infection PayorType
+180  2019-2020                 Deep Sternal Infection PayorType
+181  2019-2020                 Deep Sternal Infection PayorType
+182  2019-2020                 Deep Sternal Infection PayorType
+183  2019-2020                 Deep Sternal Infection      Race
+184  2019-2020                 Deep Sternal Infection      Race
+185  2019-2020                 Deep Sternal Infection      Race
+186  2019-2020                 Deep Sternal Infection      Race
+187  2019-2020                 Deep Sternal Infection      Race
+188  2019-2020                 Deep Sternal Infection      Race
+189  2019-2020                 Deep Sternal Infection      Race
+190  2019-2020     Post-Operative Atrial Fibrillation       Age
+191  2019-2020     Post-Operative Atrial Fibrillation       Age
+192  2019-2020     Post-Operative Atrial Fibrillation       Age
+194  2019-2020     Post-Operative Atrial Fibrillation CABG type
+195  2019-2020     Post-Operative Atrial Fibrillation CABG type
+196  2019-2020     Post-Operative Atrial Fibrillation CABG type
+197  2019-2020     Post-Operative Atrial Fibrillation    Gender
+198  2019-2020     Post-Operative Atrial Fibrillation    Gender
+199  2019-2020     Post-Operative Atrial Fibrillation PayorType
+200  2019-2020     Post-Operative Atrial Fibrillation PayorType
+201  2019-2020     Post-Operative Atrial Fibrillation PayorType
+202  2019-2020     Post-Operative Atrial Fibrillation PayorType
+203  2019-2020     Post-Operative Atrial Fibrillation PayorType
+204  2019-2020     Post-Operative Atrial Fibrillation      Race
+205  2019-2020     Post-Operative Atrial Fibrillation      Race
+206  2019-2020     Post-Operative Atrial Fibrillation      Race
+207  2019-2020     Post-Operative Atrial Fibrillation      Race
+208  2019-2020     Post-Operative Atrial Fibrillation      Race
+209  2019-2020     Post-Operative Atrial Fibrillation      Race
+210  2019-2020     Post-Operative Atrial Fibrillation      Race
+211  2019-2020                Post-Operative Dialysis       Age
+212  2019-2020                Post-Operative Dialysis       Age
+213  2019-2020                Post-Operative Dialysis       Age
+215  2019-2020                Post-Operative Dialysis CABG type
+216  2019-2020                Post-Operative Dialysis CABG type
+217  2019-2020                Post-Operative Dialysis CABG type
+218  2019-2020                Post-Operative Dialysis    Gender
+219  2019-2020                Post-Operative Dialysis    Gender
+220  2019-2020                Post-Operative Dialysis PayorType
+221  2019-2020                Post-Operative Dialysis PayorType
+222  2019-2020                Post-Operative Dialysis PayorType
+223  2019-2020                Post-Operative Dialysis PayorType
+224  2019-2020                Post-Operative Dialysis PayorType
+225  2019-2020                Post-Operative Dialysis      Race
+226  2019-2020                Post-Operative Dialysis      Race
+227  2019-2020                Post-Operative Dialysis      Race
+228  2019-2020                Post-Operative Dialysis      Race
+229  2019-2020                Post-Operative Dialysis      Race
+230  2019-2020                Post-Operative Dialysis      Race
+231  2019-2020                Post-Operative Dialysis      Race
+232  2019-2020           Post-Operative Renal Failure       Age
+233  2019-2020           Post-Operative Renal Failure       Age
+234  2019-2020           Post-Operative Renal Failure       Age
+236  2019-2020           Post-Operative Renal Failure CABG type
+237  2019-2020           Post-Operative Renal Failure CABG type
+238  2019-2020           Post-Operative Renal Failure CABG type
+239  2019-2020           Post-Operative Renal Failure    Gender
+240  2019-2020           Post-Operative Renal Failure    Gender
+241  2019-2020           Post-Operative Renal Failure PayorType
+242  2019-2020           Post-Operative Renal Failure PayorType
+243  2019-2020           Post-Operative Renal Failure PayorType
+244  2019-2020           Post-Operative Renal Failure PayorType
+245  2019-2020           Post-Operative Renal Failure PayorType
+246  2019-2020           Post-Operative Renal Failure      Race
+247  2019-2020           Post-Operative Renal Failure      Race
+248  2019-2020           Post-Operative Renal Failure      Race
+249  2019-2020           Post-Operative Renal Failure      Race
+250  2019-2020           Post-Operative Renal Failure      Race
+251  2019-2020           Post-Operative Renal Failure      Race
+252  2019-2020           Post-Operative Renal Failure      Race
+253  2019-2020                  Post-Operative Stroke       Age
+254  2019-2020                  Post-Operative Stroke       Age
+255  2019-2020                  Post-Operative Stroke       Age
+257  2019-2020                  Post-Operative Stroke CABG type
+258  2019-2020                  Post-Operative Stroke CABG type
+259  2019-2020                  Post-Operative Stroke CABG type
+260  2019-2020                  Post-Operative Stroke    Gender
+261  2019-2020                  Post-Operative Stroke    Gender
+262  2019-2020                  Post-Operative Stroke PayorType
+263  2019-2020                  Post-Operative Stroke PayorType
+264  2019-2020                  Post-Operative Stroke PayorType
+265  2019-2020                  Post-Operative Stroke PayorType
+266  2019-2020                  Post-Operative Stroke PayorType
+267  2019-2020                  Post-Operative Stroke      Race
+268  2019-2020                  Post-Operative Stroke      Race
+269  2019-2020                  Post-Operative Stroke      Race
+270  2019-2020                  Post-Operative Stroke      Race
+271  2019-2020                  Post-Operative Stroke      Race
+272  2019-2020                  Post-Operative Stroke      Race
+273  2019-2020                  Post-Operative Stroke      Race
+274  2019-2020                  Prolonged Ventilation       Age
+275  2019-2020                  Prolonged Ventilation       Age
+276  2019-2020                  Prolonged Ventilation       Age
+278  2019-2020                  Prolonged Ventilation CABG type
+279  2019-2020                  Prolonged Ventilation CABG type
+280  2019-2020                  Prolonged Ventilation CABG type
+281  2019-2020                  Prolonged Ventilation    Gender
+282  2019-2020                  Prolonged Ventilation    Gender
+283  2019-2020                  Prolonged Ventilation PayorType
+284  2019-2020                  Prolonged Ventilation PayorType
+285  2019-2020                  Prolonged Ventilation PayorType
+286  2019-2020                  Prolonged Ventilation PayorType
+287  2019-2020                  Prolonged Ventilation PayorType
+288  2019-2020                  Prolonged Ventilation      Race
+289  2019-2020                  Prolonged Ventilation      Race
+290  2019-2020                  Prolonged Ventilation      Race
+291  2019-2020                  Prolonged Ventilation      Race
+292  2019-2020                  Prolonged Ventilation      Race
+293  2019-2020                  Prolonged Ventilation      Race
+294  2019-2020                  Prolonged Ventilation      Race
+295  2019-2020                 Re-Operative for Bleed       Age
+296  2019-2020                 Re-Operative for Bleed       Age
+297  2019-2020                 Re-Operative for Bleed       Age
+299  2019-2020                 Re-Operative for Bleed CABG type
+300  2019-2020                 Re-Operative for Bleed CABG type
+301  2019-2020                 Re-Operative for Bleed CABG type
+302  2019-2020                 Re-Operative for Bleed    Gender
+303  2019-2020                 Re-Operative for Bleed    Gender
+304  2019-2020                 Re-Operative for Bleed PayorType
+305  2019-2020                 Re-Operative for Bleed PayorType
+306  2019-2020                 Re-Operative for Bleed PayorType
+307  2019-2020                 Re-Operative for Bleed PayorType
+308  2019-2020                 Re-Operative for Bleed PayorType
+309  2019-2020                 Re-Operative for Bleed      Race
+310  2019-2020                 Re-Operative for Bleed      Race
+311  2019-2020                 Re-Operative for Bleed      Race
+312  2019-2020                 Re-Operative for Bleed      Race
+313  2019-2020                 Re-Operative for Bleed      Race
+314  2019-2020                 Re-Operative for Bleed      Race
+315  2019-2020                 Re-Operative for Bleed      Race
+316  2019-2020 Reintervention for Myocardial Ischemia       Age
+317  2019-2020 Reintervention for Myocardial Ischemia       Age
+318  2019-2020 Reintervention for Myocardial Ischemia       Age
+320  2019-2020 Reintervention for Myocardial Ischemia CABG type
+321  2019-2020 Reintervention for Myocardial Ischemia CABG type
+322  2019-2020 Reintervention for Myocardial Ischemia CABG type
+323  2019-2020 Reintervention for Myocardial Ischemia    Gender
+324  2019-2020 Reintervention for Myocardial Ischemia    Gender
+325  2019-2020 Reintervention for Myocardial Ischemia PayorType
+326  2019-2020 Reintervention for Myocardial Ischemia PayorType
+327  2019-2020 Reintervention for Myocardial Ischemia PayorType
+328  2019-2020 Reintervention for Myocardial Ischemia PayorType
+329  2019-2020 Reintervention for Myocardial Ischemia PayorType
+330  2019-2020 Reintervention for Myocardial Ischemia      Race
+331  2019-2020 Reintervention for Myocardial Ischemia      Race
+332  2019-2020 Reintervention for Myocardial Ischemia      Race
+333  2019-2020 Reintervention for Myocardial Ischemia      Race
+334  2019-2020 Reintervention for Myocardial Ischemia      Race
+335  2019-2020 Reintervention for Myocardial Ischemia      Race
+336  2019-2020 Reintervention for Myocardial Ischemia      Race
+337  2020-2021                 Deep Sternal Infection       Age
+338  2020-2021                 Deep Sternal Infection       Age
+339  2020-2021                 Deep Sternal Infection       Age
+341  2020-2021                 Deep Sternal Infection CABG type
+342  2020-2021                 Deep Sternal Infection CABG type
+343  2020-2021                 Deep Sternal Infection CABG type
+344  2020-2021                 Deep Sternal Infection    Gender
+345  2020-2021                 Deep Sternal Infection    Gender
+346  2020-2021                 Deep Sternal Infection PayorType
+347  2020-2021                 Deep Sternal Infection PayorType
+348  2020-2021                 Deep Sternal Infection PayorType
+349  2020-2021                 Deep Sternal Infection PayorType
+350  2020-2021                 Deep Sternal Infection PayorType
+351  2020-2021                 Deep Sternal Infection      Race
+352  2020-2021                 Deep Sternal Infection      Race
+353  2020-2021                 Deep Sternal Infection      Race
+354  2020-2021                 Deep Sternal Infection      Race
+355  2020-2021                 Deep Sternal Infection      Race
+356  2020-2021                 Deep Sternal Infection      Race
+357  2020-2021                 Deep Sternal Infection      Race
+358  2020-2021     Post-Operative Atrial Fibrillation       Age
+359  2020-2021     Post-Operative Atrial Fibrillation       Age
+360  2020-2021     Post-Operative Atrial Fibrillation       Age
+362  2020-2021     Post-Operative Atrial Fibrillation CABG type
+363  2020-2021     Post-Operative Atrial Fibrillation CABG type
+364  2020-2021     Post-Operative Atrial Fibrillation CABG type
+365  2020-2021     Post-Operative Atrial Fibrillation    Gender
+366  2020-2021     Post-Operative Atrial Fibrillation    Gender
+367  2020-2021     Post-Operative Atrial Fibrillation PayorType
+368  2020-2021     Post-Operative Atrial Fibrillation PayorType
+369  2020-2021     Post-Operative Atrial Fibrillation PayorType
+370  2020-2021     Post-Operative Atrial Fibrillation PayorType
+371  2020-2021     Post-Operative Atrial Fibrillation PayorType
+372  2020-2021     Post-Operative Atrial Fibrillation      Race
+373  2020-2021     Post-Operative Atrial Fibrillation      Race
+374  2020-2021     Post-Operative Atrial Fibrillation      Race
+375  2020-2021     Post-Operative Atrial Fibrillation      Race
+376  2020-2021     Post-Operative Atrial Fibrillation      Race
+377  2020-2021     Post-Operative Atrial Fibrillation      Race
+378  2020-2021     Post-Operative Atrial Fibrillation      Race
+379  2020-2021                Post-Operative Dialysis       Age
+380  2020-2021                Post-Operative Dialysis       Age
+381  2020-2021                Post-Operative Dialysis       Age
+383  2020-2021                Post-Operative Dialysis CABG type
+384  2020-2021                Post-Operative Dialysis CABG type
+385  2020-2021                Post-Operative Dialysis CABG type
+386  2020-2021                Post-Operative Dialysis    Gender
+387  2020-2021                Post-Operative Dialysis    Gender
+388  2020-2021                Post-Operative Dialysis PayorType
+389  2020-2021                Post-Operative Dialysis PayorType
+390  2020-2021                Post-Operative Dialysis PayorType
+391  2020-2021                Post-Operative Dialysis PayorType
+392  2020-2021                Post-Operative Dialysis PayorType
+393  2020-2021                Post-Operative Dialysis      Race
+394  2020-2021                Post-Operative Dialysis      Race
+395  2020-2021                Post-Operative Dialysis      Race
+396  2020-2021                Post-Operative Dialysis      Race
+397  2020-2021                Post-Operative Dialysis      Race
+398  2020-2021                Post-Operative Dialysis      Race
+399  2020-2021                Post-Operative Dialysis      Race
+400  2020-2021           Post-Operative Renal Failure       Age
+401  2020-2021           Post-Operative Renal Failure       Age
+402  2020-2021           Post-Operative Renal Failure       Age
+404  2020-2021           Post-Operative Renal Failure CABG type
+405  2020-2021           Post-Operative Renal Failure CABG type
+406  2020-2021           Post-Operative Renal Failure CABG type
+407  2020-2021           Post-Operative Renal Failure    Gender
+408  2020-2021           Post-Operative Renal Failure    Gender
+409  2020-2021           Post-Operative Renal Failure PayorType
+410  2020-2021           Post-Operative Renal Failure PayorType
+411  2020-2021           Post-Operative Renal Failure PayorType
+412  2020-2021           Post-Operative Renal Failure PayorType
+413  2020-2021           Post-Operative Renal Failure PayorType
+414  2020-2021           Post-Operative Renal Failure      Race
+415  2020-2021           Post-Operative Renal Failure      Race
+416  2020-2021           Post-Operative Renal Failure      Race
+417  2020-2021           Post-Operative Renal Failure      Race
+418  2020-2021           Post-Operative Renal Failure      Race
+419  2020-2021           Post-Operative Renal Failure      Race
+420  2020-2021           Post-Operative Renal Failure      Race
+421  2020-2021                  Post-Operative Stroke       Age
+422  2020-2021                  Post-Operative Stroke       Age
+423  2020-2021                  Post-Operative Stroke       Age
+425  2020-2021                  Post-Operative Stroke CABG type
+426  2020-2021                  Post-Operative Stroke CABG type
+427  2020-2021                  Post-Operative Stroke CABG type
+428  2020-2021                  Post-Operative Stroke    Gender
+429  2020-2021                  Post-Operative Stroke    Gender
+430  2020-2021                  Post-Operative Stroke PayorType
+431  2020-2021                  Post-Operative Stroke PayorType
+432  2020-2021                  Post-Operative Stroke PayorType
+433  2020-2021                  Post-Operative Stroke PayorType
+434  2020-2021                  Post-Operative Stroke PayorType
+435  2020-2021                  Post-Operative Stroke      Race
+436  2020-2021                  Post-Operative Stroke      Race
+437  2020-2021                  Post-Operative Stroke      Race
+438  2020-2021                  Post-Operative Stroke      Race
+439  2020-2021                  Post-Operative Stroke      Race
+440  2020-2021                  Post-Operative Stroke      Race
+441  2020-2021                  Post-Operative Stroke      Race
+442  2020-2021                  Prolonged Ventilation       Age
+443  2020-2021                  Prolonged Ventilation       Age
+444  2020-2021                  Prolonged Ventilation       Age
+446  2020-2021                  Prolonged Ventilation CABG type
+447  2020-2021                  Prolonged Ventilation CABG type
+448  2020-2021                  Prolonged Ventilation CABG type
+449  2020-2021                  Prolonged Ventilation    Gender
+450  2020-2021                  Prolonged Ventilation    Gender
+451  2020-2021                  Prolonged Ventilation PayorType
+452  2020-2021                  Prolonged Ventilation PayorType
+453  2020-2021                  Prolonged Ventilation PayorType
+454  2020-2021                  Prolonged Ventilation PayorType
+455  2020-2021                  Prolonged Ventilation PayorType
+456  2020-2021                  Prolonged Ventilation      Race
+457  2020-2021                  Prolonged Ventilation      Race
+458  2020-2021                  Prolonged Ventilation      Race
+459  2020-2021                  Prolonged Ventilation      Race
+460  2020-2021                  Prolonged Ventilation      Race
+461  2020-2021                  Prolonged Ventilation      Race
+462  2020-2021                  Prolonged Ventilation      Race
+463  2020-2021                 Re-Operative for Bleed       Age
+464  2020-2021                 Re-Operative for Bleed       Age
+465  2020-2021                 Re-Operative for Bleed       Age
+467  2020-2021                 Re-Operative for Bleed CABG type
+468  2020-2021                 Re-Operative for Bleed CABG type
+469  2020-2021                 Re-Operative for Bleed CABG type
+470  2020-2021                 Re-Operative for Bleed    Gender
+471  2020-2021                 Re-Operative for Bleed    Gender
+472  2020-2021                 Re-Operative for Bleed PayorType
+473  2020-2021                 Re-Operative for Bleed PayorType
+474  2020-2021                 Re-Operative for Bleed PayorType
+475  2020-2021                 Re-Operative for Bleed PayorType
+476  2020-2021                 Re-Operative for Bleed PayorType
+477  2020-2021                 Re-Operative for Bleed      Race
+478  2020-2021                 Re-Operative for Bleed      Race
+479  2020-2021                 Re-Operative for Bleed      Race
+480  2020-2021                 Re-Operative for Bleed      Race
+481  2020-2021                 Re-Operative for Bleed      Race
+482  2020-2021                 Re-Operative for Bleed      Race
+483  2020-2021                 Re-Operative for Bleed      Race
+484  2020-2021 Reintervention for Myocardial Ischemia       Age
+485  2020-2021 Reintervention for Myocardial Ischemia       Age
+486  2020-2021 Reintervention for Myocardial Ischemia       Age
+488  2020-2021 Reintervention for Myocardial Ischemia CABG type
+489  2020-2021 Reintervention for Myocardial Ischemia CABG type
+490  2020-2021 Reintervention for Myocardial Ischemia CABG type
+491  2020-2021 Reintervention for Myocardial Ischemia    Gender
+492  2020-2021 Reintervention for Myocardial Ischemia    Gender
+493  2020-2021 Reintervention for Myocardial Ischemia PayorType
+494  2020-2021 Reintervention for Myocardial Ischemia PayorType
+495  2020-2021 Reintervention for Myocardial Ischemia PayorType
+496  2020-2021 Reintervention for Myocardial Ischemia PayorType
+497  2020-2021 Reintervention for Myocardial Ischemia PayorType
+498  2020-2021 Reintervention for Myocardial Ischemia      Race
+499  2020-2021 Reintervention for Myocardial Ischemia      Race
+500  2020-2021 Reintervention for Myocardial Ischemia      Race
+501  2020-2021 Reintervention for Myocardial Ischemia      Race
+502  2020-2021 Reintervention for Myocardial Ischemia      Race
+503  2020-2021 Reintervention for Myocardial Ischemia      Race
+504  2020-2021 Reintervention for Myocardial Ischemia      Race
+505  2018-2019                 Deep Sternal Infection       Age
+506  2018-2019                 Deep Sternal Infection       Age
+507  2018-2019                 Deep Sternal Infection       Age
+509  2018-2019                 Deep Sternal Infection CABG type
+510  2018-2019                 Deep Sternal Infection CABG type
+511  2018-2019                 Deep Sternal Infection CABG type
+512  2018-2019                 Deep Sternal Infection    Gender
+513  2018-2019                 Deep Sternal Infection    Gender
+514  2018-2019                 Deep Sternal Infection PayorType
+515  2018-2019                 Deep Sternal Infection PayorType
+516  2018-2019                 Deep Sternal Infection PayorType
+517  2018-2019                 Deep Sternal Infection PayorType
+518  2018-2019                 Deep Sternal Infection PayorType
+519  2018-2019                 Deep Sternal Infection      Race
+520  2018-2019                 Deep Sternal Infection      Race
+521  2018-2019                 Deep Sternal Infection      Race
+522  2018-2019                 Deep Sternal Infection      Race
+523  2018-2019                 Deep Sternal Infection      Race
+524  2018-2019                 Deep Sternal Infection      Race
+525  2018-2019                 Deep Sternal Infection      Race
+526  2018-2019     Post-Operative Atrial Fibrillation       Age
+527  2018-2019     Post-Operative Atrial Fibrillation       Age
+528  2018-2019     Post-Operative Atrial Fibrillation       Age
+530  2018-2019     Post-Operative Atrial Fibrillation CABG type
+531  2018-2019     Post-Operative Atrial Fibrillation CABG type
+532  2018-2019     Post-Operative Atrial Fibrillation CABG type
+533  2018-2019     Post-Operative Atrial Fibrillation    Gender
+534  2018-2019     Post-Operative Atrial Fibrillation    Gender
+535  2018-2019     Post-Operative Atrial Fibrillation PayorType
+536  2018-2019     Post-Operative Atrial Fibrillation PayorType
+537  2018-2019     Post-Operative Atrial Fibrillation PayorType
+538  2018-2019     Post-Operative Atrial Fibrillation PayorType
+539  2018-2019     Post-Operative Atrial Fibrillation PayorType
+540  2018-2019     Post-Operative Atrial Fibrillation      Race
+541  2018-2019     Post-Operative Atrial Fibrillation      Race
+542  2018-2019     Post-Operative Atrial Fibrillation      Race
+543  2018-2019     Post-Operative Atrial Fibrillation      Race
+544  2018-2019     Post-Operative Atrial Fibrillation      Race
+545  2018-2019     Post-Operative Atrial Fibrillation      Race
+546  2018-2019     Post-Operative Atrial Fibrillation      Race
+547  2018-2019                Post-Operative Dialysis       Age
+548  2018-2019                Post-Operative Dialysis       Age
+549  2018-2019                Post-Operative Dialysis       Age
+551  2018-2019                Post-Operative Dialysis CABG type
+552  2018-2019                Post-Operative Dialysis CABG type
+553  2018-2019                Post-Operative Dialysis CABG type
+554  2018-2019                Post-Operative Dialysis    Gender
+555  2018-2019                Post-Operative Dialysis    Gender
+556  2018-2019                Post-Operative Dialysis PayorType
+557  2018-2019                Post-Operative Dialysis PayorType
+558  2018-2019                Post-Operative Dialysis PayorType
+559  2018-2019                Post-Operative Dialysis PayorType
+560  2018-2019                Post-Operative Dialysis PayorType
+561  2018-2019                Post-Operative Dialysis      Race
+562  2018-2019                Post-Operative Dialysis      Race
+563  2018-2019                Post-Operative Dialysis      Race
+564  2018-2019                Post-Operative Dialysis      Race
+565  2018-2019                Post-Operative Dialysis      Race
+566  2018-2019                Post-Operative Dialysis      Race
+567  2018-2019                Post-Operative Dialysis      Race
+568  2018-2019           Post-Operative Renal Failure       Age
+569  2018-2019           Post-Operative Renal Failure       Age
+570  2018-2019           Post-Operative Renal Failure       Age
+572  2018-2019           Post-Operative Renal Failure CABG type
+573  2018-2019           Post-Operative Renal Failure CABG type
+574  2018-2019           Post-Operative Renal Failure CABG type
+575  2018-2019           Post-Operative Renal Failure    Gender
+576  2018-2019           Post-Operative Renal Failure    Gender
+577  2018-2019           Post-Operative Renal Failure PayorType
+578  2018-2019           Post-Operative Renal Failure PayorType
+579  2018-2019           Post-Operative Renal Failure PayorType
+580  2018-2019           Post-Operative Renal Failure PayorType
+581  2018-2019           Post-Operative Renal Failure PayorType
+582  2018-2019           Post-Operative Renal Failure      Race
+583  2018-2019           Post-Operative Renal Failure      Race
+584  2018-2019           Post-Operative Renal Failure      Race
+585  2018-2019           Post-Operative Renal Failure      Race
+586  2018-2019           Post-Operative Renal Failure      Race
+587  2018-2019           Post-Operative Renal Failure      Race
+588  2018-2019           Post-Operative Renal Failure      Race
+589  2018-2019                  Post-Operative Stroke       Age
+590  2018-2019                  Post-Operative Stroke       Age
+591  2018-2019                  Post-Operative Stroke       Age
+593  2018-2019                  Post-Operative Stroke CABG type
+594  2018-2019                  Post-Operative Stroke CABG type
+595  2018-2019                  Post-Operative Stroke CABG type
+596  2018-2019                  Post-Operative Stroke    Gender
+597  2018-2019                  Post-Operative Stroke    Gender
+598  2018-2019                  Post-Operative Stroke PayorType
+599  2018-2019                  Post-Operative Stroke PayorType
+600  2018-2019                  Post-Operative Stroke PayorType
+601  2018-2019                  Post-Operative Stroke PayorType
+602  2018-2019                  Post-Operative Stroke PayorType
+603  2018-2019                  Post-Operative Stroke      Race
+604  2018-2019                  Post-Operative Stroke      Race
+605  2018-2019                  Post-Operative Stroke      Race
+606  2018-2019                  Post-Operative Stroke      Race
+607  2018-2019                  Post-Operative Stroke      Race
+608  2018-2019                  Post-Operative Stroke      Race
+609  2018-2019                  Post-Operative Stroke      Race
+610  2018-2019                  Prolonged Ventilation       Age
+611  2018-2019                  Prolonged Ventilation       Age
+612  2018-2019                  Prolonged Ventilation       Age
+614  2018-2019                  Prolonged Ventilation CABG type
+615  2018-2019                  Prolonged Ventilation CABG type
+616  2018-2019                  Prolonged Ventilation CABG type
+617  2018-2019                  Prolonged Ventilation    Gender
+618  2018-2019                  Prolonged Ventilation    Gender
+619  2018-2019                  Prolonged Ventilation PayorType
+620  2018-2019                  Prolonged Ventilation PayorType
+621  2018-2019                  Prolonged Ventilation PayorType
+622  2018-2019                  Prolonged Ventilation PayorType
+623  2018-2019                  Prolonged Ventilation PayorType
+624  2018-2019                  Prolonged Ventilation      Race
+625  2018-2019                  Prolonged Ventilation      Race
+626  2018-2019                  Prolonged Ventilation      Race
+627  2018-2019                  Prolonged Ventilation      Race
+628  2018-2019                  Prolonged Ventilation      Race
+629  2018-2019                  Prolonged Ventilation      Race
+630  2018-2019                  Prolonged Ventilation      Race
+631  2018-2019                 Re-Operative for Bleed       Age
+632  2018-2019                 Re-Operative for Bleed       Age
+633  2018-2019                 Re-Operative for Bleed       Age
+635  2018-2019                 Re-Operative for Bleed CABG type
+636  2018-2019                 Re-Operative for Bleed CABG type
+637  2018-2019                 Re-Operative for Bleed CABG type
+638  2018-2019                 Re-Operative for Bleed    Gender
+639  2018-2019                 Re-Operative for Bleed    Gender
+640  2018-2019                 Re-Operative for Bleed PayorType
+641  2018-2019                 Re-Operative for Bleed PayorType
+642  2018-2019                 Re-Operative for Bleed PayorType
+643  2018-2019                 Re-Operative for Bleed PayorType
+644  2018-2019                 Re-Operative for Bleed PayorType
+645  2018-2019                 Re-Operative for Bleed      Race
+646  2018-2019                 Re-Operative for Bleed      Race
+647  2018-2019                 Re-Operative for Bleed      Race
+648  2018-2019                 Re-Operative for Bleed      Race
+649  2018-2019                 Re-Operative for Bleed      Race
+650  2018-2019                 Re-Operative for Bleed      Race
+651  2018-2019                 Re-Operative for Bleed      Race
+652  2018-2019 Reintervention for Myocardial Ischemia       Age
+653  2018-2019 Reintervention for Myocardial Ischemia       Age
+654  2018-2019 Reintervention for Myocardial Ischemia       Age
+656  2018-2019 Reintervention for Myocardial Ischemia CABG type
+657  2018-2019 Reintervention for Myocardial Ischemia CABG type
+658  2018-2019 Reintervention for Myocardial Ischemia CABG type
+659  2018-2019 Reintervention for Myocardial Ischemia    Gender
+660  2018-2019 Reintervention for Myocardial Ischemia    Gender
+661  2018-2019 Reintervention for Myocardial Ischemia PayorType
+662  2018-2019 Reintervention for Myocardial Ischemia PayorType
+663  2018-2019 Reintervention for Myocardial Ischemia PayorType
+664  2018-2019 Reintervention for Myocardial Ischemia PayorType
+665  2018-2019 Reintervention for Myocardial Ischemia PayorType
+666  2018-2019 Reintervention for Myocardial Ischemia      Race
+667  2018-2019 Reintervention for Myocardial Ischemia      Race
+668  2018-2019 Reintervention for Myocardial Ischemia      Race
+669  2018-2019 Reintervention for Myocardial Ischemia      Race
+670  2018-2019 Reintervention for Myocardial Ischemia      Race
+671  2018-2019 Reintervention for Myocardial Ischemia      Race
+672  2018-2019 Reintervention for Myocardial Ischemia      Race
+673  2019-2020                 Deep Sternal Infection       Age
+674  2019-2020                 Deep Sternal Infection       Age
+675  2019-2020                 Deep Sternal Infection       Age
+677  2019-2020                 Deep Sternal Infection CABG type
+678  2019-2020                 Deep Sternal Infection CABG type
+679  2019-2020                 Deep Sternal Infection CABG type
+680  2019-2020                 Deep Sternal Infection    Gender
+681  2019-2020                 Deep Sternal Infection    Gender
+682  2019-2020                 Deep Sternal Infection PayorType
+683  2019-2020                 Deep Sternal Infection PayorType
+684  2019-2020                 Deep Sternal Infection PayorType
+685  2019-2020                 Deep Sternal Infection PayorType
+686  2019-2020                 Deep Sternal Infection PayorType
+687  2019-2020                 Deep Sternal Infection      Race
+688  2019-2020                 Deep Sternal Infection      Race
+689  2019-2020                 Deep Sternal Infection      Race
+690  2019-2020                 Deep Sternal Infection      Race
+691  2019-2020                 Deep Sternal Infection      Race
+692  2019-2020                 Deep Sternal Infection      Race
+693  2019-2020                 Deep Sternal Infection      Race
+694  2019-2020     Post-Operative Atrial Fibrillation       Age
+695  2019-2020     Post-Operative Atrial Fibrillation       Age
+696  2019-2020     Post-Operative Atrial Fibrillation       Age
+698  2019-2020     Post-Operative Atrial Fibrillation CABG type
+699  2019-2020     Post-Operative Atrial Fibrillation CABG type
+700  2019-2020     Post-Operative Atrial Fibrillation CABG type
+701  2019-2020     Post-Operative Atrial Fibrillation    Gender
+702  2019-2020     Post-Operative Atrial Fibrillation    Gender
+703  2019-2020     Post-Operative Atrial Fibrillation PayorType
+704  2019-2020     Post-Operative Atrial Fibrillation PayorType
+705  2019-2020     Post-Operative Atrial Fibrillation PayorType
+706  2019-2020     Post-Operative Atrial Fibrillation PayorType
+707  2019-2020     Post-Operative Atrial Fibrillation PayorType
+708  2019-2020     Post-Operative Atrial Fibrillation      Race
+709  2019-2020     Post-Operative Atrial Fibrillation      Race
+710  2019-2020     Post-Operative Atrial Fibrillation      Race
+711  2019-2020     Post-Operative Atrial Fibrillation      Race
+712  2019-2020     Post-Operative Atrial Fibrillation      Race
+713  2019-2020     Post-Operative Atrial Fibrillation      Race
+714  2019-2020     Post-Operative Atrial Fibrillation      Race
+715  2019-2020                Post-Operative Dialysis       Age
+716  2019-2020                Post-Operative Dialysis       Age
+717  2019-2020                Post-Operative Dialysis       Age
+719  2019-2020                Post-Operative Dialysis CABG type
+720  2019-2020                Post-Operative Dialysis CABG type
+721  2019-2020                Post-Operative Dialysis CABG type
+722  2019-2020                Post-Operative Dialysis    Gender
+723  2019-2020                Post-Operative Dialysis    Gender
+724  2019-2020                Post-Operative Dialysis PayorType
+725  2019-2020                Post-Operative Dialysis PayorType
+726  2019-2020                Post-Operative Dialysis PayorType
+727  2019-2020                Post-Operative Dialysis PayorType
+728  2019-2020                Post-Operative Dialysis PayorType
+729  2019-2020                Post-Operative Dialysis      Race
+730  2019-2020                Post-Operative Dialysis      Race
+731  2019-2020                Post-Operative Dialysis      Race
+732  2019-2020                Post-Operative Dialysis      Race
+733  2019-2020                Post-Operative Dialysis      Race
+734  2019-2020                Post-Operative Dialysis      Race
+735  2019-2020                Post-Operative Dialysis      Race
+736  2019-2020           Post-Operative Renal Failure       Age
+737  2019-2020           Post-Operative Renal Failure       Age
+738  2019-2020           Post-Operative Renal Failure       Age
+740  2019-2020           Post-Operative Renal Failure CABG type
+741  2019-2020           Post-Operative Renal Failure CABG type
+742  2019-2020           Post-Operative Renal Failure CABG type
+743  2019-2020           Post-Operative Renal Failure    Gender
+744  2019-2020           Post-Operative Renal Failure    Gender
+745  2019-2020           Post-Operative Renal Failure PayorType
+746  2019-2020           Post-Operative Renal Failure PayorType
+747  2019-2020           Post-Operative Renal Failure PayorType
+748  2019-2020           Post-Operative Renal Failure PayorType
+749  2019-2020           Post-Operative Renal Failure PayorType
+750  2019-2020           Post-Operative Renal Failure      Race
+751  2019-2020           Post-Operative Renal Failure      Race
+752  2019-2020           Post-Operative Renal Failure      Race
+753  2019-2020           Post-Operative Renal Failure      Race
+754  2019-2020           Post-Operative Renal Failure      Race
+755  2019-2020           Post-Operative Renal Failure      Race
+756  2019-2020           Post-Operative Renal Failure      Race
+757  2019-2020                  Post-Operative Stroke       Age
+758  2019-2020                  Post-Operative Stroke       Age
+759  2019-2020                  Post-Operative Stroke       Age
+761  2019-2020                  Post-Operative Stroke CABG type
+762  2019-2020                  Post-Operative Stroke CABG type
+763  2019-2020                  Post-Operative Stroke CABG type
+764  2019-2020                  Post-Operative Stroke    Gender
+765  2019-2020                  Post-Operative Stroke    Gender
+766  2019-2020                  Post-Operative Stroke PayorType
+767  2019-2020                  Post-Operative Stroke PayorType
+768  2019-2020                  Post-Operative Stroke PayorType
+769  2019-2020                  Post-Operative Stroke PayorType
+770  2019-2020                  Post-Operative Stroke PayorType
+771  2019-2020                  Post-Operative Stroke      Race
+772  2019-2020                  Post-Operative Stroke      Race
+773  2019-2020                  Post-Operative Stroke      Race
+774  2019-2020                  Post-Operative Stroke      Race
+775  2019-2020                  Post-Operative Stroke      Race
+776  2019-2020                  Post-Operative Stroke      Race
+777  2019-2020                  Post-Operative Stroke      Race
+778  2019-2020                  Prolonged Ventilation       Age
+779  2019-2020                  Prolonged Ventilation       Age
+780  2019-2020                  Prolonged Ventilation       Age
+782  2019-2020                  Prolonged Ventilation CABG type
+783  2019-2020                  Prolonged Ventilation CABG type
+784  2019-2020                  Prolonged Ventilation CABG type
+785  2019-2020                  Prolonged Ventilation    Gender
+786  2019-2020                  Prolonged Ventilation    Gender
+787  2019-2020                  Prolonged Ventilation PayorType
+788  2019-2020                  Prolonged Ventilation PayorType
+789  2019-2020                  Prolonged Ventilation PayorType
+790  2019-2020                  Prolonged Ventilation PayorType
+791  2019-2020                  Prolonged Ventilation PayorType
+792  2019-2020                  Prolonged Ventilation      Race
+793  2019-2020                  Prolonged Ventilation      Race
+794  2019-2020                  Prolonged Ventilation      Race
+795  2019-2020                  Prolonged Ventilation      Race
+796  2019-2020                  Prolonged Ventilation      Race
+797  2019-2020                  Prolonged Ventilation      Race
+798  2019-2020                  Prolonged Ventilation      Race
+799  2019-2020                 Re-Operative for Bleed       Age
+800  2019-2020                 Re-Operative for Bleed       Age
+801  2019-2020                 Re-Operative for Bleed       Age
+803  2019-2020                 Re-Operative for Bleed CABG type
+804  2019-2020                 Re-Operative for Bleed CABG type
+805  2019-2020                 Re-Operative for Bleed CABG type
+806  2019-2020                 Re-Operative for Bleed    Gender
+807  2019-2020                 Re-Operative for Bleed    Gender
+808  2019-2020                 Re-Operative for Bleed PayorType
+809  2019-2020                 Re-Operative for Bleed PayorType
+810  2019-2020                 Re-Operative for Bleed PayorType
+811  2019-2020                 Re-Operative for Bleed PayorType
+812  2019-2020                 Re-Operative for Bleed PayorType
+813  2019-2020                 Re-Operative for Bleed      Race
+814  2019-2020                 Re-Operative for Bleed      Race
+815  2019-2020                 Re-Operative for Bleed      Race
+816  2019-2020                 Re-Operative for Bleed      Race
+817  2019-2020                 Re-Operative for Bleed      Race
+818  2019-2020                 Re-Operative for Bleed      Race
+819  2019-2020                 Re-Operative for Bleed      Race
+820  2019-2020 Reintervention for Myocardial Ischemia       Age
+821  2019-2020 Reintervention for Myocardial Ischemia       Age
+822  2019-2020 Reintervention for Myocardial Ischemia       Age
+824  2019-2020 Reintervention for Myocardial Ischemia CABG type
+825  2019-2020 Reintervention for Myocardial Ischemia CABG type
+826  2019-2020 Reintervention for Myocardial Ischemia CABG type
+827  2019-2020 Reintervention for Myocardial Ischemia    Gender
+828  2019-2020 Reintervention for Myocardial Ischemia    Gender
+829  2019-2020 Reintervention for Myocardial Ischemia PayorType
+830  2019-2020 Reintervention for Myocardial Ischemia PayorType
+831  2019-2020 Reintervention for Myocardial Ischemia PayorType
+832  2019-2020 Reintervention for Myocardial Ischemia PayorType
+833  2019-2020 Reintervention for Myocardial Ischemia PayorType
+834  2019-2020 Reintervention for Myocardial Ischemia      Race
+835  2019-2020 Reintervention for Myocardial Ischemia      Race
+836  2019-2020 Reintervention for Myocardial Ischemia      Race
+837  2019-2020 Reintervention for Myocardial Ischemia      Race
+838  2019-2020 Reintervention for Myocardial Ischemia      Race
+839  2019-2020 Reintervention for Myocardial Ischemia      Race
+840  2019-2020 Reintervention for Myocardial Ischemia      Race
+841  2020-2021                 Deep Sternal Infection       Age
+842  2020-2021                 Deep Sternal Infection       Age
+843  2020-2021                 Deep Sternal Infection       Age
+845  2020-2021                 Deep Sternal Infection CABG type
+846  2020-2021                 Deep Sternal Infection CABG type
+847  2020-2021                 Deep Sternal Infection CABG type
+848  2020-2021                 Deep Sternal Infection    Gender
+849  2020-2021                 Deep Sternal Infection    Gender
+850  2020-2021                 Deep Sternal Infection PayorType
+851  2020-2021                 Deep Sternal Infection PayorType
+852  2020-2021                 Deep Sternal Infection PayorType
+853  2020-2021                 Deep Sternal Infection PayorType
+854  2020-2021                 Deep Sternal Infection PayorType
+855  2020-2021                 Deep Sternal Infection      Race
+856  2020-2021                 Deep Sternal Infection      Race
+857  2020-2021                 Deep Sternal Infection      Race
+858  2020-2021                 Deep Sternal Infection      Race
+859  2020-2021                 Deep Sternal Infection      Race
+860  2020-2021                 Deep Sternal Infection      Race
+861  2020-2021                 Deep Sternal Infection      Race
+862  2020-2021     Post-Operative Atrial Fibrillation       Age
+863  2020-2021     Post-Operative Atrial Fibrillation       Age
+864  2020-2021     Post-Operative Atrial Fibrillation       Age
+866  2020-2021     Post-Operative Atrial Fibrillation CABG type
+867  2020-2021     Post-Operative Atrial Fibrillation CABG type
+868  2020-2021     Post-Operative Atrial Fibrillation CABG type
+869  2020-2021     Post-Operative Atrial Fibrillation    Gender
+870  2020-2021     Post-Operative Atrial Fibrillation    Gender
+871  2020-2021     Post-Operative Atrial Fibrillation PayorType
+872  2020-2021     Post-Operative Atrial Fibrillation PayorType
+873  2020-2021     Post-Operative Atrial Fibrillation PayorType
+874  2020-2021     Post-Operative Atrial Fibrillation PayorType
+875  2020-2021     Post-Operative Atrial Fibrillation PayorType
+876  2020-2021     Post-Operative Atrial Fibrillation      Race
+877  2020-2021     Post-Operative Atrial Fibrillation      Race
+878  2020-2021     Post-Operative Atrial Fibrillation      Race
+879  2020-2021     Post-Operative Atrial Fibrillation      Race
+880  2020-2021     Post-Operative Atrial Fibrillation      Race
+881  2020-2021     Post-Operative Atrial Fibrillation      Race
+882  2020-2021     Post-Operative Atrial Fibrillation      Race
+883  2020-2021                Post-Operative Dialysis       Age
+884  2020-2021                Post-Operative Dialysis       Age
+885  2020-2021                Post-Operative Dialysis       Age
+887  2020-2021                Post-Operative Dialysis CABG type
+888  2020-2021                Post-Operative Dialysis CABG type
+889  2020-2021                Post-Operative Dialysis CABG type
+890  2020-2021                Post-Operative Dialysis    Gender
+891  2020-2021                Post-Operative Dialysis    Gender
+892  2020-2021                Post-Operative Dialysis PayorType
+893  2020-2021                Post-Operative Dialysis PayorType
+894  2020-2021                Post-Operative Dialysis PayorType
+895  2020-2021                Post-Operative Dialysis PayorType
+896  2020-2021                Post-Operative Dialysis PayorType
+897  2020-2021                Post-Operative Dialysis      Race
+898  2020-2021                Post-Operative Dialysis      Race
+899  2020-2021                Post-Operative Dialysis      Race
+900  2020-2021                Post-Operative Dialysis      Race
+901  2020-2021                Post-Operative Dialysis      Race
+902  2020-2021                Post-Operative Dialysis      Race
+903  2020-2021                Post-Operative Dialysis      Race
+904  2020-2021           Post-Operative Renal Failure       Age
+905  2020-2021           Post-Operative Renal Failure       Age
+906  2020-2021           Post-Operative Renal Failure       Age
+908  2020-2021           Post-Operative Renal Failure CABG type
+909  2020-2021           Post-Operative Renal Failure CABG type
+910  2020-2021           Post-Operative Renal Failure CABG type
+911  2020-2021           Post-Operative Renal Failure    Gender
+912  2020-2021           Post-Operative Renal Failure    Gender
+913  2020-2021           Post-Operative Renal Failure PayorType
+914  2020-2021           Post-Operative Renal Failure PayorType
+915  2020-2021           Post-Operative Renal Failure PayorType
+916  2020-2021           Post-Operative Renal Failure PayorType
+917  2020-2021           Post-Operative Renal Failure PayorType
+918  2020-2021           Post-Operative Renal Failure      Race
+919  2020-2021           Post-Operative Renal Failure      Race
+920  2020-2021           Post-Operative Renal Failure      Race
+921  2020-2021           Post-Operative Renal Failure      Race
+922  2020-2021           Post-Operative Renal Failure      Race
+923  2020-2021           Post-Operative Renal Failure      Race
+924  2020-2021           Post-Operative Renal Failure      Race
+925  2020-2021                  Post-Operative Stroke       Age
+926  2020-2021                  Post-Operative Stroke       Age
+927  2020-2021                  Post-Operative Stroke       Age
+929  2020-2021                  Post-Operative Stroke CABG type
+930  2020-2021                  Post-Operative Stroke CABG type
+931  2020-2021                  Post-Operative Stroke CABG type
+932  2020-2021                  Post-Operative Stroke    Gender
+933  2020-2021                  Post-Operative Stroke    Gender
+934  2020-2021                  Post-Operative Stroke PayorType
+935  2020-2021                  Post-Operative Stroke PayorType
+936  2020-2021                  Post-Operative Stroke PayorType
+937  2020-2021                  Post-Operative Stroke PayorType
+938  2020-2021                  Post-Operative Stroke PayorType
+939  2020-2021                  Post-Operative Stroke      Race
+940  2020-2021                  Post-Operative Stroke      Race
+941  2020-2021                  Post-Operative Stroke      Race
+942  2020-2021                  Post-Operative Stroke      Race
+943  2020-2021                  Post-Operative Stroke      Race
+944  2020-2021                  Post-Operative Stroke      Race
+945  2020-2021                  Post-Operative Stroke      Race
+946  2020-2021                  Prolonged Ventilation       Age
+947  2020-2021                  Prolonged Ventilation       Age
+948  2020-2021                  Prolonged Ventilation       Age
+950  2020-2021                  Prolonged Ventilation CABG type
+951  2020-2021                  Prolonged Ventilation CABG type
+952  2020-2021                  Prolonged Ventilation CABG type
+953  2020-2021                  Prolonged Ventilation    Gender
+954  2020-2021                  Prolonged Ventilation    Gender
+955  2020-2021                  Prolonged Ventilation PayorType
+956  2020-2021                  Prolonged Ventilation PayorType
+957  2020-2021                  Prolonged Ventilation PayorType
+958  2020-2021                  Prolonged Ventilation PayorType
+959  2020-2021                  Prolonged Ventilation PayorType
+960  2020-2021                  Prolonged Ventilation      Race
+961  2020-2021                  Prolonged Ventilation      Race
+962  2020-2021                  Prolonged Ventilation      Race
+963  2020-2021                  Prolonged Ventilation      Race
+964  2020-2021                  Prolonged Ventilation      Race
+965  2020-2021                  Prolonged Ventilation      Race
+966  2020-2021                  Prolonged Ventilation      Race
+967  2020-2021                 Re-Operative for Bleed       Age
+968  2020-2021                 Re-Operative for Bleed       Age
+969  2020-2021                 Re-Operative for Bleed       Age
+971  2020-2021                 Re-Operative for Bleed CABG type
+972  2020-2021                 Re-Operative for Bleed CABG type
+973  2020-2021                 Re-Operative for Bleed CABG type
+974  2020-2021                 Re-Operative for Bleed    Gender
+975  2020-2021                 Re-Operative for Bleed    Gender
+976  2020-2021                 Re-Operative for Bleed PayorType
+977  2020-2021                 Re-Operative for Bleed PayorType
+978  2020-2021                 Re-Operative for Bleed PayorType
+979  2020-2021                 Re-Operative for Bleed PayorType
+980  2020-2021                 Re-Operative for Bleed PayorType
+981  2020-2021                 Re-Operative for Bleed      Race
+982  2020-2021                 Re-Operative for Bleed      Race
+983  2020-2021                 Re-Operative for Bleed      Race
+984  2020-2021                 Re-Operative for Bleed      Race
+985  2020-2021                 Re-Operative for Bleed      Race
+986  2020-2021                 Re-Operative for Bleed      Race
+987  2020-2021                 Re-Operative for Bleed      Race
+988  2020-2021 Reintervention for Myocardial Ischemia       Age
+989  2020-2021 Reintervention for Myocardial Ischemia       Age
+990  2020-2021 Reintervention for Myocardial Ischemia       Age
+992  2020-2021 Reintervention for Myocardial Ischemia CABG type
+993  2020-2021 Reintervention for Myocardial Ischemia CABG type
+994  2020-2021 Reintervention for Myocardial Ischemia CABG type
+995  2020-2021 Reintervention for Myocardial Ischemia    Gender
+996  2020-2021 Reintervention for Myocardial Ischemia    Gender
+997  2020-2021 Reintervention for Myocardial Ischemia PayorType
+998  2020-2021 Reintervention for Myocardial Ischemia PayorType
+999  2020-2021 Reintervention for Myocardial Ischemia PayorType
+1000 2020-2021 Reintervention for Myocardial Ischemia PayorType
+1001 2020-2021 Reintervention for Myocardial Ischemia PayorType
+1002 2020-2021 Reintervention for Myocardial Ischemia      Race
+1003 2020-2021 Reintervention for Myocardial Ischemia      Race
+1004 2020-2021 Reintervention for Myocardial Ischemia      Race
+1005 2020-2021 Reintervention for Myocardial Ischemia      Race
+1006 2020-2021 Reintervention for Myocardial Ischemia      Race
+1007 2020-2021 Reintervention for Myocardial Ischemia      Race
+1008 2020-2021 Reintervention for Myocardial Ischemia      Race
+                      Strata readmission Count
+1                    0 to 40           N     0
+2                      41-65           N    11
+3                  66 to Max           N    11
+5                 CABG+Valve           N     5
+6              Isolated CABG           N    16
+7    Other Non-Isolated CABG           N     1
+8                     Female           N     6
+9                       Male           N    16
+10                  Medi-Cal           N     1
+11                  Medicare           N     7
+12           Other Insurance           N    11
+13         Private Insurance           N     3
+14                 Uninsured           N     0
+15                     Asian           N     1
+16                     Black           N     1
+17                  Hispanic           N     3
+18                    Native           N     0
+19                    Others           N     2
+20                   Pacific           N     1
+21                     White           N    14
+22                   0 to 40           N    15
+23                     41-65           N  1960
+24                 66 to Max           N  4442
+26                CABG+Valve           N  1109
+27             Isolated CABG           N  4898
+28   Other Non-Isolated CABG           N   410
+29                    Female           N  1193
+30                      Male           N  5224
+31                  Medi-Cal           N   106
+32                  Medicare           N   991
+33           Other Insurance           N  5121
+34         Private Insurance           N   193
+35                 Uninsured           N     6
+36                     Asian           N   820
+37                     Black           N   208
+38                  Hispanic           N   979
+39                    Native           N    10
+40                    Others           N   337
+41                   Pacific           N    47
+42                     White           N  4016
+43                   0 to 40           N     2
+44                     41-65           N    74
+45                 66 to Max           N   207
+47                CABG+Valve           N    54
+48             Isolated CABG           N   193
+49   Other Non-Isolated CABG           N    36
+50                    Female           N    83
+51                      Male           N   200
+52                  Medi-Cal           N    14
+53                  Medicare           N    77
+54           Other Insurance           N   177
+55         Private Insurance           N    15
+56                 Uninsured           N     0
+57                     Asian           N    40
+58                     Black           N    16
+59                  Hispanic           N    58
+60                    Native           N     0
+61                    Others           N    20
+62                   Pacific           N     3
+63                     White           N   146
+64                   0 to 40           N     3
+65                     41-65           N   129
+66                 66 to Max           N   315
+68                CABG+Valve           N    90
+69             Isolated CABG           N   302
+70   Other Non-Isolated CABG           N    55
+71                    Female           N   123
+72                      Male           N   324
+73                  Medi-Cal           N    23
+74                  Medicare           N   105
+75           Other Insurance           N   293
+76         Private Insurance           N    26
+77                 Uninsured           N     0
+78                     Asian           N    68
+79                     Black           N    23
+80                  Hispanic           N    96
+81                    Native           N     0
+82                    Others           N    31
+83                   Pacific           N     3
+84                     White           N   226
+85                   0 to 40           N     2
+86                     41-65           N   101
+87                 66 to Max           N   237
+89                CABG+Valve           N    51
+90             Isolated CABG           N   243
+91   Other Non-Isolated CABG           N    46
+92                    Female           N   101
+93                      Male           N   239
+94                  Medi-Cal           N    14
+95                  Medicare           N    87
+96           Other Insurance           N   222
+97         Private Insurance           N    16
+98                 Uninsured           N     1
+99                     Asian           N    52
+100                    Black           N    20
+101                 Hispanic           N    70
+102                   Native           N     0
+103                   Others           N    21
+104                  Pacific           N     7
+105                    White           N   170
+106                  0 to 40           N    17
+107                    41-65           N   560
+108                66 to Max           N   952
+110               CABG+Valve           N   285
+111            Isolated CABG           N  1050
+112  Other Non-Isolated CABG           N   194
+113                   Female           N   418
+114                     Male           N  1111
+115                 Medi-Cal           N    56
+116                 Medicare           N   327
+117          Other Insurance           N  1068
+118        Private Insurance           N    77
+119                Uninsured           N     1
+120                    Asian           N   208
+121                    Black           N    79
+122                 Hispanic           N   317
+123                   Native           N     3
+124                   Others           N    92
+125                  Pacific           N    20
+126                    White           N   810
+127                  0 to 40           N     5
+128                    41-65           N   147
+129                66 to Max           N   275
+131               CABG+Valve           N    95
+132            Isolated CABG           N   283
+133  Other Non-Isolated CABG           N    49
+134                   Female           N    58
+135                     Male           N   369
+136                 Medi-Cal           N    17
+137                 Medicare           N    68
+138          Other Insurance           N   319
+139        Private Insurance           N    23
+140                Uninsured           N     0
+141                    Asian           N    70
+142                    Black           N    12
+143                 Hispanic           N   100
+144                   Native           N     1
+145                   Others           N    20
+146                  Pacific           N     5
+147                    White           N   219
+148                  0 to 40           N     0
+149                    41-65           N    17
+150                66 to Max           N    30
+152               CABG+Valve           N     1
+153            Isolated CABG           N    44
+154  Other Non-Isolated CABG           N     2
+155                   Female           N    17
+156                     Male           N    30
+157                 Medi-Cal           N     2
+158                 Medicare           N     8
+159          Other Insurance           N    31
+160        Private Insurance           N     6
+161                Uninsured           N     0
+162                    Asian           N     7
+163                    Black           N     2
+164                 Hispanic           N    12
+165                   Native           N     0
+166                   Others           N     2
+167                  Pacific           N     0
+168                    White           N    24
+169                  0 to 40           N     0
+170                    41-65           N     6
+171                66 to Max           N     7
+173               CABG+Valve           N     3
+174            Isolated CABG           N     9
+175  Other Non-Isolated CABG           N     1
+176                   Female           N     1
+177                     Male           N    12
+178                 Medi-Cal           N     0
+179                 Medicare           N     4
+180          Other Insurance           N     9
+181        Private Insurance           N     0
+182                Uninsured           N     0
+183                    Asian           N     1
+184                    Black           N     0
+185                 Hispanic           N     1
+186                   Native           N     0
+187                   Others           N     0
+188                  Pacific           N     0
+189                    White           N    11
+190                  0 to 40           N    13
+191                    41-65           N  1865
+192                66 to Max           N  4055
+194               CABG+Valve           N   954
+195            Isolated CABG           N  4596
+196  Other Non-Isolated CABG           N   383
+197                   Female           N  1102
+198                     Male           N  4831
+199                 Medi-Cal           N    89
+200                 Medicare           N   897
+201          Other Insurance           N  4767
+202        Private Insurance           N   175
+203                Uninsured           N     5
+204                    Asian           N   776
+205                    Black           N   201
+206                 Hispanic           N   872
+207                   Native           N    19
+208                   Others           N   364
+209                  Pacific           N    41
+210                    White           N  3660
+211                  0 to 40           N     1
+212                    41-65           N    77
+213                66 to Max           N   178
+215               CABG+Valve           N    38
+216            Isolated CABG           N   179
+217  Other Non-Isolated CABG           N    39
+218                   Female           N    81
+219                     Male           N   175
+220                 Medi-Cal           N     9
+221                 Medicare           N    67
+222          Other Insurance           N   164
+223        Private Insurance           N    16
+224                Uninsured           N     0
+225                    Asian           N    41
+226                    Black           N    14
+227                 Hispanic           N    51
+228                   Native           N     0
+229                   Others           N    20
+230                  Pacific           N     3
+231                    White           N   127
+232                  0 to 40           N     2
+233                    41-65           N   128
+234                66 to Max           N   260
+236               CABG+Valve           N    60
+237            Isolated CABG           N   277
+238  Other Non-Isolated CABG           N    53
+239                   Female           N   105
+240                     Male           N   285
+241                 Medi-Cal           N    19
+242                 Medicare           N    91
+243          Other Insurance           N   254
+244        Private Insurance           N    26
+245                Uninsured           N     0
+246                    Asian           N    64
+247                    Black           N    22
+248                 Hispanic           N    78
+249                   Native           N     1
+250                   Others           N    32
+251                  Pacific           N     3
+252                    White           N   190
+253                  0 to 40           N     2
+254                    41-65           N   101
+255                66 to Max           N   205
+257               CABG+Valve           N    42
+258            Isolated CABG           N   222
+259  Other Non-Isolated CABG           N    44
+260                   Female           N    95
+261                     Male           N   213
+262                 Medi-Cal           N    14
+263                 Medicare           N    71
+264          Other Insurance           N   207
+265        Private Insurance           N    15
+266                Uninsured           N     1
+267                    Asian           N    58
+268                    Black           N    20
+269                 Hispanic           N    55
+270                   Native           N     1
+271                   Others           N    26
+272                  Pacific           N     4
+273                    White           N   144
+274                  0 to 40           N    19
+275                    41-65           N   551
+276                66 to Max           N   833
+278               CABG+Valve           N   258
+279            Isolated CABG           N   971
+280  Other Non-Isolated CABG           N   174
+281                   Female           N   386
+282                     Male           N  1017
+283                 Medi-Cal           N    45
+284                 Medicare           N   296
+285          Other Insurance           N   987
+286        Private Insurance           N    74
+287                Uninsured           N     1
+288                    Asian           N   200
+289                    Black           N    89
+290                 Hispanic           N   283
+291                   Native           N     2
+292                   Others           N   100
+293                  Pacific           N    14
+294                    White           N   715
+295                  0 to 40           N     1
+296                    41-65           N   150
+297                66 to Max           N   264
+299               CABG+Valve           N    85
+300            Isolated CABG           N   284
+301  Other Non-Isolated CABG           N    46
+302                   Female           N    68
+303                     Male           N   347
+304                 Medi-Cal           N    15
+305                 Medicare           N    67
+306          Other Insurance           N   314
+307        Private Insurance           N    19
+308                Uninsured           N     0
+309                    Asian           N    68
+310                    Black           N    15
+311                 Hispanic           N    95
+312                   Native           N     0
+313                   Others           N    19
+314                  Pacific           N     4
+315                    White           N   214
+316                  0 to 40           N     0
+317                    41-65           N    24
+318                66 to Max           N    25
+320               CABG+Valve           N     2
+321            Isolated CABG           N    45
+322  Other Non-Isolated CABG           N     2
+323                   Female           N    15
+324                     Male           N    34
+325                 Medi-Cal           N     3
+326                 Medicare           N     6
+327          Other Insurance           N    33
+328        Private Insurance           N     7
+329                Uninsured           N     0
+330                    Asian           N    10
+331                    Black           N     3
+332                 Hispanic           N    11
+333                   Native           N     0
+334                   Others           N     5
+335                  Pacific           N     0
+336                    White           N    20
+337                    41-65           N     6
+338                  Over 65           N    10
+339                 Under 40           N     0
+341               CABG+Valve           N     1
+342            Isolated CABG           N    13
+343  Other Non-Isolated CABG           N     2
+344                   Female           N     2
+345                     Male           N    14
+346                 Medi-Cal           N     1
+347                 Medicare           N     5
+348          Other Insurance           N    10
+349        Private Insurance           N     0
+350                Uninsured           N     0
+351                    Asian           N     3
+352                    Black           N     0
+353                 Hispanic           N     3
+354                   Native           N     0
+355                   Others           N     2
+356                  Pacific           N     0
+357                    White           N     8
+358                    41-65           N  1760
+359                  Over 65           N  3981
+360                 Under 40           N     7
+362               CABG+Valve           N   878
+363            Isolated CABG           N  4498
+364  Other Non-Isolated CABG           N   372
+365                   Female           N  1081
+366                     Male           N  4667
+367                 Medi-Cal           N   102
+368                 Medicare           N   862
+369          Other Insurance           N  4605
+370        Private Insurance           N   173
+371                Uninsured           N     6
+372                    Asian           N   773
+373                    Black           N   165
+374                 Hispanic           N   791
+375                   Native           N    18
+376                   Others           N   371
+377                  Pacific           N    39
+378                    White           N  3591
+379                    41-65           N    72
+380                  Over 65           N   186
+381                 Under 40           N     0
+383               CABG+Valve           N    48
+384            Isolated CABG           N   175
+385  Other Non-Isolated CABG           N    35
+386                   Female           N    73
+387                     Male           N   185
+388                 Medi-Cal           N     6
+389                 Medicare           N    78
+390          Other Insurance           N   158
+391        Private Insurance           N    16
+392                Uninsured           N     0
+393                    Asian           N    36
+394                    Black           N    15
+395                 Hispanic           N    59
+396                   Native           N     0
+397                   Others           N    22
+398                  Pacific           N     2
+399                    White           N   124
+400                    41-65           N   125
+401                  Over 65           N   271
+402                 Under 40           N     1
+404               CABG+Valve           N    68
+405            Isolated CABG           N   279
+406  Other Non-Isolated CABG           N    50
+407                   Female           N   111
+408                     Male           N   286
+409                 Medi-Cal           N    13
+410                 Medicare           N   105
+411          Other Insurance           N   254
+412        Private Insurance           N    25
+413                Uninsured           N     0
+414                    Asian           N    58
+415                    Black           N    29
+416                 Hispanic           N    77
+417                   Native           N     1
+418                   Others           N    34
+419                  Pacific           N     2
+420                    White           N   196
+421                    41-65           N    98
+422                  Over 65           N   169
+423                 Under 40           N     5
+425               CABG+Valve           N    48
+426            Isolated CABG           N   190
+427  Other Non-Isolated CABG           N    34
+428                   Female           N    78
+429                     Male           N   194
+430                 Medi-Cal           N    11
+431                 Medicare           N    55
+432          Other Insurance           N   188
+433        Private Insurance           N    18
+434                Uninsured           N     0
+435                    Asian           N    50
+436                    Black           N    17
+437                 Hispanic           N    61
+438                   Native           N     1
+439                   Others           N    24
+440                  Pacific           N     1
+441                    White           N   118
+442                    41-65           N   535
+443                  Over 65           N   777
+444                 Under 40           N    14
+446               CABG+Valve           N   248
+447            Isolated CABG           N   906
+448  Other Non-Isolated CABG           N   172
+449                   Female           N   349
+450                     Male           N   977
+451                 Medi-Cal           N    42
+452                 Medicare           N   278
+453          Other Insurance           N   941
+454        Private Insurance           N    65
+455                Uninsured           N     0
+456                    Asian           N   205
+457                    Black           N    76
+458                 Hispanic           N   271
+459                   Native           N     4
+460                   Others           N    96
+461                  Pacific           N    13
+462                    White           N   661
+463                    41-65           N   162
+464                  Over 65           N   240
+465                 Under 40           N     1
+467               CABG+Valve           N    76
+468            Isolated CABG           N   285
+469  Other Non-Isolated CABG           N    42
+470                   Female           N    79
+471                     Male           N   324
+472                 Medi-Cal           N    13
+473                 Medicare           N    59
+474          Other Insurance           N   319
+475        Private Insurance           N    12
+476                Uninsured           N     0
+477                    Asian           N    65
+478                    Black           N    18
+479                 Hispanic           N    79
+480                   Native           N     0
+481                   Others           N    25
+482                  Pacific           N     2
+483                    White           N   214
+484                    41-65           N    23
+485                  Over 65           N    35
+486                 Under 40           N     0
+488               CABG+Valve           N     2
+489            Isolated CABG           N    54
+490  Other Non-Isolated CABG           N     2
+491                   Female           N    15
+492                     Male           N    43
+493                 Medi-Cal           N     3
+494                 Medicare           N     8
+495          Other Insurance           N    44
+496        Private Insurance           N     3
+497                Uninsured           N     0
+498                    Asian           N     9
+499                    Black           N     4
+500                 Hispanic           N    13
+501                   Native           N     0
+502                   Others           N     6
+503                  Pacific           N     0
+504                    White           N    26
+505                  0 to 40           Y     0
+506                    41-65           Y    28
+507                66 to Max           Y    32
+509               CABG+Valve           Y     7
+510            Isolated CABG           Y    47
+511  Other Non-Isolated CABG           Y     6
+512                   Female           Y    21
+513                     Male           Y    39
+514                 Medi-Cal           Y    12
+515                 Medicare           Y    34
+516          Other Insurance           Y     1
+517        Private Insurance           Y    13
+518                Uninsured           Y     0
+519                    Asian           Y     8
+520                    Black           Y     1
+521                 Hispanic           Y    13
+522                   Native           Y     0
+523                   Others           Y     4
+524                  Pacific           Y     0
+525                    White           Y    34
+526                  0 to 40           Y     1
+527                    41-65           Y   309
+528                66 to Max           Y   814
+530               CABG+Valve           Y   232
+531            Isolated CABG           Y   796
+532  Other Non-Isolated CABG           Y    96
+533                   Female           Y   314
+534                     Male           Y   810
+535                 Medi-Cal           Y   107
+536                 Medicare           Y   811
+537          Other Insurance           Y    25
+538        Private Insurance           Y   178
+539                Uninsured           Y     3
+540                    Asian           Y   154
+541                    Black           Y    38
+542                 Hispanic           Y   200
+543                   Native           Y     3
+544                   Others           Y    53
+545                  Pacific           Y     8
+546                    White           Y   668
+547                  0 to 40           Y     0
+548                    41-65           Y    40
+549                66 to Max           Y    65
+551               CABG+Valve           Y    21
+552            Isolated CABG           Y    70
+553  Other Non-Isolated CABG           Y    14
+554                   Female           Y    38
+555                     Male           Y    67
+556                 Medi-Cal           Y    20
+557                 Medicare           Y    66
+558          Other Insurance           Y     4
+559        Private Insurance           Y    15
+560                Uninsured           Y     0
+561                    Asian           Y    16
+562                    Black           Y     7
+563                 Hispanic           Y    28
+564                   Native           Y     1
+565                   Others           Y     5
+566                  Pacific           Y     1
+567                    White           Y    47
+568                  0 to 40           Y     1
+569                    41-65           Y    53
+570                66 to Max           Y   115
+572               CABG+Valve           Y    40
+573            Isolated CABG           Y   109
+574  Other Non-Isolated CABG           Y    20
+575                   Female           Y    56
+576                     Male           Y   113
+577                 Medi-Cal           Y    26
+578                 Medicare           Y   113
+579          Other Insurance           Y     4
+580        Private Insurance           Y    26
+581                Uninsured           Y     0
+582                    Asian           Y    26
+583                    Black           Y     7
+584                 Hispanic           Y    48
+585                   Native           Y     1
+586                   Others           Y    11
+587                  Pacific           Y     2
+588                    White           Y    74
+589                  0 to 40           Y     1
+590                    41-65           Y    32
+591                66 to Max           Y    66
+593               CABG+Valve           Y    18
+594            Isolated CABG           Y    68
+595  Other Non-Isolated CABG           Y    13
+596                   Female           Y    36
+597                     Male           Y    63
+598                 Medi-Cal           Y    15
+599                 Medicare           Y    69
+600          Other Insurance           Y     0
+601        Private Insurance           Y    14
+602                Uninsured           Y     1
+603                    Asian           Y    24
+604                    Black           Y     6
+605                 Hispanic           Y    22
+606                   Native           Y     0
+607                   Others           Y     7
+608                  Pacific           Y     1
+609                    White           Y    39
+610                  0 to 40           Y     2
+611                    41-65           Y   200
+612                66 to Max           Y   286
+614               CABG+Valve           Y   112
+615            Isolated CABG           Y   319
+616  Other Non-Isolated CABG           Y    57
+617                   Female           Y   169
+618                     Male           Y   319
+619                 Medi-Cal           Y    65
+620                 Medicare           Y   326
+621          Other Insurance           Y    12
+622        Private Insurance           Y    80
+623                Uninsured           Y     5
+624                    Asian           Y    77
+625                    Black           Y    21
+626                 Hispanic           Y   106
+627                   Native           Y     2
+628                   Others           Y    29
+629                  Pacific           Y     5
+630                    White           Y   248
+631                  0 to 40           Y     1
+632                    41-65           Y    35
+633                66 to Max           Y    62
+635               CABG+Valve           Y    19
+636            Isolated CABG           Y    65
+637  Other Non-Isolated CABG           Y    14
+638                   Female           Y    19
+639                     Male           Y    79
+640                 Medi-Cal           Y     8
+641                 Medicare           Y    72
+642          Other Insurance           Y     2
+643        Private Insurance           Y    16
+644                Uninsured           Y     0
+645                    Asian           Y    17
+646                    Black           Y     3
+647                 Hispanic           Y    24
+648                   Native           Y     0
+649                   Others           Y     4
+650                  Pacific           Y     0
+651                    White           Y    50
+652                  0 to 40           Y     0
+653                    41-65           Y     8
+654                66 to Max           Y     4
+656               CABG+Valve           Y     1
+657            Isolated CABG           Y    10
+658  Other Non-Isolated CABG           Y     1
+659                   Female           Y     5
+660                     Male           Y     7
+661                 Medi-Cal           Y     2
+662                 Medicare           Y     6
+663          Other Insurance           Y     0
+664        Private Insurance           Y     4
+665                Uninsured           Y     0
+666                    Asian           Y     2
+667                    Black           Y     0
+668                 Hispanic           Y     3
+669                   Native           Y     0
+670                   Others           Y     2
+671                  Pacific           Y     0
+672                    White           Y     5
+673                  0 to 40           Y     1
+674                    41-65           Y    23
+675                66 to Max           Y    28
+677               CABG+Valve           Y     2
+678            Isolated CABG           Y    44
+679  Other Non-Isolated CABG           Y     6
+680                   Female           Y    18
+681                     Male           Y    34
+682                 Medi-Cal           Y     8
+683                 Medicare           Y    32
+684          Other Insurance           Y     0
+685        Private Insurance           Y    12
+686                Uninsured           Y     0
+687                    Asian           Y     7
+688                    Black           Y     2
+689                 Hispanic           Y     8
+690                   Native           Y     0
+691                   Others           Y     2
+692                  Pacific           Y     0
+693                    White           Y    33
+694                  0 to 40           Y     1
+695                    41-65           Y   292
+696                66 to Max           Y   746
+698               CABG+Valve           Y   190
+699            Isolated CABG           Y   753
+700  Other Non-Isolated CABG           Y    96
+701                   Female           Y   269
+702                     Male           Y   770
+703                 Medi-Cal           Y    92
+704                 Medicare           Y   741
+705          Other Insurance           Y    31
+706        Private Insurance           Y   171
+707                Uninsured           Y     4
+708                    Asian           Y   150
+709                    Black           Y    44
+710                 Hispanic           Y   171
+711                   Native           Y     2
+712                   Others           Y    56
+713                  Pacific           Y    14
+714                    White           Y   602
+715                  0 to 40           Y     0
+716                    41-65           Y    35
+717                66 to Max           Y    55
+719               CABG+Valve           Y    15
+720            Isolated CABG           Y    60
+721  Other Non-Isolated CABG           Y    15
+722                   Female           Y    33
+723                     Male           Y    57
+724                 Medi-Cal           Y    17
+725                 Medicare           Y    63
+726          Other Insurance           Y     0
+727        Private Insurance           Y    10
+728                Uninsured           Y     0
+729                    Asian           Y    13
+730                    Black           Y     9
+731                 Hispanic           Y    25
+732                   Native           Y     0
+733                   Others           Y     5
+734                  Pacific           Y     1
+735                    White           Y    37
+736                  0 to 40           Y     0
+737                    41-65           Y    46
+738                66 to Max           Y    94
+740               CABG+Valve           Y    23
+741            Isolated CABG           Y    93
+742  Other Non-Isolated CABG           Y    24
+743                   Female           Y    49
+744                     Male           Y    91
+745                 Medi-Cal           Y    23
+746                 Medicare           Y    97
+747          Other Insurance           Y     1
+748        Private Insurance           Y    19
+749                Uninsured           Y     0
+750                    Asian           Y    21
+751                    Black           Y    10
+752                 Hispanic           Y    40
+753                   Native           Y     0
+754                   Others           Y    10
+755                  Pacific           Y     2
+756                    White           Y    57
+757                  0 to 40           Y     0
+758                    41-65           Y    26
+759                66 to Max           Y    51
+761               CABG+Valve           Y    17
+762            Isolated CABG           Y    48
+763  Other Non-Isolated CABG           Y    12
+764                   Female           Y    26
+765                     Male           Y    51
+766                 Medi-Cal           Y    12
+767                 Medicare           Y    48
+768          Other Insurance           Y     3
+769        Private Insurance           Y    14
+770                Uninsured           Y     0
+771                    Asian           Y    15
+772                    Black           Y     5
+773                 Hispanic           Y    23
+774                   Native           Y     2
+775                   Others           Y     3
+776                  Pacific           Y     1
+777                    White           Y    28
+778                  0 to 40           Y     2
+779                    41-65           Y   156
+780                66 to Max           Y   242
+782               CABG+Valve           Y    92
+783            Isolated CABG           Y   250
+784  Other Non-Isolated CABG           Y    58
+785                   Female           Y   137
+786                     Male           Y   263
+787                 Medi-Cal           Y    57
+788                 Medicare           Y   270
+789          Other Insurance           Y    10
+790        Private Insurance           Y    60
+791                Uninsured           Y     3
+792                    Asian           Y    65
+793                    Black           Y    19
+794                 Hispanic           Y    94
+795                   Native           Y     2
+796                   Others           Y    26
+797                  Pacific           Y     8
+798                    White           Y   186
+799                  0 to 40           Y     3
+800                    41-65           Y    22
+801                66 to Max           Y    62
+803               CABG+Valve           Y    24
+804            Isolated CABG           Y    48
+805  Other Non-Isolated CABG           Y    15
+806                   Female           Y    23
+807                     Male           Y    64
+808                 Medi-Cal           Y    14
+809                 Medicare           Y    64
+810          Other Insurance           Y     2
+811        Private Insurance           Y     7
+812                Uninsured           Y     0
+813                    Asian           Y    17
+814                    Black           Y     2
+815                 Hispanic           Y    22
+816                   Native           Y     1
+817                   Others           Y     4
+818                  Pacific           Y     3
+819                    White           Y    38
+820                  0 to 40           Y     0
+821                    41-65           Y     6
+822                66 to Max           Y     3
+824               CABG+Valve           Y     0
+825            Isolated CABG           Y     8
+826  Other Non-Isolated CABG           Y     1
+827                   Female           Y     3
+828                     Male           Y     6
+829                 Medi-Cal           Y     0
+830                 Medicare           Y     5
+831          Other Insurance           Y     0
+832        Private Insurance           Y     4
+833                Uninsured           Y     0
+834                    Asian           Y     0
+835                    Black           Y     1
+836                 Hispanic           Y     2
+837                   Native           Y     0
+838                   Others           Y     1
+839                  Pacific           Y     0
+840                    White           Y     5
+841                    41-65           Y    33
+842                  Over 65           Y    32
+843                 Under 40           Y     1
+845               CABG+Valve           Y     6
+846            Isolated CABG           Y    56
+847  Other Non-Isolated CABG           Y     4
+848                   Female           Y    27
+849                     Male           Y    39
+850                 Medi-Cal           Y    16
+851                 Medicare           Y    33
+852          Other Insurance           Y     1
+853        Private Insurance           Y    16
+854                Uninsured           Y     0
+855                    Asian           Y     5
+856                    Black           Y     2
+857                 Hispanic           Y    12
+858                   Native           Y     0
+859                   Others           Y     2
+860                  Pacific           Y     1
+861                    White           Y    44
+862                    41-65           Y   260
+863                  Over 65           Y   697
+864                 Under 40           Y     1
+866               CABG+Valve           Y   174
+867            Isolated CABG           Y   684
+868  Other Non-Isolated CABG           Y   100
+869                   Female           Y   261
+870                     Male           Y   697
+871                 Medi-Cal           Y    76
+872                 Medicare           Y   692
+873          Other Insurance           Y    24
+874        Private Insurance           Y   160
+875                Uninsured           Y     6
+876                    Asian           Y   134
+877                    Black           Y    46
+878                 Hispanic           Y   159
+879                   Native           Y     3
+880                   Others           Y    51
+881                  Pacific           Y    13
+882                    White           Y   552
+883                    41-65           Y    23
+884                  Over 65           Y    54
+885                 Under 40           Y     0
+887               CABG+Valve           Y    15
+888            Isolated CABG           Y    47
+889  Other Non-Isolated CABG           Y    15
+890                   Female           Y    30
+891                     Male           Y    47
+892                 Medi-Cal           Y    14
+893                 Medicare           Y    52
+894          Other Insurance           Y     1
+895        Private Insurance           Y     8
+896                Uninsured           Y     2
+897                    Asian           Y     9
+898                    Black           Y     9
+899                 Hispanic           Y    22
+900                   Native           Y     0
+901                   Others           Y     5
+902                  Pacific           Y     1
+903                    White           Y    31
+904                    41-65           Y    32
+905                  Over 65           Y    85
+906                 Under 40           Y     0
+908               CABG+Valve           Y    24
+909            Isolated CABG           Y    71
+910  Other Non-Isolated CABG           Y    22
+911                   Female           Y    45
+912                     Male           Y    72
+913                 Medi-Cal           Y    19
+914                 Medicare           Y    79
+915          Other Insurance           Y     2
+916        Private Insurance           Y    16
+917                Uninsured           Y     1
+918                    Asian           Y    16
+919                    Black           Y    12
+920                 Hispanic           Y    30
+921                   Native           Y     0
+922                   Others           Y     7
+923                  Pacific           Y     1
+924                    White           Y    51
+925                    41-65           Y    22
+926                  Over 65           Y    49
+927                 Under 40           Y     0
+929               CABG+Valve           Y    12
+930            Isolated CABG           Y    48
+931  Other Non-Isolated CABG           Y    11
+932                   Female           Y    26
+933                     Male           Y    45
+934                 Medi-Cal           Y    12
+935                 Medicare           Y    45
+936          Other Insurance           Y     4
+937        Private Insurance           Y    10
+938                Uninsured           Y     0
+939                    Asian           Y     8
+940                    Black           Y     6
+941                 Hispanic           Y    22
+942                   Native           Y     3
+943                   Others           Y     3
+944                  Pacific           Y     1
+945                    White           Y    28
+946                    41-65           Y   128
+947                  Over 65           Y   230
+948                 Under 40           Y     2
+950               CABG+Valve           Y    77
+951            Isolated CABG           Y   219
+952  Other Non-Isolated CABG           Y    64
+953                   Female           Y   115
+954                     Male           Y   245
+955                 Medi-Cal           Y    58
+956                 Medicare           Y   245
+957          Other Insurance           Y    11
+958        Private Insurance           Y    44
+959                Uninsured           Y     2
+960                    Asian           Y    52
+961                    Black           Y    23
+962                 Hispanic           Y    80
+963                   Native           Y     3
+964                   Others           Y    24
+965                  Pacific           Y     7
+966                    White           Y   171
+967                    41-65           Y    24
+968                  Over 65           Y    56
+969                 Under 40           Y     3
+971               CABG+Valve           Y    24
+972            Isolated CABG           Y    45
+973  Other Non-Isolated CABG           Y    14
+974                   Female           Y    21
+975                     Male           Y    62
+976                 Medi-Cal           Y    16
+977                 Medicare           Y    55
+978          Other Insurance           Y     2
+979        Private Insurance           Y     9
+980                Uninsured           Y     1
+981                    Asian           Y    18
+982                    Black           Y     1
+983                 Hispanic           Y    18
+984                   Native           Y     1
+985                   Others           Y     3
+986                  Pacific           Y     3
+987                    White           Y    39
+988                    41-65           Y     9
+989                  Over 65           Y     3
+990                 Under 40           Y     0
+992               CABG+Valve           Y     1
+993            Isolated CABG           Y     9
+994  Other Non-Isolated CABG           Y     2
+995                   Female           Y     4
+996                     Male           Y     8
+997                 Medi-Cal           Y     3
+998                 Medicare           Y     5
+999          Other Insurance           Y     0
+1000       Private Insurance           Y     3
+1001               Uninsured           Y     1
+1002                   Asian           Y     1
+1003                   Black           Y     1
+1004                Hispanic           Y     4
+1005                  Native           Y     0
+1006                  Others           Y     0
+1007                 Pacific           Y     0
+1008                   White           Y     6</code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(raw_data, <span class="fu">aes</span>(<span class="at">x =</span> Strata, <span class="at">y =</span> Count, <span class="at">fill =</span> Strata)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> category, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Counts across Strata for Categories"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Strata"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">"Strata"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="1440"></p>
+</div>
+</div>
 
 
 
