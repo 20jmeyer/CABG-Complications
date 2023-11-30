@@ -2,47 +2,64 @@
 
 ## Description
 
-We found multiple datasets on the California Health and Human Services Agency's (CalHHS) Open Data Portal. In particular, to explore cardiovascular health of different demographics, we found a dataset called "Readmissions for Isolated Coronary Artery Bypass Graft (CABG) Complications". 
+We found multiple datasets on the California Health and Human Services Agency's (CalHHS) Open Data Portal. In particular, to explore cardiovascular health of different demographics, we found a dataset called "Readmissions for Isolated Coronary Artery Bypass Graft (CABG) Complications". [^index-1] 
 
-https://data.chhs.ca.gov/dataset/readmissions-for-isolated-coronary-artery-bypass-graft-cabg-complications
+[^index-1]: [Link to Data](https://data.chhs.ca.gov/dataset/readmissions-for-isolated-coronary-artery-bypass-graft-cabg-complications)
 
-The dataset includes the latest publicly available data from the California Coronary Artery Bypass Graft (CABG) Outcomes Reporting Program (CCORP), used for its annual performance reporting requirements. Every six months, hospitals submit clinical data through a secure online web application to the Office of Statewide Health Planning and Development (OSHPD). A "Data Contact" person at each hospital acts as a liaison between CCORP and cardiac surgeons. Once the data is finalized and officially submitted to the state, CCORP requires surgeons to review their data and sign a "Surgeon Certification Form." This certification affirms that surgeons have reviewed their data, ensuring the accuracy and completeness of the cases assigned to them.
+The dataset includes the latest publicly available data from the California Coronary Artery Bypass Graft (CABG) Outcomes Reporting Program (CCORP), used for its annual performance reporting requirements. Every six months, hospitals submit clinical data through a secure online web application to the Office of Statewide Health Planning and Development (OSHPD). A "Data Contact" person at each hospital acts as a liaison between CCORP and cardiac surgeons. Once the data is finalized and officially submitted to the state, CCORP requires surgeons to review their data and sign a "Surgeon Certification Form." This certification affirms that surgeons have reviewed their data, ensuring the accuracy and completeness of the cases assigned to them. [^index-2] 
 
-https://hcai.ca.gov/wp-content/uploads/2020/10/Cardiac-Surgeons-Guide-to-CCORP.pdf
+[^index-2]: [Source and Procedure of Data Collection](https://hcai.ca.gov/wp-content/uploads/2020/10/Cardiac-Surgeons-Guide-to-CCORP.pdf)
 
 The initial dataset was created two years ago but got updated as recently as 2 weeks ago. It is unclear how long it will take for more recent years to get added to the dataset. 
 
 The data is published as a CSV file which makes importing it a simple task. We can just use R's built-in read.csv function to import the data after downloading the dataset onto our local computer. We can see that there are 1008 observations (rows) and 7 variables (columns) in the data frame after importing the dataset.
 
+```{r message=FALSE, warning=FALSE}
+
+library(knitr)
+library(dplyr)
+
+```
+
 ```{r}
-cab = read.csv("cab.csv")
+cab = read.csv("cab.csv") |> rename("Complication" = complication,"Category" = category,"Readmission" = readmission, "Percentage Readmitted"=Yes)
 str(cab)
 ```
 
 Each row contains the count of a complication, given a certain category and strata within that category. This can be seen clearly by printing out the first couple of rows:
 
-```{r}
-head(cab)
+```{r, results = 'asis'}
+kable(cab[1:6, ], caption = "Head of our data")
 ```
 One issue we can see right away is that some strata do not have any counts for complications.
-```{r}
+```{r, results = 'asis'}
 library(dplyr)
 filtered = cab |> filter(Count == 0)
-head(filtered)
+kable(filtered[1:6, ], caption = "Head of our filtered data with 0 counts")
 ```
-From this selection, we can see that there are certain groups that are either underrepresented or are generally less at risk for heart disease and therefore less in need of the CABG surgical procedure. It makes sense that the youngest age group - "0 to 40" - is less at risk than older age groups but we would still expect perhaps a few rare cases of heart disease. Additionally, we can see that patients that are uninsured seem to have fewer instances of heart disease. This seems paradoxical, as uninsured patients are generally more at risk for health issues and worse health outcomes than insured patients. However, it is also known that "uninsured individuals are less likely than those with insurance to receive preventive care and services for major health conditions and chronic diseases".
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2881446/
-https://www.kff.org/uninsured/issue-brief/key-facts-about-the-uninsured-population/
+From this selection, we can see that there are certain groups that are either underrepresented or are generally less at risk for heart disease and therefore less in need of the CABG surgical procedure. It makes sense that the youngest age group - "0 to 40" - is less at risk than older age groups but we would still expect perhaps a few rare cases of heart disease. Similarly, we would also expect there to be some cases of heart disease for the Native American group, but it is likely an underrepresented population in this data. [^index-3] Additionally, we can see that patients that are uninsured seem to have fewer instances of heart disease. This seems paradoxical, as uninsured patients are generally more at risk for health issues and worse health outcomes than insured patients. [^index-4] However, it is also known that "uninsured individuals are less likely than those with insurance to receive preventive care and services for major health conditions and chronic diseases". [^index-5]
 
-Similarly, we would also expect there to be some cases of heart disease for the Native American group, but it is likely an underrepresented population in this data.
+
+[^index-3]: [CDC Report on Heart Disease Prevalence](https://www.cdc.gov/nchs/hus/topics/heart-disease-prevalence.htm#:~:text=Heart%20disease%20is%20the%20leading,and%20Table%20LCODAge%20%5B1%5D)
+[^index-4]: [Kaiser Report on Uninsured Health Outcomes](https://www.kff.org/uninsured/issue-brief/key-facts-about-the-uninsured-population/)
+[^index-5]: [NIH Paper on Uninsured Access to Healthcare](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2881446/)
+
+
+
 
 ## Research Plan
 
-To determine the most common complications associated with CABG, we can use the data to identify and visualize the most frequent complications by focusing on the "Complication" variable.
+We have mostly nominal categorical data with discrete counts.
 
-To address which complications most often lead to readmission to the hospital, we will examine the relationship between complications and readmission. We can create a visual such as a bar chart to display this.
+Our first goal is to examine how complications, readmissions, and demographics change over the course of the three years that we have data for. In order to analyze this, we will compare the counts for each categorical variable over each year. Given that we only have three years of data, we expect to see relatively little change over time.
+
+To determine the most common complications associated with CABG, we can use the data to identify and visualize the most frequent complications by focusing on the `Complication` variable. This visualization can be done with a simple bar chart.
+
+To address which complications most often lead to readmission to the hospital, we will examine the relationship between complications and readmission. We can create a visual such as a bar chart or an alluvial plot to display this. 
 
 In order to understand how demographic data impacts the likelihood to face a complication from a CABG procedure, we will use the chi-squared test. We can also visualize this with a mosaic plot.
+
+
 
 Finally, to investigate how demographic data impacts the likelihood of readmission given any particular complication, we can use another mosaic plot.
 
@@ -61,10 +78,33 @@ missing_data <- cab %>%
   pivot_longer(-row_id, names_to="feature", values_to="values") 
 
 
+
 ggplot(missing_data, aes(x = feature, y = row_id, fill = values)) +
   geom_tile(color = "white") +
   scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "green"),labels = c("Missing", "Not Missing"),limits = c("TRUE", "FALSE"), guide_legend(title = ""))+
   labs(title = "Heatmap of Missing Values", x = "Feature", y = "Row ID") +
-  theme_minimal()
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45,hjust=1))
+```
+
+```{r}
+is_null <- function(x) {
+  ifelse(is.na(x), TRUE, FALSE)
+}
+
+new_wide = cab |> mutate(row_id=row_number()) |> pivot_wider(names_from = Category, values_from = Strata)
+
+missing_wide_data = new_wide |>  
+  mutate_all(~is_null(.)) |> mutate(row_id=row_number()) %>%
+  pivot_longer(-row_id, names_to="feature", values_to="values") |> subset(feature !="All") |> mutate(feature = factor(feature, levels=c("Age", "CABG type","Gender","PayorType" , "Race", "Complication","Count","Percentage Readmitted","Readmission","Year")))
+
+
+ggplot(missing_wide_data, aes(x = feature, y = row_id, fill = values)) +
+  geom_tile(color = "white") +
+  scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "green"),labels = c("Missing", "Not Missing"),limits = c("TRUE", "FALSE"), guide_legend(title = ""))+
+  labs(title = "Heatmap of Missing Values after Pivot Wider", x = "Feature", y = "Row ID") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45,hjust=1))
 
 ```
+However, we can see that the data is formatted in a way that makes it impossible to see the relationship between different variables. This is likely due to de-identification protocols which is a standard practice for HIPAA compliance. HIPAA compliance is important so that publicly available patient data is not traceable back to a specific person. Our data for instance does not have entries that relate specific complications to both `Age` and `Race` at the same time. Instead we only have demographic data for each complication, but no overlap in types of demographics which are called `Strata` in our data. The plot above shows how each entry in our data lacks those relationships. We can see that each row always has an entry for `Complication`, `Count`, `Percentage Readmitted`, `Readmission`, and `Year`.

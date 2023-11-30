@@ -204,101 +204,216 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="description" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="description"><span class="header-section-number">2.1</span> Description</h2>
-<p>We found multiple datasets on the California Health and Human Services Agency’s (CalHHS) Open Data Portal. In particular, to explore cardiovascular health of different demographics, we found a dataset called “Readmissions for Isolated Coronary Artery Bypass Graft (CABG) Complications”.</p>
-<p>https://data.chhs.ca.gov/dataset/readmissions-for-isolated-coronary-artery-bypass-graft-cabg-complications</p>
-<p>The dataset includes the latest publicly available data from the California Coronary Artery Bypass Graft (CABG) Outcomes Reporting Program (CCORP), used for its annual performance reporting requirements. Every six months, hospitals submit clinical data through a secure online web application to the Office of Statewide Health Planning and Development (OSHPD). A “Data Contact” person at each hospital acts as a liaison between CCORP and cardiac surgeons. Once the data is finalized and officially submitted to the state, CCORP requires surgeons to review their data and sign a “Surgeon Certification Form.” This certification affirms that surgeons have reviewed their data, ensuring the accuracy and completeness of the cases assigned to them.</p>
-<p>https://hcai.ca.gov/wp-content/uploads/2020/10/Cardiac-Surgeons-Guide-to-CCORP.pdf</p>
+<p>We found multiple datasets on the California Health and Human Services Agency’s (CalHHS) Open Data Portal. In particular, to explore cardiovascular health of different demographics, we found a dataset called “Readmissions for Isolated Coronary Artery Bypass Graft (CABG) Complications”. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>The dataset includes the latest publicly available data from the California Coronary Artery Bypass Graft (CABG) Outcomes Reporting Program (CCORP), used for its annual performance reporting requirements. Every six months, hospitals submit clinical data through a secure online web application to the Office of Statewide Health Planning and Development (OSHPD). A “Data Contact” person at each hospital acts as a liaison between CCORP and cardiac surgeons. Once the data is finalized and officially submitted to the state, CCORP requires surgeons to review their data and sign a “Surgeon Certification Form.” This certification affirms that surgeons have reviewed their data, ensuring the accuracy and completeness of the cases assigned to them. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>The initial dataset was created two years ago but got updated as recently as 2 weeks ago. It is unclear how long it will take for more recent years to get added to the dataset.</p>
 <p>The data is published as a CSV file which makes importing it a simple task. We can just use R’s built-in read.csv function to import the data after downloading the dataset onto our local computer. We can see that there are 1008 observations (rows) and 7 variables (columns) in the data frame after importing the dataset.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cab <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"cab.csv"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cab <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"cab.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="st">"Complication"</span> <span class="ot">=</span> complication,<span class="st">"Category"</span> <span class="ot">=</span> category,<span class="st">"Readmission"</span> <span class="ot">=</span> readmission, <span class="st">"Percentage Readmitted"</span><span class="ot">=</span>Yes)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   1008 obs. of  7 variables:
- $ Year        : chr  "2018-2019" "2018-2019" "2018-2019" "2018-2019" ...
- $ complication: chr  "Deep Sternal Infection" "Deep Sternal Infection" "Deep Sternal Infection" "Deep Sternal Infection" ...
- $ category    : chr  "Age" "Age" "Age" "All" ...
- $ Strata      : chr  "0 to 40" "41-65" "66 to Max" "All" ...
- $ readmission : chr  "N" "N" "N" "N" ...
- $ Yes         : num  0 0.00109 0.00081 0.00093 0.00169 0.00082 0.00075 0.00122 0.00085 0.00162 ...
- $ Count       : int  0 11 11 22 5 16 1 6 16 1 ...</code></pre>
+ $ Year                 : chr  "2018-2019" "2018-2019" "2018-2019" "2018-2019" ...
+ $ Complication         : chr  "Deep Sternal Infection" "Deep Sternal Infection" "Deep Sternal Infection" "Deep Sternal Infection" ...
+ $ Category             : chr  "Age" "Age" "Age" "All" ...
+ $ Strata               : chr  "0 to 40" "41-65" "66 to Max" "All" ...
+ $ Readmission          : chr  "N" "N" "N" "N" ...
+ $ Percentage Readmitted: num  0 0.00109 0.00081 0.00093 0.00169 0.00082 0.00075 0.00122 0.00085 0.00162 ...
+ $ Count                : int  0 11 11 22 5 16 1 6 16 1 ...</code></pre>
 </div>
 </div>
 <p>Each row contains the count of a complication, given a certain category and strata within that category. This can be seen clearly by printing out the first couple of rows:</p>
-<div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(cab[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, ], <span class="at">caption =</span> <span class="st">"Head of our data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>       Year           complication  category        Strata readmission     Yes
-1 2018-2019 Deep Sternal Infection       Age       0 to 40           N 0.00000
-2 2018-2019 Deep Sternal Infection       Age         41-65           N 0.00109
-3 2018-2019 Deep Sternal Infection       Age     66 to Max           N 0.00081
-4 2018-2019 Deep Sternal Infection       All           All           N 0.00093
-5 2018-2019 Deep Sternal Infection CABG type    CABG+Valve           N 0.00169
-6 2018-2019 Deep Sternal Infection CABG type Isolated CABG           N 0.00082
-  Count
-1     0
-2    11
-3    11
-4    22
-5     5
-6    16</code></pre>
-</div>
+<div class="cell-output-display">
+<table class="table">
+<caption>Head of our data</caption>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 23%">
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 22%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Year</th>
+<th style="text-align: left;">Complication</th>
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Strata</th>
+<th style="text-align: left;">Readmission</th>
+<th style="text-align: right;">Percentage Readmitted</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Deep Sternal Infection</td>
+<td style="text-align: left;">Age</td>
+<td style="text-align: left;">0 to 40</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0.00000</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Deep Sternal Infection</td>
+<td style="text-align: left;">Age</td>
+<td style="text-align: left;">41-65</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0.00109</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Deep Sternal Infection</td>
+<td style="text-align: left;">Age</td>
+<td style="text-align: left;">66 to Max</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0.00081</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Deep Sternal Infection</td>
+<td style="text-align: left;">All</td>
+<td style="text-align: left;">All</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0.00093</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Deep Sternal Infection</td>
+<td style="text-align: left;">CABG type</td>
+<td style="text-align: left;">CABG+Valve</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0.00169</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Deep Sternal Infection</td>
+<td style="text-align: left;">CABG type</td>
+<td style="text-align: left;">Isolated CABG</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0.00082</td>
+<td style="text-align: right;">16</td>
+</tr>
+</tbody>
+</table>
 </div>
 <p>One issue we can see right away is that some strata do not have any counts for complications.</p>
-<div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>filtered <span class="ot">=</span> cab <span class="sc">|&gt;</span> <span class="fu">filter</span>(Count <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(filtered[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, ], <span class="at">caption =</span> <span class="st">"Head of our filtered data with 0 counts"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
+<div class="cell-output-display">
+<table class="table">
+<caption>Head of our filtered data with 0 counts</caption>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 29%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 22%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Year</th>
+<th style="text-align: left;">Complication</th>
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Strata</th>
+<th style="text-align: left;">Readmission</th>
+<th style="text-align: right;">Percentage Readmitted</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Deep Sternal Infection</td>
+<td style="text-align: left;">Age</td>
+<td style="text-align: left;">0 to 40</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Deep Sternal Infection</td>
+<td style="text-align: left;">PayorType</td>
+<td style="text-align: left;">Uninsured</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Deep Sternal Infection</td>
+<td style="text-align: left;">Race</td>
+<td style="text-align: left;">Native</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Post-Operative Dialysis</td>
+<td style="text-align: left;">PayorType</td>
+<td style="text-align: left;">Uninsured</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Post-Operative Dialysis</td>
+<td style="text-align: left;">Race</td>
+<td style="text-align: left;">Native</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">Post-Operative Renal Failure</td>
+<td style="text-align: left;">PayorType</td>
+<td style="text-align: left;">Uninsured</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>filtered <span class="ot">=</span> cab <span class="sc">|&gt;</span> <span class="fu">filter</span>(Count <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>       Year                 complication  category    Strata readmission Yes
-1 2018-2019       Deep Sternal Infection       Age   0 to 40           N   0
-2 2018-2019       Deep Sternal Infection PayorType Uninsured           N   0
-3 2018-2019       Deep Sternal Infection      Race    Native           N   0
-4 2018-2019      Post-Operative Dialysis PayorType Uninsured           N   0
-5 2018-2019      Post-Operative Dialysis      Race    Native           N   0
-6 2018-2019 Post-Operative Renal Failure PayorType Uninsured           N   0
-  Count
-1     0
-2     0
-3     0
-4     0
-5     0
-6     0</code></pre>
-</div>
-</div>
-<p>From this selection, we can see that there are certain groups that are either underrepresented or are generally less at risk for heart disease and therefore less in need of the CABG surgical procedure. It makes sense that the youngest age group - “0 to 40” - is less at risk than older age groups but we would still expect perhaps a few rare cases of heart disease. Additionally, we can see that patients that are uninsured seem to have fewer instances of heart disease. This seems paradoxical, as uninsured patients are generally more at risk for health issues and worse health outcomes than insured patients. However, it is also known that “uninsured individuals are less likely than those with insurance to receive preventive care and services for major health conditions and chronic diseases”. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2881446/ https://www.kff.org/uninsured/issue-brief/key-facts-about-the-uninsured-population/</p>
-<p>Similarly, we would also expect there to be some cases of heart disease for the Native American group, but it is likely an underrepresented population in this data.</p>
+<p>From this selection, we can see that there are certain groups that are either underrepresented or are generally less at risk for heart disease and therefore less in need of the CABG surgical procedure. It makes sense that the youngest age group - “0 to 40” - is less at risk than older age groups but we would still expect perhaps a few rare cases of heart disease. Similarly, we would also expect there to be some cases of heart disease for the Native American group, but it is likely an underrepresented population in this data. <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Additionally, we can see that patients that are uninsured seem to have fewer instances of heart disease. This seems paradoxical, as uninsured patients are generally more at risk for health issues and worse health outcomes than insured patients. <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> However, it is also known that “uninsured individuals are less likely than those with insurance to receive preventive care and services for major health conditions and chronic diseases”. <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 </section>
 <section id="research-plan" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="research-plan"><span class="header-section-number">2.2</span> Research Plan</h2>
-<p>To determine the most common complications associated with CABG, we can use the data to identify and visualize the most frequent complications by focusing on the “Complication” variable.</p>
-<p>To address which complications most often lead to readmission to the hospital, we will examine the relationship between complications and readmission. We can create a visual such as a bar chart to display this.</p>
+<p>We have mostly nominal categorical data with discrete counts.</p>
+<p>Our first goal is to examine how complications, readmissions, and demographics change over the course of the three years that we have data for. In order to analyze this, we will compare the counts for each categorical variable over each year. Given that we only have three years of data, we expect to see relatively little change over time.</p>
+<p>To determine the most common complications associated with CABG, we can use the data to identify and visualize the most frequent complications by focusing on the <code>Complication</code> variable. This visualization can be done with a simple bar chart.</p>
+<p>To address which complications most often lead to readmission to the hospital, we will examine the relationship between complications and readmission. We can create a visual such as a bar chart or an alluvial plot to display this.</p>
 <p>In order to understand how demographic data impacts the likelihood to face a complication from a CABG procedure, we will use the chi-squared test. We can also visualize this with a mosaic plot.</p>
 <p>Finally, to investigate how demographic data impacts the likelihood of readmission given any particular complication, we can use another mosaic plot.</p>
 </section>
@@ -308,28 +423,66 @@ Attaching package: 'dplyr'</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>missing_data <span class="ot">&lt;-</span> cab <span class="sc">%&gt;%</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="sc">~</span><span class="fu">is.na</span>(.)) <span class="sc">|&gt;</span> </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_id=</span><span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>row_id, <span class="at">names_to=</span><span class="st">"feature"</span>, <span class="at">values_to=</span><span class="st">"values"</span>) </span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(missing_data, <span class="fu">aes</span>(<span class="at">x =</span> feature, <span class="at">y =</span> row_id, <span class="at">fill =</span> values)) <span class="sc">+</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"green"</span>),<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Missing"</span>, <span class="st">"Not Missing"</span>),<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span>, <span class="st">"FALSE"</span>), <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">""</span>))<span class="sc">+</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Heatmap of Missing Values"</span>, <span class="at">x =</span> <span class="st">"Feature"</span>, <span class="at">y =</span> <span class="st">"Row ID"</span>) <span class="sc">+</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>missing_data <span class="ot">&lt;-</span> cab <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="sc">~</span><span class="fu">is.na</span>(.)) <span class="sc">|&gt;</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_id=</span><span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>row_id, <span class="at">names_to=</span><span class="st">"feature"</span>, <span class="at">values_to=</span><span class="st">"values"</span>) </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(missing_data, <span class="fu">aes</span>(<span class="at">x =</span> feature, <span class="at">y =</span> row_id, <span class="at">fill =</span> values)) <span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"green"</span>),<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Missing"</span>, <span class="st">"Not Missing"</span>),<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span>, <span class="st">"FALSE"</span>), <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">""</span>))<span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Heatmap of Missing Values"</span>, <span class="at">x =</span> <span class="st">"Feature"</span>, <span class="at">y =</span> <span class="st">"Row ID"</span>) <span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>,<span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="data_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="data_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>is_null <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(<span class="fu">is.na</span>(x), <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>new_wide <span class="ot">=</span> cab <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">row_id=</span><span class="fu">row_number</span>()) <span class="sc">|&gt;</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Category, <span class="at">values_from =</span> Strata)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>missing_wide_data <span class="ot">=</span> new_wide <span class="sc">|&gt;</span>  </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="sc">~</span><span class="fu">is_null</span>(.)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">row_id=</span><span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>row_id, <span class="at">names_to=</span><span class="st">"feature"</span>, <span class="at">values_to=</span><span class="st">"values"</span>) <span class="sc">|&gt;</span> <span class="fu">subset</span>(feature <span class="sc">!=</span><span class="st">"All"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">feature =</span> <span class="fu">factor</span>(feature, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"Age"</span>, <span class="st">"CABG type"</span>,<span class="st">"Gender"</span>,<span class="st">"PayorType"</span> , <span class="st">"Race"</span>, <span class="st">"Complication"</span>,<span class="st">"Count"</span>,<span class="st">"Percentage Readmitted"</span>,<span class="st">"Readmission"</span>,<span class="st">"Year"</span>)))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(missing_wide_data, <span class="fu">aes</span>(<span class="at">x =</span> feature, <span class="at">y =</span> row_id, <span class="at">fill =</span> values)) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"green"</span>),<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Missing"</span>, <span class="st">"Not Missing"</span>),<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span>, <span class="st">"FALSE"</span>), <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">""</span>))<span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Heatmap of Missing Values after Pivot Wider"</span>, <span class="at">x =</span> <span class="st">"Feature"</span>, <span class="at">y =</span> <span class="st">"Row ID"</span>) <span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>,<span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="data_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>However, we can see that the data is formatted in a way that makes it impossible to see the relationship between different variables. This is likely due to de-identification protocols which is a standard practice for HIPAA compliance. HIPAA compliance is important so that publicly available patient data is not traceable back to a specific person. Our data for instance does not have entries that relate specific complications to both <code>Age</code> and <code>Race</code> at the same time. Instead we only have demographic data for each complication, but no overlap in types of demographics which are called <code>Strata</code> in our data. The plot above shows how each entry in our data lacks those relationships. We can see that each row always has an entry for <code>Complication</code>, <code>Count</code>, <code>Percentage Readmitted</code>, <code>Readmission</code>, and <code>Year</code>.</p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><a href="https://data.chhs.ca.gov/dataset/readmissions-for-isolated-coronary-artery-bypass-graft-cabg-complications">Link to Data</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://hcai.ca.gov/wp-content/uploads/2020/10/Cardiac-Surgeons-Guide-to-CCORP.pdf">Source and Procedure of Data Collection</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.cdc.gov/nchs/hus/topics/heart-disease-prevalence.htm#:~:text=Heart%20disease%20is%20the%20leading,and%20Table%20LCODAge%20%5B1%5D">CDC Report on Heart Disease Prevalence</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.kff.org/uninsured/issue-brief/key-facts-about-the-uninsured-population/">Kaiser Report on Uninsured Health Outcomes</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2881446/">NIH Paper on Uninsured Access to Healthcare</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
