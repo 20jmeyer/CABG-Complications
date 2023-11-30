@@ -1,5 +1,4 @@
 # Data
-
 ## Description
 
 We found multiple datasets on the California Health and Human Services Agency's (CalHHS) Open Data Portal. In particular, to explore cardiovascular health of different demographics, we found a dataset called "Readmissions for Isolated Coronary Artery Bypass Graft (CABG) Complications". [^index-1] 

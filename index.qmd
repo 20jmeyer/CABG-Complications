@@ -1,1 +1,35 @@
 # Introduction
+
+## Significance of CABG
+
+CABG (pronounced "cabbage") is a kind of surgery to reroute blood around a blockage caused by heart disease in the heart through a new artery. Also known as single/double/triple bypass surgery, this procedure is used to alleviate symptoms of heart disease and may prolong life expectancy. It can be elective or emergency based if the patient has suffered a heart attack. [^index-1] While it is not the only procedure or treatment for heart disease, it is the most common type of heart surgery in the United States with over 300,000 patients undergoing the procedure a year. [^index-2] The actual surgery uses a graft, a surgically removed piece of a vein from somewhere else in the body (usually the heart), to bypass the blockage by connecting to the proper arteries and veins that the blocked artery would have used.
+
+[^index-1]: [Mayo Clinic Article on CABG](https://www.mayoclinic.org/tests-procedures/coronary-bypass-surgery/about/pac-20384589)
+
+[^index-2]: [Cedars-Sinai Article on Traditional Heart Surgery](https://www.cedars-sinai.org/programs/heart/clinical/cardiac-surgery/traditional.html#:~:text=Coronary%20artery%20bypass%20graft%20surgery,the%20United%20States%20each%20year.)
+
+## CABG Complications
+
+As of 2021, heart disease continues to be the leading cause of death in the United States over cancer and COVID-19. [^index-3] It is essential, therefore, to understand and classify the treatment procedures for the constant improvement and effectivity of surgeries that treat such a lethal disease. As with any procedure, there are risks and complications that can impact the potentially life-saving or life-improving effects of the surgery. Further, for certain patients, the surgery may be elective. Thus, it is even more critical to understand the complications associated with CABG.
+
+[^index-3]: [CDC Statistics on Leading Causes of Death in the US](https://www.cdc.gov/nchs/fastats/leading-causes-of-death.htm)
+
+Up to 14% of patients report to the emergency room with post-operative complications. [^index-4] These readmission frequencies to the hospital are helpful metrics to make conclusions about the overall riskiness of a certain surgery as well as the quality of the care the patient originally received during the surgery. As such, an important part of any study of the riskiness of a surgery not only should include complications, but also the readmission statistics for the surgery. With access to recent data, it is necessary to evaluate current trends in readmissions from complications from CABG procedures.
+
+[^index-4]: [NIH Paper on Coronary artery bypass graft surgery complications](https://pubmed.ncbi.nlm.nih.gov/30217621/)
+
+## Research Questions
+
+To briefly discuss our data, we will explore a dataset that reports a subset of complications and readmission counts associated with CABG surgeries in the state of California over the years of 2018-2021. This dataset is one of the only de-identified datasets with age, race, and gender data included with a fairly exhaustive categorization of the various complications as well as information about how many of each demographic did or did not face these complications and subsequent readmission. With the context of the surgery's significance and this data, we hope to answer the following questions:
+
+-   Does our data change over time in terms of frequency of complications, readmissions, and demographics/medical information?
+
+-   What are the most common complications associated with CABG?
+
+-   What complications most often lead to readmission to the hospital?
+
+-   Does your demographic data and medical information impact your likelihood to face a complication from a CABG procedure?
+
+-   Does your demographic data and medical information impact your likelihood that you will be readmitted to the hospital regardless of complication?
+
+-   Does your demographic data, medical information, and complication impact your likelihood that you will be readmitted to the hospital?
