@@ -18,6 +18,7 @@ The data is published as a CSV file, which makes importing it a simple task. We 
 
 library(knitr)
 library(dplyr)
+library(redav)
 
 ```
 
@@ -104,7 +105,20 @@ ggplot(missing_wide_data, aes(x = feature, y = row_id, fill = values)) +
   labs(title = "Heatmap of Missing Values after Pivot Wider", x = "Feature", y = "Row ID") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45,hjust=1))
+```
+However, we can see that the data is formatted in a way that makes it impossible to see the relationship between different variables. This is likely due to de-identification protocols which is a standard practice for HIPAA compliance. HIPAA compliance is important so that publicly available patient data is not traceable back to a specific person. Our data for instance does not have entries that relate specific complications to both `Age` and `Race` at the same time. Instead we only have demographic data for each complication, but no overlap in types of demographics which are called `Strata` in our data. The plot above shows how each entry in our data lacks those relationships. We can see that each row always has an entry for `Complication`, `Count`, `Percentage Readmitted`, `Readmission`, and `Year`.
 
+Using the 'redav' package, we can see the same patterns that we observed above:
+
+
+```{r}
+#| fig.width: 12
+#| fig.height: 9
+
+cabg = cab |> subset(Category !="All")
+wide_cabg = new_wide |> rename("Comp" = Complication, "Perc.Readmit" = `Percentage Readmitted`, "Readmitted"= Readmission) |> subset(select = -c(All))
+plot_missing(cabg, percent = TRUE)
+plot_missing(wide_cabg, percent = TRUE)
 ```
 
-However, we can see that the data is formatted in a way that makes it impossible to see the relationship between different variables. This is likely due to de-identification protocols which is a standard practice for HIPAA compliance. HIPAA compliance is important so that publicly available patient data is not traceable back to a specific person. Our data for instance does not have entries that relate specific complications to both `Age` and `Race` at the same time. Instead we only have demographic data for each complication, but no overlap in types of demographics which are called `Strata` in our data. The plot above shows how each entry in our data lacks those relationships. We can see that each row always has an entry for `Complication`, `Count`, `Percentage Readmitted`, `Readmission`, and `Year`.
+
