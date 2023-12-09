@@ -8,15 +8,22 @@ library(RColorBrewer)
 options(dplyr.summarise.inform = FALSE)
 
 cab = read.csv("cab.csv")
+cab = cab %>% mutate(Strata = factor(Strata)) %>% mutate(Strata = fct_recode(Strata, "Over 65" = "66 to Max", "Under 40" = "0 to 40"))
+```
+
+
+```{r}
 cab_counts = cab %>% arrange(Year, complication)
 head(cab_counts)
 ```
+
+
 
 # Question 1: Does our data change over time in terms of frequency of complications, readmissions, and demographics/medical information?
 ```{r}
 complication_counts = cab_counts %>% group_by(Year, complication) %>% summarise(Freq=sum(Count))
 readmission_counts = cab_counts %>% group_by(Year, readmission) %>% summarise(Freq=sum(Count))
-strata_counts = cab_counts %>% group_by(Year, category, Strata) %>% summarise(Freq=sum(Count))
+strata_counts = cab_counts %>% group_by(Year, category, Strata) %>% summarise(Freq=sum(Count)) %>% subset(category != "All")
 strata_counts
 ```
 
@@ -39,16 +46,18 @@ ggplot(readmission_counts, aes(x=Year, y=Freq, fill=readmission)) +
 ```
 
 ```{r fig.height=6, fig.weight=6}
-ggplot(strata_counts %>% subset(category != "All"), aes(x=Year, y=Freq, fill=Strata)) +
-  geom_bar(stat='identity', position='dodge') +
-  facet_wrap(~ category) +
-  labs(title="Counts of Strata over the Years", y="Count") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+for (c in unique(strata_counts$category)) {
+  print(ggplot(strata_counts %>% subset(category == c), aes(x=Year, y=Freq, fill=Strata)) +
+    geom_bar(stat='identity', position='dodge') +
+    scale_fill_brewer(c, palette="Dark2") +
+    labs(title=paste(paste("Counts of", c), "over the Years"), y="Count") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)))
+}
 ```
 
-
+# Question 2: What are the most common complications associated with CABG?
 ```{r}
-
+complication_counts %>% group_by(complication) %>% summarize(Freq=sum(Freq))
 ```
 
 
