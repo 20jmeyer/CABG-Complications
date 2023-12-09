@@ -5,55 +5,52 @@ library(tidyverse)
 library(dplyr)
 library(ggalluvial)
 library(RColorBrewer)
+options(dplyr.summarise.inform = FALSE)
 
 cab = read.csv("cab.csv")
-str(cab)
-head(cab)
+cab_counts = cab %>% arrange(Year, complication)
+head(cab_counts)
 ```
 
+# Question 1: Does our data change over time in terms of frequency of complications, readmissions, and demographics/medical information?
 ```{r}
-cab_counts = cab %>% subset(category=="All") %>% arrange(Year, complication) %>% select(-c(category, Strata))
-```
-
-```{r}
-alluvial_counts = cab_counts %>% group_by(Year, complication) %>% summarise(Freq=sum(Count))
+complication_counts = cab_counts %>% group_by(Year, complication) %>% summarise(Freq=sum(Count))
 readmission_counts = cab_counts %>% group_by(Year, readmission) %>% summarise(Freq=sum(Count))
-```
-
-
-
-```{r}
-ggplot(alluvial_counts, aes(x=Year, y=Freq, alluvium=complication, fill=complication, label=complication)) + 
-  scale_fill_brewer(type = "qual", palette = "Set2") +
-  geom_flow(stat = "alluvium", width=0) +
-  theme_minimal()
-```
-
-
-```{r}
-ggplot(readmission_counts, aes(x=Year, y=Freq, alluvium=readmission, fill=readmission, label=readmission)) + 
-  scale_fill_brewer(type = "qual", palette = "Set2") +
-  geom_flow(stat = "alluvium", width=0) +
-  theme_minimal()
+strata_counts = cab_counts %>% group_by(Year, category, Strata) %>% summarise(Freq=sum(Count))
+strata_counts
 ```
 
 ```{r}
-raw_data = cab %>% subset(category!="All") %>% select(-Yes)
-raw_data
+ggplot(complication_counts, aes(x=Year, y=Freq, fill=complication)) +
+  geom_bar(stat='identity', position='dodge') +
+  scale_fill_brewer(palette="Dark2") +
+  labs(title="Counts of Complications over the Years", y="Count")
+ggplot(complication_counts, aes(x=Year, y=log10(Freq), fill=complication)) +
+  geom_bar(stat='identity', position='dodge') +
+  scale_fill_brewer(palette="Dark2") +
+  labs(title="Log Counts of Complications over the Years", y="Log Count")
 ```
 
-```{r fig.height=10, fig.width=15}
-ggplot(raw_data, aes(x = Strata, y = Count, fill = Strata)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap(~ category, scales = "free") +
-  labs(title = "Counts across Strata for Categories",
-       x = "Strata", y = "Count") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  guides(fill = guide_legend(title = "Strata"))
+```{r}
+ggplot(readmission_counts, aes(x=Year, y=Freq, fill=readmission)) +
+  geom_bar(stat='identity', position='dodge') +
+  scale_fill_brewer(palette="Dark2") +
+  labs(title="Counts of Readmissions over the Years", y="Count")
+```
+
+```{r fig.height=6, fig.weight=6}
+ggplot(strata_counts %>% subset(category != "All"), aes(x=Year, y=Freq, fill=Strata)) +
+  geom_bar(stat='identity', position='dodge') +
+  facet_wrap(~ category) +
+  labs(title="Counts of Strata over the Years", y="Count") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 
 ```{r}
 
 ```
+
+
+
+
