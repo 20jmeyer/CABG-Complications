@@ -277,7 +277,7 @@ function UpdateColumnGroups(newIndex) {
         yScales = contingencyTables[newIndex][0].map((col, i) =>
           d3.scaleLinear().domain([0, colSums[i]]).range([0, height])
         );
-        console.log(contingencyTables[newIndex][0])
+
         sums = extractColumnCumulativeSums(
           contingencyTables[currentTableIndex]
         );
@@ -289,10 +289,8 @@ function UpdateColumnGroups(newIndex) {
 
         columnGroups.each(function (d, i) {
           let currentColumnGroup = d3.select(this);
-          console.log(columnGroups.exit())
-          if (currentColumnGroup in columnGroups.exit()){
-            console.log("in exit");
-          }
+
+
           let cells = currentColumnGroup
             .selectAll("rect")
             .data(transposedArray[i]);
@@ -308,7 +306,7 @@ function UpdateColumnGroups(newIndex) {
                 0
               );
               if (i < yScales.length){
-                console.log(i, yScales.length)
+
               return yScales[i](sumOfSlice);
               }
               else{
