@@ -1,9 +1,9 @@
-"","Under 40","41-65","Over 65"
-"Deep Sternal Infection",2,107,120
-"Post-Operative Atrial Fibrillation",38,6446,14735
-"Post-Operative Dialysis",3,321,745
-"Post-Operative Renal Failure",7,513,1140
-"Post-Operative Stroke",10,380,777
-"Prolonged Ventilation",56,2130,3320
-"Re-Operative for Bleed",14,540,959
-"Reintervention for Myocardial Ischemia",0,87,100
+"","41-65","Over 65"
+"Deep Sternal Infection",107,120
+"Post-Operative Atrial Fibrillation",6446,14735
+"Post-Operative Dialysis",321,745
+"Post-Operative Renal Failure",513,1140
+"Post-Operative Stroke",380,777
+"Prolonged Ventilation",2130,3320
+"Re-Operative for Bleed",540,959
+"Reintervention for Myocardial Ischemia",87,100

@@ -9,11 +9,12 @@ cabage = cab |> filter(category == "Age")
 cabage = cabage |> select(Year,complication,Strata,Count)
 contingencyAge = cabage |> mutate(Strata = ifelse(Strata %in% c('Under 40', '0 to 40'), 'Under 40', Strata)) |>
   mutate(Strata = ifelse(Strata %in% c('66 to Max', 'Over 65'), 'Over 65', Strata)) |>
-  group_by(complication, Strata) %>%
-  summarise(Count = sum(Count))
+  group_by(complication, Strata) |>
+  summarise(Count = sum(Count)) |>
+  filter(Strata != "Under 40")
 
 # Specify the desired order of levels for the 'Strata' variable
-strata_order <- c('Under 40', '41-65', 'Over 65')
+strata_order <- c('41-65', 'Over 65')
 
 # Convert 'Strata' to a factor with the specified order
 contingencyAge$Strata <- factor(contingencyAge$Strata, levels = strata_order)
@@ -23,6 +24,7 @@ contingency_table_age <- xtabs(Count ~ complication + Strata, contingencyAge)
 #CABG type contingency table
 cabtype = cab |> filter(category == "CABG type") |> select(Year,complication,Strata,Count)
 contingencyType = cabtype |>
+  mutate(Strata = ifelse(Strata == "Other Non-Isolated CABG", "Other Non-Isolated", Strata)) |>
   group_by(complication, Strata) |>
   summarise(Count = sum(Count))
 
@@ -36,17 +38,24 @@ contingencyGender = cabgender |>
 contingency_table_gender <- xtabs(Count ~ complication + Strata, contingencyGender)
 
 #Race
+racesToKeep = c("Asian", "White","Hispanic", "Black")
+
 cabrace = cab |> filter(category == "Race") |> select(Year,complication,Strata,Count)
 contingencyRace = cabrace |>
   group_by(complication, Strata) |>
-  summarise(Count = sum(Count))
+  summarise(Count = sum(Count)) |>
+  filter(Strata %in% racesToKeep)
 contingency_table_race <- xtabs(Count ~ complication + Strata, contingencyRace)
 
 #PayorType
 cabpayor = cab |> filter(category == "PayorType") |> select(Year,complication,Strata,Count)
 contingencyPayor = cabpayor |>
+  mutate(Strata = ifelse(Strata == "Private Insurance", "Private", Strata))
   group_by(complication, Strata) |>
+    filter(Strata != "Uninsured") |>
   summarise(Count = sum(Count))
+
+
 contingency_table_payor <- xtabs(Count ~ complication + Strata, contingencyPayor)
 
 
