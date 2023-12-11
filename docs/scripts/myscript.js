@@ -161,7 +161,7 @@ function extractColumnInRange(array, columnIndex, startRow, endRow) {
         .attr("width", (d, i) => xScale(colSums[d.index]))
         .attr("height", (d, i) => yScales[d.index](d.colData))
         .style("fill", (d, i) => colorBrewerSet3[i % colorBrewerSet3.length]) // Repeating colors if needed
-        .style("stroke", "black")
+        .style("stroke", "white")
         .attr("desc", (d) => d.colData);
 
       // Add row labels in the middle of each row
@@ -344,7 +344,7 @@ function UpdateColumnGroups(newIndex) {
               (d, rowIndex) =>
                 colorBrewerSet3[rowIndex % colorBrewerSet3.length]
             ) // Repeating colors if needed
-            .style("stroke", "black")
+            .style("stroke", "white")
             .attr("desc", (d) => d);
           cells.exit().remove();
         });
