@@ -24,7 +24,7 @@ contingency_table_age <- xtabs(Count ~ complication + Strata, contingencyAge)
 #CABG type contingency table
 cabtype = cab |> filter(category == "CABG type") |> select(Year,complication,Strata,Count)
 contingencyType = cabtype |>
-  mutate(Strata = ifelse(Strata == "Other Non-Isolated CABG", "Other Non-Isolated", Strata)) |>
+  mutate(Strata = ifelse(Strata == "Other Non-Isolated CABG", "Other", Strata)) |>
   group_by(complication, Strata) |>
   summarise(Count = sum(Count))
 
@@ -49,8 +49,9 @@ contingency_table_race <- xtabs(Count ~ complication + Strata, contingencyRace)
 
 #PayorType
 cabpayor = cab |> filter(category == "PayorType") |> select(Year,complication,Strata,Count)
+
 contingencyPayor = cabpayor |>
-  mutate(Strata = ifelse(Strata == "Private Insurance", "Private", Strata))
+  mutate(Strata = ifelse(Strata == "Private Insurance", "Private", Strata)) |>
   group_by(complication, Strata) |>
     filter(Strata != "Uninsured") |>
   summarise(Count = sum(Count))
@@ -69,7 +70,7 @@ contingency_tables <- list(
 )
 
 
-contingency_table_names <- ls(pattern = "^contingency_table_")
+table_names <- ls(pattern = "^contingency_table_")
 # The directory where I want to save the CSV files
 output_directory <- "d3data"
 
@@ -78,7 +79,7 @@ output_directory <- "d3data"
 dir.create(output_directory, showWarnings = FALSE)
 
 # Loop through the contingency tables and save each one to a CSV file
-for (table_name in contingency_table_names) {
+for (table_name in table_names) {
   if (exists(table_name) && is.table(get(table_name))) {
     contingency_table <- get(table_name)
     contingency_df <- as.data.frame.matrix(contingency_table)
