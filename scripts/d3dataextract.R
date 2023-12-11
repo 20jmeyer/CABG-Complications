@@ -4,6 +4,7 @@ library(tidyr)
 
 cab = read.csv("cab.csv")
 
+complicationsToExclude = c("Deep Sternal Infection", "Reintervention for Myocardial Ischemia")
 #AGE contingency table
 cabage = cab |> filter(category == "Age")
 cabage = cabage |> select(Year,complication,Strata,Count)
@@ -11,7 +12,8 @@ contingencyAge = cabage |> mutate(Strata = ifelse(Strata %in% c('Under 40', '0 t
   mutate(Strata = ifelse(Strata %in% c('66 to Max', 'Over 65'), 'Over 65', Strata)) |>
   group_by(complication, Strata) |>
   summarise(Count = sum(Count)) |>
-  filter(Strata != "Under 40")
+  filter(Strata != "Under 40") |>
+  filter(!complication %in% complicationsToExclude)
 
 # Specify the desired order of levels for the 'Strata' variable
 strata_order <- c('41-65', 'Over 65')
@@ -26,7 +28,8 @@ cabtype = cab |> filter(category == "CABG type") |> select(Year,complication,Str
 contingencyType = cabtype |>
   mutate(Strata = ifelse(Strata == "Other Non-Isolated CABG", "Other", Strata)) |>
   group_by(complication, Strata) |>
-  summarise(Count = sum(Count))
+  summarise(Count = sum(Count)) |>
+  filter(!complication %in% complicationsToExclude)
 
 contingency_table_type <- xtabs(Count ~ complication + Strata, contingencyType)
 
@@ -34,7 +37,8 @@ contingency_table_type <- xtabs(Count ~ complication + Strata, contingencyType)
 cabgender = cab |> filter(category == "Gender") |> select(Year,complication,Strata,Count)
 contingencyGender = cabgender |>
   group_by(complication, Strata) |>
-  summarise(Count = sum(Count))
+  summarise(Count = sum(Count)) |>
+  filter(!complication %in% complicationsToExclude)
 contingency_table_gender <- xtabs(Count ~ complication + Strata, contingencyGender)
 
 #Race
@@ -44,7 +48,8 @@ cabrace = cab |> filter(category == "Race") |> select(Year,complication,Strata,C
 contingencyRace = cabrace |>
   group_by(complication, Strata) |>
   summarise(Count = sum(Count)) |>
-  filter(Strata %in% racesToKeep)
+  filter(Strata %in% racesToKeep) |>
+  filter(!complication %in% complicationsToExclude)
 contingency_table_race <- xtabs(Count ~ complication + Strata, contingencyRace)
 
 #PayorType
@@ -54,7 +59,8 @@ contingencyPayor = cabpayor |>
   mutate(Strata = ifelse(Strata == "Private Insurance", "Private", Strata)) |>
   group_by(complication, Strata) |>
     filter(Strata != "Uninsured") |>
-  summarise(Count = sum(Count))
+  summarise(Count = sum(Count)) |>
+  filter(!complication %in% complicationsToExclude)
 
 
 contingency_table_payor <- xtabs(Count ~ complication + Strata, contingencyPayor)
