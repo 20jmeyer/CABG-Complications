@@ -21,6 +21,10 @@ Promise.all([
   const rowLabels = [];
   const columnLabels = [];
 
+  d3.selectAll("button").on("click", function() {
+switchTable(d3.select(this).node().value);
+})
+
    const results = files.map(file => {
     const { data: dataArray, columnNames, rowNames } = parseCSV(file);
     contingencyTables.push(dataArray);
@@ -28,7 +32,7 @@ Promise.all([
     columnLabels.push(columnNames);
    });
 
-      let currentTableIndex = 4;
+      let currentTableIndex = 0;
       // Calculate row and column sums
       function calculateSums(table) {
         const rowSums = table.map((row) => d3.sum(row));
@@ -218,18 +222,20 @@ function extractColumnInRange(array, columnIndex, startRow, endRow) {
             xScale(d3.sum(colSums.slice(0, i + 1))) - xScale(colSums[i]) / 2
         )
         .attr("y", (d, i) => height + margin.bottom / 2)
+        .attr("font-size","small")
         .style("text-anchor", "middle")
         .text((d) => d);
 
       function switchTable(index) {
-        currentTableIndex = index;
+        currentTableIndex = +index;
 
         // Disable the current button
         d3.selectAll("button")
           .filter((d, i) => i !== currentTableIndex)
           .attr("disabled", null);
         // Enable the new button
-        d3.select(`#buttonTable${index + 1}`).attr("disabled", true);
+        let disabledButton = `button#buttonTable${currentTableIndex + 1}`
+        d3.select(disabledButton).attr("disabled", true);
         // Recalculate sums
 
         //Update column sizes
@@ -271,7 +277,7 @@ function UpdateColumnGroups(newIndex) {
         yScales = contingencyTables[newIndex][0].map((col, i) =>
           d3.scaleLinear().domain([0, colSums[i]]).range([0, height])
         );
-
+        console.log(contingencyTables[newIndex][0])
         sums = extractColumnCumulativeSums(
           contingencyTables[currentTableIndex]
         );
@@ -279,10 +285,14 @@ function UpdateColumnGroups(newIndex) {
           col.unshift(0);
         });
         //need to renew column group selection
-        columnGroups = svg.selectAll(".column-group").data(contingencyTables[newIndex]);
+        columnGroups = svg.selectAll(".column-group").data(contingencyTables[newIndex][0]);
 
         columnGroups.each(function (d, i) {
           let currentColumnGroup = d3.select(this);
+          console.log(columnGroups.exit())
+          if (currentColumnGroup in columnGroups.exit()){
+            console.log("in exit");
+          }
           let cells = currentColumnGroup
             .selectAll("rect")
             .data(transposedArray[i]);
@@ -297,8 +307,13 @@ function UpdateColumnGroups(newIndex) {
                 (accumulator, currentValue) => accumulator + currentValue,
                 0
               );
-
+              if (i < yScales.length){
+                console.log(i, yScales.length)
               return yScales[i](sumOfSlice);
+              }
+              else{
+                return 0
+              }
             })
             .attr("opacity", 0);
           cells = currentColumnGroup.selectAll("rect").data(transposedArray[i]);
@@ -314,8 +329,12 @@ function UpdateColumnGroups(newIndex) {
                 (accumulator, currentValue) => accumulator + currentValue,
                 0
               );
-
+              if (i < yScales.length){
               return yScales[i](sumOfSlice);
+              }
+              else{
+                return 0
+              }
             })
             .attr("opacity", 1)
             .attr("width", (d) => xScale(colSums[i]))
@@ -348,7 +367,7 @@ function UpdateColumnGroups(newIndex) {
           .enter()
           .append("text")
           .attr("class", "row-label")
-          .attr("x", -margin.left / 2)
+          .attr("x", -margin.left / 5)
           .merge(rowLabelSelect)
           .transition()
           .duration(200)
@@ -357,7 +376,7 @@ function UpdateColumnGroups(newIndex) {
           .duration(200)
           .delay(200)
           .attr("dy", "0.35em")
-          .style("text-anchor", "middle")
+          .style("text-anchor", "end")
           .attr("y", (d, i) => {
                     calcHeight = 0;
                     if (i == 0) {
@@ -422,6 +441,7 @@ function UpdateColumnGroups(newIndex) {
               xScale(d3.sum(colSums.slice(0, i + 1))) - xScale(colSums[i]) / 2
           )
           .attr("y", (d, i) => height + margin.bottom / 2)
+          .attr("font-size", "small")
           .style("text-anchor", "middle")
 
           .transition()
@@ -440,7 +460,7 @@ function UpdateColumnGroups(newIndex) {
       }
 
     function UpdateTitle(newIndex){
-      let titleList = ["CABG Complications by Age","CABG Complications by Race","CABG Complications by Insurance Type","CABG Complications by Age","CABG Complications by Age"]
+      let titleList = ["CABG Complications by Age","CABG Complications by Gender","CABG Complications by Insurance Type","CABG Complications by Race","CABG Complications by Surgical Procedure"]
       let title = d3.select("text#title");
       title.text(titleList[newIndex])
       }
