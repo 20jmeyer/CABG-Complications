@@ -383,7 +383,7 @@ The following objects are masked from 'package:vcd':
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>age_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Age"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Age =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Age=</span><span class="fu">factor</span>(Age)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cabg_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"CABG type"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">CABG.Type =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">CABG.Type=</span><span class="fu">factor</span>(CABG.Type)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>gender_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Gender"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Gender =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Gender=</span><span class="fu">factor</span>(Gender)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>pay_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"PayorType"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="st">"Payment Type"</span> <span class="ot">=</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="st">"Payment Type"</span><span class="ot">=</span><span class="fu">factor</span>(<span class="st">"Payment Type"</span>)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>pay_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"PayorType"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Payment.Type =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Payment.Type=</span><span class="fu">factor</span>(Payment.Type)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>race_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Race"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Race =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Race=</span><span class="fu">factor</span>(Race)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -429,18 +429,13 @@ The following objects are masked from 'package:vcd':
 <p><img src="results_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<section id="question-5-does-your-demographic-data-and-medical-information-impact-your-likelihood-that-you-will-be-readmitted-to-the-hospital-regardless-of-complication" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Question 5: Does your demographic data and medical information impact your likelihood that you will be readmitted to the hospital regardless of complication?</h1>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>age_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Age"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Readmission =</span> readmission, <span class="at">Age =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Age=</span><span class="fu">factor</span>(Age)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(age_read_counts) <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, Age), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pay_counts) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Payment.Type), <span class="at">fill =</span> Complication)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="results_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
@@ -449,32 +444,220 @@ The following objects are masked from 'package:vcd':
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>age_read_mosaic <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Age"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">Age =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Age=</span><span class="fu">factor</span>(Age))</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>age_read_mosaic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(race_counts) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Race), <span class="at">fill =</span> Complication)) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 24 × 4
-# Groups:   Complication, Readmission [12]
-   Complication                       Readmission Age      Freq
-   &lt;chr&gt;                              &lt;chr&gt;       &lt;fct&gt;   &lt;int&gt;
- 1 Post-Operative Atrial Fibrillation N           41-65    5585
- 2 Post-Operative Atrial Fibrillation N           Over 65 12478
- 3 Post-Operative Atrial Fibrillation Y           41-65     861
- 4 Post-Operative Atrial Fibrillation Y           Over 65  2257
- 5 Post-Operative Dialysis            N           41-65     223
- 6 Post-Operative Dialysis            N           Over 65   571
- 7 Post-Operative Dialysis            Y           41-65      98
- 8 Post-Operative Dialysis            Y           Over 65   174
- 9 Post-Operative Renal Failure       N           41-65     382
-10 Post-Operative Renal Failure       N           Over 65   846
-# ℹ 14 more rows</code></pre>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="question-5-does-your-demographic-data-and-medical-information-impact-your-likelihood-that-you-will-be-readmitted-to-the-hospital-regardless-of-complication" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Question 5: Does your demographic data and medical information impact your likelihood that you will be readmitted to the hospital regardless of complication?</h1>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>age_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Age"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Readmission =</span> readmission, <span class="at">Age =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Age=</span><span class="fu">factor</span>(Age)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>cabg_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"CABG type"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Readmission =</span> readmission, <span class="at">CABG.Type =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">CABG.Type=</span><span class="fu">factor</span>(CABG.Type)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>gender_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Gender"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Readmission =</span> readmission, <span class="at">Gender =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Gender=</span><span class="fu">factor</span>(Gender)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>pay_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"PayorType"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Readmission =</span> readmission, <span class="at">PayorType =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">PayorType=</span><span class="fu">factor</span>(PayorType)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>race_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Race"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Readmission =</span> readmission, <span class="at">Race =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Race=</span><span class="fu">factor</span>(Race)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(age_read_counts) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, Age), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of CABG Type and Readmission"</span>) <span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>vcd<span class="sc">::</span><span class="fu">mosaic</span>(Readmission <span class="sc">~</span> Complication <span class="sc">+</span> Age, <span class="at">data =</span> age_read_mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Age -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>----- Age -----</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(age_read_counts<span class="sc">$</span>Readmission, age_read_counts<span class="sc">$</span>Age))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chi Squared Statistic: 3.6179 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>p-value: 0.0572 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>----------------- </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cabg_read_counts) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, CABG.Type), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of CABG Type and Readmission"</span>) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="576"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- CABG Type -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>----- CABG Type -----</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(cabg_read_counts<span class="sc">$</span>Readmission, cabg_read_counts<span class="sc">$</span>CABG.Type))</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chi Squared Statistic: 117.2364 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>p-value: 0 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>----------------- </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gender_read_counts) <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, Gender), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Gender and Readmission"</span>) <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Gender -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>----- Gender -----</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(gender_read_counts<span class="sc">$</span>Readmission, gender_read_counts<span class="sc">$</span>Gender))</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chi Squared Statistic: 205.467 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>p-value: 0 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>----------------- </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pay_read_counts) <span class="sc">+</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, PayorType), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Insurance Type and Readmission"</span>) <span class="sc">+</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-15-4.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Insurance Type -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>----- Insurance Type -----</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(pay_read_counts<span class="sc">$</span>Readmission, pay_read_counts<span class="sc">$</span>PayorType))</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chi Squared Statistic: 10997.5074 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>p-value: 0 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>----------------- </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(race_read_counts) <span class="sc">+</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, Race), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Race and Readmission"</span>) <span class="sc">+</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-15-5.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Race -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>----- Race -----</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(race_read_counts<span class="sc">$</span>Readmission, race_read_counts<span class="sc">$</span>Race))</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chi Squared Statistic: 78.0327 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>p-value: 0 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>----------------- </code></pre>
 </div>
 </div>
 </section>
@@ -483,37 +666,37 @@ The following objects are masked from 'package:vcd':
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>age_comp_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Age"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">Age =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Age=</span><span class="fu">factor</span>(Age)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>cabg_comp_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"CABG type"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">CABG.Type =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">CABG.Type=</span><span class="fu">factor</span>(CABG.Type)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>gender_comp_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Gender"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">Gender =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Gender=</span><span class="fu">factor</span>(Gender)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>pay_comp_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"PayorType"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">PayorType =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">PayorType=</span><span class="fu">factor</span>(PayorType)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>race_comp_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Race"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">Race =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Race=</span><span class="fu">factor</span>(Race)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(age_comp_read_counts) <span class="sc">+</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, Age), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Complication) <span class="sc">+</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Age and Readmission for Each Complication"</span>) <span class="sc">+</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>age_comp_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Age"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">Age =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Age=</span><span class="fu">factor</span>(Age)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>cabg_comp_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"CABG type"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">CABG.Type =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">CABG.Type=</span><span class="fu">factor</span>(CABG.Type)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>gender_comp_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Gender"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">Gender =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Gender=</span><span class="fu">factor</span>(Gender)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>pay_comp_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"PayorType"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">PayorType =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">PayorType=</span><span class="fu">factor</span>(PayorType)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>race_comp_read_counts <span class="ot">=</span> cab_counts <span class="sc">%&gt;%</span> <span class="fu">subset</span>(category <span class="sc">==</span> <span class="st">"Race"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(complication, readmission, Strata) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Complication =</span> complication, <span class="at">Readmission =</span> readmission, <span class="at">Race =</span> Strata) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Race=</span><span class="fu">factor</span>(Race)) <span class="sc">%&gt;%</span> <span class="fu">uncount</span>(<span class="at">weights =</span> Freq)</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(age_comp_read_counts) <span class="sc">+</span></span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, Age), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Complication) <span class="sc">+</span></span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Age and Readmission for Each Complication"</span>) <span class="sc">+</span></span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Age -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Age -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>----- Age -----</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (complication <span class="cf">in</span> <span class="fu">unique</span>(age_comp_read_counts<span class="sc">$</span>Complication)){</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(complication, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(age_comp_read_counts<span class="sc">$</span>Readmission, age_comp_read_counts<span class="sc">$</span>Age, age_comp_read_counts<span class="sc">$</span>Complication)[, , complication])</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (complication <span class="cf">in</span> <span class="fu">unique</span>(age_comp_read_counts<span class="sc">$</span>Complication)){</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(complication, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(age_comp_read_counts<span class="sc">$</span>Readmission, age_comp_read_counts<span class="sc">$</span>Age, age_comp_read_counts<span class="sc">$</span>Complication)[, , complication])</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Post-Operative Atrial Fibrillation 
@@ -543,31 +726,31 @@ p-value: 0.0756
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cabg_comp_read_counts) <span class="sc">+</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, CABG.Type), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Complication) <span class="sc">+</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of CABG Type and Readmission for Each Complication"</span>) <span class="sc">+</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cabg_comp_read_counts) <span class="sc">+</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, CABG.Type), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Complication) <span class="sc">+</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of CABG Type and Readmission for Each Complication"</span>) <span class="sc">+</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- CABG Type -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- CABG Type -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>----- CABG Type -----</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (complication <span class="cf">in</span> <span class="fu">unique</span>(cabg_comp_read_counts<span class="sc">$</span>Complication)){</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(complication, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(cabg_comp_read_counts<span class="sc">$</span>Readmission, cabg_comp_read_counts<span class="sc">$</span>CABG.Type, cabg_comp_read_counts<span class="sc">$</span>Complication)[, , complication])</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (complication <span class="cf">in</span> <span class="fu">unique</span>(cabg_comp_read_counts<span class="sc">$</span>Complication)){</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(complication, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(cabg_comp_read_counts<span class="sc">$</span>Readmission, cabg_comp_read_counts<span class="sc">$</span>CABG.Type, cabg_comp_read_counts<span class="sc">$</span>Complication)[, , complication])</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Post-Operative Atrial Fibrillation 
@@ -597,31 +780,31 @@ p-value: 0.0078
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gender_comp_read_counts) <span class="sc">+</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, Gender), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Complication) <span class="sc">+</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Gender and Readmission for Each Complication"</span>) <span class="sc">+</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gender_comp_read_counts) <span class="sc">+</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, Gender), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Complication) <span class="sc">+</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Gender and Readmission for Each Complication"</span>) <span class="sc">+</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Gender -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Gender -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>----- Gender -----</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (complication <span class="cf">in</span> <span class="fu">unique</span>(gender_comp_read_counts<span class="sc">$</span>Complication)){</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(complication, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(gender_comp_read_counts<span class="sc">$</span>Readmission, gender_comp_read_counts<span class="sc">$</span>Gender, gender_comp_read_counts<span class="sc">$</span>Complication)[, , complication])</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (complication <span class="cf">in</span> <span class="fu">unique</span>(gender_comp_read_counts<span class="sc">$</span>Complication)){</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(complication, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(gender_comp_read_counts<span class="sc">$</span>Readmission, gender_comp_read_counts<span class="sc">$</span>Gender, gender_comp_read_counts<span class="sc">$</span>Complication)[, , complication])</span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Post-Operative Atrial Fibrillation 
@@ -651,31 +834,31 @@ p-value: 0.008
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pay_comp_read_counts) <span class="sc">+</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, PayorType), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Complication) <span class="sc">+</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Insurance Type and Readmission for Each Complication"</span>) <span class="sc">+</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pay_comp_read_counts) <span class="sc">+</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, PayorType), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Complication) <span class="sc">+</span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Insurance Type and Readmission for Each Complication"</span>) <span class="sc">+</span></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-15-4.png" class="img-fluid" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-16-4.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Insurance Type -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Insurance Type -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>----- Insurance Type -----</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (complication <span class="cf">in</span> <span class="fu">unique</span>(pay_comp_read_counts<span class="sc">$</span>Complication)){</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(complication, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(pay_comp_read_counts<span class="sc">$</span>Readmission, pay_comp_read_counts<span class="sc">$</span>PayorType, pay_comp_read_counts<span class="sc">$</span>Complication)[, , complication])</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (complication <span class="cf">in</span> <span class="fu">unique</span>(pay_comp_read_counts<span class="sc">$</span>Complication)){</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(complication, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(pay_comp_read_counts<span class="sc">$</span>Readmission, pay_comp_read_counts<span class="sc">$</span>PayorType, pay_comp_read_counts<span class="sc">$</span>Complication)[, , complication])</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Post-Operative Atrial Fibrillation 
@@ -705,31 +888,31 @@ p-value: 0
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(race_comp_read_counts) <span class="sc">+</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, Race), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Complication) <span class="sc">+</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Race and Readmission for Each Complication"</span>) <span class="sc">+</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(race_comp_read_counts) <span class="sc">+</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">product</span>(Readmission, Race), <span class="at">fill =</span> Readmission)) <span class="sc">+</span></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Complication) <span class="sc">+</span></span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mosaic Plots of Race and Readmission for Each Complication"</span>) <span class="sc">+</span></span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>), <span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="at">line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-15-5.png" class="img-fluid" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-16-5.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Race -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"----- Race -----</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>----- Race -----</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (complication <span class="cf">in</span> <span class="fu">unique</span>(race_comp_read_counts<span class="sc">$</span>Complication)){</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(complication, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(race_comp_read_counts<span class="sc">$</span>Readmission, race_comp_read_counts<span class="sc">$</span>Race, race_comp_read_counts<span class="sc">$</span>Complication)[, , complication])</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (complication <span class="cf">in</span> <span class="fu">unique</span>(race_comp_read_counts<span class="sc">$</span>Complication)){</span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(complication, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(race_comp_read_counts<span class="sc">$</span>Readmission, race_comp_read_counts<span class="sc">$</span>Race, race_comp_read_counts<span class="sc">$</span>Complication)[, , complication])</span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"Chi Squared Statistic:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>statistic, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">paste</span>(<span class="st">"p-value:"</span>, <span class="fu">round</span>(test<span class="sc">$</span>p.value, <span class="dv">4</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-----------------"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Post-Operative Atrial Fibrillation 

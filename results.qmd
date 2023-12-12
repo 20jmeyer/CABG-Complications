@@ -147,7 +147,7 @@ ggplot(age_read_counts) +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Age -----\n")
-cat(paste(complication, "\n"))
+
 test = chisq.test(table(age_read_counts$Readmission, age_read_counts$Age))
 cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
@@ -159,7 +159,7 @@ ggplot(cabg_read_counts) +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- CABG Type -----\n")
-cat(paste(complication, "\n"))
+
 test = chisq.test(table(cabg_read_counts$Readmission, cabg_read_counts$CABG.Type))
 cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
@@ -171,7 +171,7 @@ ggplot(gender_read_counts) +
   theme(aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Gender -----\n")
-cat(paste(complication, "\n"))
+
 test = chisq.test(table(gender_read_counts$Readmission, gender_read_counts$Gender))
 cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
@@ -184,7 +184,7 @@ ggplot(pay_read_counts) +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Insurance Type -----\n")
-cat(paste(complication, "\n"))
+
 test = chisq.test(table(pay_read_counts$Readmission, pay_read_counts$PayorType))
 cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
@@ -196,7 +196,7 @@ ggplot(race_read_counts) +
   theme(axis.text.x = element_text(angle = 45), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Race -----\n")
-cat(paste(complication, "\n"))
+
 test = chisq.test(table(race_read_counts$Readmission, race_read_counts$Race))
 cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
