@@ -15,8 +15,7 @@ cab = cab %>% mutate(Strata = factor(Strata)) %>% mutate(Strata = fct_recode(Str
 
 
 ```{r}
-cab_counts = cab %>% arrange(Year, complication)
-head(cab_counts)
+cab_counts = cab %>% filter(!(Strata %in% c('Under 40', 'Uninsured', 'Native', 'Others', 'Pacific'))) %>% filter(!(complication %in% c('Deep Sternal Infection', 'Reintervention for Myocardial Ischemia'))) %>% arrange(Year, complication)
 ```
 
 
@@ -26,7 +25,6 @@ head(cab_counts)
 complication_counts = cab_counts %>% group_by(Year, complication) %>% summarise(Freq=sum(Count)) %>% arrange(Year, desc(Freq)) %>% mutate(complication=factor(complication, levels = unique(complication)))
 readmission_counts = cab_counts %>% group_by(Year, readmission) %>% summarise(Freq=sum(Count))
 strata_counts = cab_counts %>% group_by(Year, category, Strata) %>% summarise(Freq=sum(Count)) %>% subset(category != "All") 
-strata_counts 
 ```
 
 ```{r}
@@ -67,15 +65,28 @@ for (c in unique(strata_counts$category)) {
 
 # Question 2: What are the most common complications associated with CABG?
 ```{r}
-ggplot(complication_counts %>% group_by(complication) %>% summarize(Freq=sum(Freq)) %>% mutate(complication=factor(complication)), aes(x=complication, y=Freq)) +
-  geom_bar(stat="identity")  +
+ggplot(complication_counts %>% group_by(Year, complication) %>% summarize(Freq=sum(Freq)) %>% mutate(complication=factor(complication)), aes(x=complication, y=Freq, fill=complication)) +
+  geom_bar(stat="identity") +
+  facet_wrap(~ Year, scales = "free") +
+  labs(x="Complication", y="Count", title="Counts for Complications") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 # Question 3: What complications most often lead to readmission to the hospital?
-```{r}
-cab_counts %>% subset(category=="All")
+```{r fig.height=4, fig.width=6}
+df=cab_counts %>% subset(category=="All")
+
+df$Year <- as.factor(df$Year)
+
+# Plotting a grouped bar chart
+ggplot(df, aes(x = complication, y = Yes, fill = readmission)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ Year, scales = "free") +
+  labs(x = "Complication", y = "Count", fill = "Readmission") +
+  ggtitle("Complication Readmission Rates") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
 
 # Question 4: Does your demographic data and medical information impact your likelihood to face a complication from a CABG procedure?
 ```{r}
@@ -128,18 +139,88 @@ vcd::mosaic(Readmission ~ Complication + Age, data = age_read_mosaic)
 
 
 # Question 6: Does your demographic data, medical information, and complication impact your likelihood that you will be readmitted to the hospital?
-```{r}
+```{r fig.height=6}
 age_comp_read_counts = cab_counts %>% subset(category == "Age") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, Age = Strata) %>% mutate(Age=factor(Age)) %>% uncount(weights = Freq)
+cabg_comp_read_counts = cab_counts %>% subset(category == "CABG type") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, CABG.Type = Strata) %>% mutate(CABG.Type=factor(CABG.Type)) %>% uncount(weights = Freq)
+gender_comp_read_counts = cab_counts %>% subset(category == "Gender") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, Gender = Strata) %>% mutate(Gender=factor(Gender)) %>% uncount(weights = Freq)
+pay_comp_read_counts = cab_counts %>% subset(category == "PayorType") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, PayorType = Strata) %>% mutate(PayorType=factor(PayorType)) %>% uncount(weights = Freq)
+race_comp_read_counts = cab_counts %>% subset(category == "Race") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, Race = Strata) %>% mutate(Race=factor(Race)) %>% uncount(weights = Freq)
 
 ggplot(age_comp_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Age), fill = Readmission)) +
-  facet_grid(~Complication) +
-  theme_minimal() +
+  facet_wrap(~Complication) +
+  labs(title = "Mosaic Plots of Age and Readmission for Each Complication") +
+  theme(aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+
+cat("----- Age -----\n")
+for (complication in unique(age_comp_read_counts$Complication)){
+cat(paste(complication, "\n"))
+test = chisq.test(table(age_comp_read_counts$Readmission, age_comp_read_counts$Age, age_comp_read_counts$Complication)[, , complication])
+cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
+cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
+cat(paste("-----------------", "\n"))
+}
+
+ggplot(cabg_comp_read_counts) +
+  geom_mosaic(aes(x=product(Readmission, CABG.Type), fill = Readmission)) +
+  facet_wrap(~Complication) +
+  labs(title = "Mosaic Plots of CABG Type and Readmission for Each Complication") +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+
+cat("----- CABG Type -----\n")
+for (complication in unique(cabg_comp_read_counts$Complication)){
+cat(paste(complication, "\n"))
+test = chisq.test(table(cabg_comp_read_counts$Readmission, cabg_comp_read_counts$CABG.Type, cabg_comp_read_counts$Complication)[, , complication])
+cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
+cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
+cat(paste("-----------------", "\n"))
+}
+
+ggplot(gender_comp_read_counts) +
+  geom_mosaic(aes(x=product(Readmission, Gender), fill = Readmission)) +
+  facet_wrap(~Complication) +
+  labs(title = "Mosaic Plots of Gender and Readmission for Each Complication") +
+  theme(aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+
+cat("----- Gender -----\n")
+for (complication in unique(gender_comp_read_counts$Complication)){
+cat(paste(complication, "\n"))
+test = chisq.test(table(gender_comp_read_counts$Readmission, gender_comp_read_counts$Gender, gender_comp_read_counts$Complication)[, , complication])
+cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
+cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
+cat(paste("-----------------", "\n"))
+}
+
+ggplot(pay_comp_read_counts) +
+  geom_mosaic(aes(x=product(Readmission, PayorType), fill = Readmission)) +
+  facet_wrap(~Complication) +
+  labs(title = "Mosaic Plots of Insurance Type and Readmission for Each Complication") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+
+cat("----- Insurance Type -----\n")
+for (complication in unique(pay_comp_read_counts$Complication)){
+cat(paste(complication, "\n"))
+test = chisq.test(table(pay_comp_read_counts$Readmission, pay_comp_read_counts$PayorType, pay_comp_read_counts$Complication)[, , complication])
+cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
+cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
+cat(paste("-----------------", "\n"))
+}
+
+ggplot(race_comp_read_counts) +
+  geom_mosaic(aes(x=product(Readmission, Race), fill = Readmission)) +
+  facet_wrap(~Complication) +
+  labs(title = "Mosaic Plots of Race and Readmission for Each Complication") +
+  theme(axis.text.x = element_text(angle = 45), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+
+cat("----- Race -----\n")
+for (complication in unique(race_comp_read_counts$Complication)){
+cat(paste(complication, "\n"))
+test = chisq.test(table(race_comp_read_counts$Readmission, race_comp_read_counts$Race, race_comp_read_counts$Complication)[, , complication])
+cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
+cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
+cat(paste("-----------------", "\n"))
+}
 ```
-
-
-
 
 
 
