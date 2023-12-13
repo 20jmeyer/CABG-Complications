@@ -21,7 +21,7 @@ strata_order <- c('41-65', 'Over 65')
 # Convert 'Strata' to a factor with the specified order
 contingencyAge$Strata <- factor(contingencyAge$Strata, levels = strata_order)
 
-contingency_table_age <- xtabs(Count ~ complication + Strata, contingencyAge)
+contingency_table_age <- xtabs(Count ~ reorder(complication, -Count) + Strata, contingencyAge)
 
 #CABG type contingency table
 cabtype = cab |> filter(category == "CABG type") |> select(Year,complication,Strata,Count)
@@ -31,7 +31,7 @@ contingencyType = cabtype |>
   summarise(Count = sum(Count)) |>
   filter(!complication %in% complicationsToExclude)
 
-contingency_table_type <- xtabs(Count ~ complication + Strata, contingencyType)
+contingency_table_type <- xtabs(Count ~ reorder(complication, -Count) + Strata, contingencyType)
 
 #Gender contingency table
 cabgender = cab |> filter(category == "Gender") |> select(Year,complication,Strata,Count)
@@ -39,7 +39,7 @@ contingencyGender = cabgender |>
   group_by(complication, Strata) |>
   summarise(Count = sum(Count)) |>
   filter(!complication %in% complicationsToExclude)
-contingency_table_gender <- xtabs(Count ~ complication + Strata, contingencyGender)
+contingency_table_gender <- xtabs(Count ~ reorder(complication, -Count) + Strata, contingencyGender)
 
 #Race
 racesToKeep = c("Asian", "White","Hispanic", "Black")
@@ -50,7 +50,7 @@ contingencyRace = cabrace |>
   summarise(Count = sum(Count)) |>
   filter(Strata %in% racesToKeep) |>
   filter(!complication %in% complicationsToExclude)
-contingency_table_race <- xtabs(Count ~ complication + Strata, contingencyRace)
+contingency_table_race <- xtabs(Count ~ reorder(complication, -Count) + Strata, contingencyRace)
 
 #PayorType
 cabpayor = cab |> filter(category == "PayorType") |> select(Year,complication,Strata,Count)
@@ -63,7 +63,7 @@ contingencyPayor = cabpayor |>
   filter(!complication %in% complicationsToExclude)
 
 
-contingency_table_payor <- xtabs(Count ~ complication + Strata, contingencyPayor)
+contingency_table_payor <- xtabs(Count ~ reorder(complication, -Count) + Strata, contingencyPayor)
 
 
 # List of contingency tables
