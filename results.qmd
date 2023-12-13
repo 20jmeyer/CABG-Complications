@@ -31,11 +31,17 @@ strata_counts = cab_counts %>% group_by(Year, category, Strata) %>% summarise(Fr
 ```
 
 ```{r}
+#| fig.width: 10
+#| fig.height: 5
 ggplot(complication_counts, aes(x=Year, y=Freq, fill=complication)) +
   geom_bar(color="black", stat='identity', position='dodge') +
   scale_fill_brewer(palette=p) +
   theme_gray(16)+
   labs(title="Counts of Complications over the Years", y="Count")
+
+```
+We can see that one complication `Post-operative Atrial Fibrillation` is by far the most common complication.
+```{r}
 ggplot(complication_counts, aes(x=Year, y=log10(Freq), fill=complication)) +
   geom_bar(color="black", stat='identity', position='dodge') +
   scale_fill_brewer(palette=p) +
@@ -59,7 +65,7 @@ ggplot(readmission_counts, aes(x=Year, y=Freq, fill=readmission)) +
   theme_gray(16)+
   labs(title="Counts of Readmissions over the Years", y="Count")
 ```
-
+We can see from this plot that the proportion of readmissions and non-readmissions stays relatively each year. However, we can again observe that the number of complications overall seems to decrease over time.
 ```{r fig.height=6, fig.weight=6}
 for (c in unique(strata_counts$category)) {
   if (c == "Age"){
@@ -85,6 +91,9 @@ We can see that over the years the counts for readmission as well as the counts 
 ## Question 2: What are the most common complications associated with CABG?
 
 ```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| out-width: 100%
 ggplot(complication_counts %>% group_by(Year, complication) %>% summarize(Freq=sum(Freq)) %>% mutate(complication=factor(complication)), aes(x=complication, y=Freq, fill=complication)) +
   geom_bar(color="black", stat="identity") +
   facet_wrap(~ Year, scales = "free") +
@@ -92,12 +101,14 @@ ggplot(complication_counts %>% group_by(Year, complication) %>% summarize(Freq=s
   labs(x="Complication", y="Count", title="Counts for Complications") +
   guides(fill="none")+
   theme_gray(16)+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), plot.margin = unit(c(0, 0, 0, 2), "cm"))
 ```
 
 ## Question 3: What complications most often lead to readmission to the hospital?
 
-```{r fig.height=4, fig.width=6}
+```{r fig.height=7, fig.width=10}
+#| out-width: 100%
+
 comp_read_counts = cab_counts %>% subset(category=="All") %>% arrange(Year, desc(Yes)) %>% mutate(complication=factor(complication, levels = unique(complication)))
 
 ggplot(comp_read_counts, aes(x = complication, y = Yes, fill = readmission)) +
@@ -106,72 +117,122 @@ ggplot(comp_read_counts, aes(x = complication, y = Yes, fill = readmission)) +
   scale_fill_brewer(palette=p) +
   labs(x = "Complication", y = "Count", fill = "Readmission") +
   ggtitle("Complication Readmission Rates") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme_gray(16)+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),plot.margin = unit(c(0, 0, 0, 3), "cm"))
 ```
 
 ## Question 4: Does your demographic data and medical information impact your likelihood to face a complication from a CABG procedure?
 
 ```{r}
+library(forcats)
+neworder = c("Post-Operative Atrial Fibrillation","Prolonged Ventilation","Post-Operative Renal Failure","Re-Operative for Bleed","Post-Operative Stroke","Post-Operative Dialysis" )
 age_counts = cab_counts %>% subset(category == "Age") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count))  %>% rename(Complication = complication, Age = Strata) %>% mutate(Age=factor(Age)) %>% arrange(Age, desc(Freq)) %>% mutate(Complication=factor(Complication, levels = unique(Complication))) %>% uncount(weights = Freq)
+
+#Fixing order of the horizontal cuts
+age_counts$Complication = factor(age_counts$Complication)
+age_counts$Complication = fct_relevel(age_counts$Complication, neworder)
+
+
+
 cabg_counts = cab_counts %>% subset(category == "Surgical Procedure") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Surgical.Procedure = Strata) %>% mutate(Surgical.Procedure=factor(Surgical.Procedure)) %>% uncount(weights = Freq)
+
+cabg_counts$Complication = factor(cabg_counts$Complication)
+cabg_counts$Complication = fct_relevel(cabg_counts$Complication, neworder)
+
 gender_counts = cab_counts %>% subset(category == "Gender") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Gender = Strata) %>% mutate(Gender=factor(Gender)) %>% uncount(weights = Freq)
+
+gender_counts$Complication = factor(gender_counts$Complication)
+gender_counts$Complication = fct_relevel(gender_counts$Complication, neworder)
+
 pay_counts = cab_counts %>% subset(category == "Insurance Type") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Insurance.Type = Strata) %>% mutate(Insurance.Type =factor(Insurance.Type)) %>% uncount(weights = Freq)
+
+pay_counts$Complication = factor(pay_counts$Complication)
+pay_counts$Complication = fct_relevel(pay_counts$Complication, neworder)
+
 race_counts = cab_counts %>% subset(category == "Race") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Race = Strata) %>% mutate(Race=factor(Race)) %>% uncount(weights = Freq)
+
+race_counts$Complication = factor(race_counts$Complication)
+race_counts$Complication = fct_relevel(race_counts$Complication, neworder)
 ```
 
 
 ```{r}
+#| fig-width: 13
+#| fig-height: 7
+#| out-width: 100%
 ggplot(age_counts) +
   geom_mosaic(aes(x=product(Age), fill = Complication)) +
-  scale_fill_brewer(palette=p) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+  scale_fill_brewer(palette=p, direction = -1) +
+  labs(title = "Mosaic Plot of Complication and Age")+
+  theme_minimal(20) +
+  theme(axis.text.x = element_text(angle = 45, hjust=1),plot.title = element_text(hjust =1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 ```
 
 ```{r}
+#| fig-width: 13
+#| fig-height: 7
+#| out-width: 100%
 ggplot(cabg_counts) +
   geom_mosaic(aes(x=product(Surgical.Procedure), fill = Complication)) +
-  theme_minimal() +
-  labs(x="Surgical Procedure")+
-  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+  scale_fill_brewer(palette=p, direction = -1) +
+  theme_minimal(20) +
+  labs(x="Surgical Procedure",title="Mosaic Plot of Complication and Surgical Procedure")+
+  theme(axis.text.x = element_text(angle = 45, hjust=1), plot.title = element_text(hjust =1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 ```
 
 ```{r}
+#| fig-width: 13
+#| fig-height: 7
+#| out-width: 100%
 ggplot(gender_counts) +
   geom_mosaic(aes(x=product(Gender), fill = Complication)) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+  scale_fill_brewer(palette=p, direction = -1) +
+  theme_minimal(20) +
+  labs(title = "Mosaic Plot of Complication and Gender")+
+  theme(axis.text.x = element_text(angle = 45, hjust=1), plot.title = element_text(hjust =1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 ```
 
 ```{r}
+#| fig-width: 13
+#| fig-height: 7
+#| out-width: 100%
+
 ggplot(pay_counts) +
   geom_mosaic(aes(x=product(Insurance.Type), fill = Complication)) +
-  labs(x="Insurance Type")+
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+  scale_fill_brewer(palette=p, direction = -1) +
+  theme_minimal(20) +
+  labs(title = "Mosaic Plot of Complication and Insurance Type")+
+  theme(axis.text.x = element_text(angle = 45, hjust=1), plot.title = element_text(hjust =1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+
+
 ```
 
 ```{r}
+#| fig-width: 13
+#| fig-height: 7
+#| out-width: 100%
 ggplot(race_counts) +
   geom_mosaic(aes(x=product(Race), fill = Complication)) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+  scale_fill_brewer(palette=p, direction = -1) +
+  theme_minimal(20) +
+  labs(title="Mosaic Plot of Complication and Race")+
+  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1,plot.title = element_text(hjust =1), axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 ```
 
 ## Question 5: Does your demographic data and medical information impact your likelihood that you will be readmitted to the hospital regardless of complication?
 
 ```{r}
 age_read_counts = cab_counts %>% subset(category == "Age") %>% group_by(readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Readmission = readmission, Age = Strata) %>% mutate(Age=factor(Age)) %>% uncount(weights = Freq)
-cabg_read_counts = cab_counts %>% subset(category == "CABG type") %>% group_by(readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Readmission = readmission, CABG.Type = Strata) %>% mutate(CABG.Type=factor(CABG.Type)) %>% uncount(weights = Freq)
+cabg_read_counts = cab_counts %>% subset(category == "Surgical Procedure") %>% group_by(readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Readmission = readmission, CABG.Type = Strata) %>% mutate(CABG.Type=factor(CABG.Type)) %>% uncount(weights = Freq)
 gender_read_counts = cab_counts %>% subset(category == "Gender") %>% group_by(readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Readmission = readmission, Gender = Strata) %>% mutate(Gender=factor(Gender)) %>% uncount(weights = Freq)
-pay_read_counts = cab_counts %>% subset(category == "PayorType") %>% group_by(readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Readmission = readmission, PayorType = Strata) %>% mutate(PayorType=factor(PayorType)) %>% uncount(weights = Freq)
+pay_read_counts = cab_counts %>% subset(category == "Insurance Type") %>% group_by(readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Readmission = readmission, PayorType = Strata) %>% mutate(PayorType=factor(PayorType)) %>% uncount(weights = Freq)
 race_read_counts = cab_counts %>% subset(category == "Race") %>% group_by(readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Readmission = readmission, Race = Strata) %>% mutate(Race=factor(Race)) %>% uncount(weights = Freq)
 
 ggplot(age_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Age), fill = Readmission)) +
   labs(title = "Mosaic Plots of CABG Type and Readmission") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+  theme_minimal(16) +
+  theme( aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Age -----\n")
 
@@ -183,6 +244,7 @@ cat(paste("-----------------", "\n"))
 ggplot(cabg_read_counts) +
   geom_mosaic(aes(x=product(Readmission, CABG.Type), fill = Readmission)) +
   labs(title = "Mosaic Plots of CABG Type and Readmission") +
+  theme_minimal(16) +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- CABG Type -----\n")
@@ -195,6 +257,7 @@ cat(paste("-----------------", "\n"))
 ggplot(gender_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Gender), fill = Readmission)) +
   labs(title = "Mosaic Plots of Gender and Readmission") +
+  theme_minimal(16) +
   theme(aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Gender -----\n")
@@ -207,8 +270,9 @@ cat(paste("-----------------", "\n"))
 
 ggplot(pay_read_counts) +
   geom_mosaic(aes(x=product(Readmission, PayorType), fill = Readmission)) +
-  labs(title = "Mosaic Plots of Insurance Type and Readmission") +
-  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+  labs(title = "Mosaic Plot of Insurance Type and Readmission") +
+  theme_minimal(16) +
+  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank(),plot.margin = unit(c(0, 3, 0, 0), "cm"))
 
 cat("----- Insurance Type -----\n")
 
@@ -219,8 +283,9 @@ cat(paste("-----------------", "\n"))
 
 ggplot(race_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Race), fill = Readmission)) +
-  labs(title = "Mosaic Plots of Race and Readmission") +
-  theme(axis.text.x = element_text(angle = 45), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
+  labs(title = "Mosaic Plot of Race and Readmission") +
+  theme_minimal(16) +
+  theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Race -----\n")
 
@@ -232,17 +297,18 @@ cat(paste("-----------------", "\n"))
 
 ## Question 6: Does your demographic data, medical information, and complication impact your likelihood that you will be readmitted to the hospital?
 
-```{r fig.height=6}
+```{r}
+#| fig.height: 6
 age_comp_read_counts = cab_counts %>% subset(category == "Age") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, Age = Strata) %>% mutate(Age=factor(Age)) %>% uncount(weights = Freq)
-cabg_comp_read_counts = cab_counts %>% subset(category == "CABG type") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, CABG.Type = Strata) %>% mutate(CABG.Type=factor(CABG.Type)) %>% uncount(weights = Freq)
+cabg_comp_read_counts = cab_counts %>% subset(category == "Surgical Procedure") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, CABG.Type = Strata) %>% mutate(CABG.Type=factor(CABG.Type)) %>% uncount(weights = Freq)
 gender_comp_read_counts = cab_counts %>% subset(category == "Gender") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, Gender = Strata) %>% mutate(Gender=factor(Gender)) %>% uncount(weights = Freq)
-pay_comp_read_counts = cab_counts %>% subset(category == "PayorType") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, PayorType = Strata) %>% mutate(PayorType=factor(PayorType)) %>% uncount(weights = Freq)
+pay_comp_read_counts = cab_counts %>% subset(category == "Insurance Type") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, PayorType = Strata) %>% mutate(PayorType=factor(PayorType)) %>% uncount(weights = Freq)
 race_comp_read_counts = cab_counts %>% subset(category == "Race") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, Race = Strata) %>% mutate(Race=factor(Race)) %>% uncount(weights = Freq)
 
 ggplot(age_comp_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Age), fill = Readmission)) +
   facet_wrap(~Complication) +
-  labs(title = "Mosaic Plots of Age and Readmission for Each Complication") +
+  labs(title = "Mosaic Plot of Age and Readmission for Each Complication") +
   theme(aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Age -----\n")
@@ -257,7 +323,7 @@ cat(paste("-----------------", "\n"))
 ggplot(cabg_comp_read_counts) +
   geom_mosaic(aes(x=product(Readmission, CABG.Type), fill = Readmission)) +
   facet_wrap(~Complication) +
-  labs(title = "Mosaic Plots of CABG Type and Readmission for Each Complication") +
+  labs(title = "Mosaic Plot of CABG Type and Readmission for Each Complication") +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- CABG Type -----\n")
@@ -272,7 +338,7 @@ cat(paste("-----------------", "\n"))
 ggplot(gender_comp_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Gender), fill = Readmission)) +
   facet_wrap(~Complication) +
-  labs(title = "Mosaic Plots of Gender and Readmission for Each Complication") +
+  labs(title = "Mosaic Plot of Gender and Readmission for Each Complication") +
   theme(aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Gender -----\n")
@@ -287,7 +353,7 @@ cat(paste("-----------------", "\n"))
 ggplot(pay_comp_read_counts) +
   geom_mosaic(aes(x=product(Readmission, PayorType), fill = Readmission)) +
   facet_wrap(~Complication) +
-  labs(title = "Mosaic Plots of Insurance Type and Readmission for Each Complication") +
+  labs(title = "Mosaic Plot of Insurance Type and Readmission for Each Complication") +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Insurance Type -----\n")
@@ -302,7 +368,7 @@ cat(paste("-----------------", "\n"))
 ggplot(race_comp_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Race), fill = Readmission)) +
   facet_wrap(~Complication) +
-  labs(title = "Mosaic Plots of Race and Readmission for Each Complication") +
+  labs(title = "Mosaic Plot of Race and Readmission for Each Complication") +
   theme(axis.text.x = element_text(angle = 45), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
 cat("----- Race -----\n")
