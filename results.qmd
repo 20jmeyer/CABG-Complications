@@ -1,4 +1,5 @@
 # Results
+
 ```{r}
 library(ggplot2)
 library(tidyverse)
@@ -10,17 +11,19 @@ library(ggmosaic)
 options(dplyr.summarise.inform = FALSE)
 
 cab = read.csv("cab.csv")
-cab = cab %>% mutate(Strata = factor(Strata)) %>% mutate(Strata = fct_recode(Strata, "Over 65" = "66 to Max", "Under 40" = "0 to 40"))
+cab = cab %>% mutate(Strata = factor(Strata)) %>% mutate(category = factor(category)) %>% mutate(Strata = fct_recode(Strata, "Over 65" = "66 to Max", "Under 40" = "0 to 40", "Other"="Other Non-Isolated CABG", "Private"="Private Insurance")) %>% mutate(category = fct_recode(category, "Surgical Procedure"="CABG type", "Insurance Type"="PayorType"))
 ```
-
 
 ```{r}
-cab_counts = cab %>% filter(!(Strata %in% c('Under 40', 'Uninsured', 'Native', 'Others', 'Pacific'))) %>% filter(!(complication %in% c('Deep Sternal Infection', 'Reintervention for Myocardial Ischemia'))) %>% arrange(Year, complication)
+cab_counts = cab %>% filter(!(Strata %in% c('Under 40', 'Uninsured', 'Native', 'Others', 'Pacific'))) %>% arrange(Year, complication)
 ```
 
+```{r}
+p="Set3"
+```
 
+## Question 1: Does our data change over time in terms of frequency of complications, readmissions, and demographics/medical information?
 
-# Question 1: Does our data change over time in terms of frequency of complications, readmissions, and demographics/medical information?
 ```{r}
 complication_counts = cab_counts %>% group_by(Year, complication) %>% summarise(Freq=sum(Count)) %>% arrange(Year, desc(Freq)) %>% mutate(complication=factor(complication, levels = unique(complication)))
 readmission_counts = cab_counts %>% group_by(Year, readmission) %>% summarise(Freq=sum(Count))
@@ -29,19 +32,31 @@ strata_counts = cab_counts %>% group_by(Year, category, Strata) %>% summarise(Fr
 
 ```{r}
 ggplot(complication_counts, aes(x=Year, y=Freq, fill=complication)) +
-  geom_bar(stat='identity', position='dodge') +
-  scale_fill_brewer(palette="Dark2") +
+  geom_bar(color="black", stat='identity', position='dodge') +
+  scale_fill_brewer(palette=p) +
+  theme_gray(16)+
   labs(title="Counts of Complications over the Years", y="Count")
 ggplot(complication_counts, aes(x=Year, y=log10(Freq), fill=complication)) +
-  geom_bar(stat='identity', position='dodge') +
-  scale_fill_brewer(palette="Dark2") +
+  geom_bar(color="black", stat='identity', position='dodge') +
+  scale_fill_brewer(palette=p) +
+  theme_gray(16)+
   labs(title="Log Counts of Complications over the Years", y="Log Count")
+```
+
+`Deep Sternal Infection` and `Reintervention for Myocardial Ischemia` are much lower in frequency than the rest of the strata for the `Complications` category. In the log bar plot, we can see that they are an entire order of magnitude less than the others. For the purposes of our analysis, we have removed them.
+
+```{r}
+cab_counts = cab_counts  %>% filter(!(complication %in% c('Deep Sternal Infection', 'Reintervention for Myocardial Ischemia'))) %>% arrange(Year, complication)
+complication_counts = cab_counts %>% group_by(Year, complication) %>% summarise(Freq=sum(Count)) %>% arrange(Year, desc(Freq)) %>% mutate(complication=factor(complication, levels = unique(complication)))
+readmission_counts = cab_counts %>% group_by(Year, readmission) %>% summarise(Freq=sum(Count))
+strata_counts = cab_counts %>% group_by(Year, category, Strata) %>% summarise(Freq=sum(Count)) %>% subset(category != "All") 
 ```
 
 ```{r}
 ggplot(readmission_counts, aes(x=Year, y=Freq, fill=readmission)) +
-  geom_bar(stat='identity', position='dodge') +
-  scale_fill_brewer(palette="Dark2") +
+  geom_bar(color="black", stat='identity', position='dodge') +
+  scale_fill_brewer(palette=p) +
+  theme_gray(16)+
   labs(title="Counts of Readmissions over the Years", y="Count")
 ```
 
@@ -49,65 +64,75 @@ ggplot(readmission_counts, aes(x=Year, y=Freq, fill=readmission)) +
 for (c in unique(strata_counts$category)) {
   if (c == "Age"){
     print(ggplot(strata_counts %>% subset(category == c), aes(x=Year, y=Freq, fill=Strata)) +
-      geom_bar(stat='identity', position='dodge') +
-      scale_fill_brewer(c, palette="Dark2") +
+      geom_bar(color="black", stat='identity', position='dodge') +
+      scale_fill_brewer(c, palette=p) +
       labs(title=paste(paste("Counts of", c), "over the Years"), y="Count") +
+      theme_gray(16)+
       theme(axis.text.x = element_text(angle = 45, hjust = 1)))
   }else{
     print(ggplot(strata_counts %>% subset(category == c) %>% arrange(Year, desc(Freq)) %>% mutate(Strata = factor(Strata, levels=unique(Strata))), aes(x=Year, y=Freq, fill=Strata)) +
-      geom_bar(stat='identity', position='dodge') +
-      scale_fill_brewer(c, palette="Dark2") +
+      geom_bar(color="black", stat='identity', position='dodge') +
+      scale_fill_brewer(c, palette=p) +
       labs(title=paste(paste("Counts of", c), "over the Years"), y="Count") +
+      theme_gray(16)+
       theme(axis.text.x = element_text(angle = 45, hjust = 1)))
   }
 }
 ```
 
-# Question 2: What are the most common complications associated with CABG?
+We can see that over the years the counts for readmission as well as the counts for complications, readmissions, and demographics/medical information all stay relatively consistent over the three year period with some slight decline for some strata in categories like `Race` and `Gender`.
+
+## Question 2: What are the most common complications associated with CABG?
+
 ```{r}
 ggplot(complication_counts %>% group_by(Year, complication) %>% summarize(Freq=sum(Freq)) %>% mutate(complication=factor(complication)), aes(x=complication, y=Freq, fill=complication)) +
-  geom_bar(stat="identity") +
+  geom_bar(color="black", stat="identity") +
   facet_wrap(~ Year, scales = "free") +
+  scale_fill_brewer(palette=p) +
   labs(x="Complication", y="Count", title="Counts for Complications") +
+  guides(fill="none")+
+  theme_gray(16)+
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-# Question 3: What complications most often lead to readmission to the hospital?
+## Question 3: What complications most often lead to readmission to the hospital?
+
 ```{r fig.height=4, fig.width=6}
-df=cab_counts %>% subset(category=="All")
+comp_read_counts = cab_counts %>% subset(category=="All") %>% arrange(Year, desc(Yes)) %>% mutate(complication=factor(complication, levels = unique(complication)))
 
-df$Year <- as.factor(df$Year)
-
-# Plotting a grouped bar chart
-ggplot(df, aes(x = complication, y = Yes, fill = readmission)) +
-  geom_bar(stat = "identity", position = "dodge") +
+ggplot(comp_read_counts, aes(x = complication, y = Yes, fill = readmission)) +
+  geom_bar(color="black", stat = "identity", position = "dodge") +
   facet_wrap(~ Year, scales = "free") +
+  scale_fill_brewer(palette=p) +
   labs(x = "Complication", y = "Count", fill = "Readmission") +
   ggtitle("Complication Readmission Rates") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+## Question 4: Does your demographic data and medical information impact your likelihood to face a complication from a CABG procedure?
 
-# Question 4: Does your demographic data and medical information impact your likelihood to face a complication from a CABG procedure?
 ```{r}
-age_counts = cab_counts %>% subset(category == "Age") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Age = Strata) %>% mutate(Age=factor(Age)) %>% uncount(weights = Freq)
-cabg_counts = cab_counts %>% subset(category == "CABG type") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, CABG.Type = Strata) %>% mutate(CABG.Type=factor(CABG.Type)) %>% uncount(weights = Freq)
+age_counts = cab_counts %>% subset(category == "Age") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count))  %>% rename(Complication = complication, Age = Strata) %>% mutate(Age=factor(Age)) %>% arrange(Age, desc(Freq)) %>% mutate(Complication=factor(Complication, levels = unique(Complication))) %>% uncount(weights = Freq)
+cabg_counts = cab_counts %>% subset(category == "Surgical Procedure") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Surgical.Procedure = Strata) %>% mutate(Surgical.Procedure=factor(Surgical.Procedure)) %>% uncount(weights = Freq)
 gender_counts = cab_counts %>% subset(category == "Gender") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Gender = Strata) %>% mutate(Gender=factor(Gender)) %>% uncount(weights = Freq)
-pay_counts = cab_counts %>% subset(category == "PayorType") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Payment.Type = Strata) %>% mutate(Payment.Type=factor(Payment.Type)) %>% uncount(weights = Freq)
+pay_counts = cab_counts %>% subset(category == "Insurance Type") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Insurance.Type = Strata) %>% mutate(Insurance.Type =factor(Insurance.Type)) %>% uncount(weights = Freq)
 race_counts = cab_counts %>% subset(category == "Race") %>% group_by(complication, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Race = Strata) %>% mutate(Race=factor(Race)) %>% uncount(weights = Freq)
 ```
+
 
 ```{r}
 ggplot(age_counts) +
   geom_mosaic(aes(x=product(Age), fill = Complication)) +
+  scale_fill_brewer(palette=p) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 ```
 
 ```{r}
 ggplot(cabg_counts) +
-  geom_mosaic(aes(x=product(CABG.Type), fill = Complication)) +
+  geom_mosaic(aes(x=product(Surgical.Procedure), fill = Complication)) +
   theme_minimal() +
+  labs(x="Surgical Procedure")+
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 ```
 
@@ -120,7 +145,8 @@ ggplot(gender_counts) +
 
 ```{r}
 ggplot(pay_counts) +
-  geom_mosaic(aes(x=product(Payment.Type), fill = Complication)) +
+  geom_mosaic(aes(x=product(Insurance.Type), fill = Complication)) +
+  labs(x="Insurance Type")+
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 ```
@@ -132,7 +158,8 @@ ggplot(race_counts) +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 ```
 
-# Question 5: Does your demographic data and medical information impact your likelihood that you will be readmitted to the hospital regardless of complication?
+## Question 5: Does your demographic data and medical information impact your likelihood that you will be readmitted to the hospital regardless of complication?
+
 ```{r}
 age_read_counts = cab_counts %>% subset(category == "Age") %>% group_by(readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Readmission = readmission, Age = Strata) %>% mutate(Age=factor(Age)) %>% uncount(weights = Freq)
 cabg_read_counts = cab_counts %>% subset(category == "CABG type") %>% group_by(readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Readmission = readmission, CABG.Type = Strata) %>% mutate(CABG.Type=factor(CABG.Type)) %>% uncount(weights = Freq)
@@ -203,9 +230,8 @@ cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
 ```
 
+## Question 6: Does your demographic data, medical information, and complication impact your likelihood that you will be readmitted to the hospital?
 
-
-# Question 6: Does your demographic data, medical information, and complication impact your likelihood that you will be readmitted to the hospital?
 ```{r fig.height=6}
 age_comp_read_counts = cab_counts %>% subset(category == "Age") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, Age = Strata) %>% mutate(Age=factor(Age)) %>% uncount(weights = Freq)
 cabg_comp_read_counts = cab_counts %>% subset(category == "CABG type") %>% group_by(complication, readmission, Strata) %>% summarize(Freq = sum(Count)) %>% rename(Complication = complication, Readmission = readmission, CABG.Type = Strata) %>% mutate(CABG.Type=factor(CABG.Type)) %>% uncount(weights = Freq)
@@ -288,8 +314,3 @@ cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
 }
 ```
-
-
-
-
-
