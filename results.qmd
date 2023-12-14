@@ -17,6 +17,28 @@ cab_counts = cab %>% arrange(Year, complication)
 p="Set3"
 ```
 
+**Data dictionary:**
+
+* **Post-Operative Atrial Fibrillation:** This is when a patient develops an irregular heartbeat, known as atrial fibrillation, within a month following cardiac surgery. It can lead to a longer hospital stay and poorer long-term health outcomes.
+
+* **Post-Operative Dialysis:** This refers to the situation where a patient needs to undergo dialysis, a process that cleanses the blood, after a surgical procedure. This is usually required when the kidneys are unable to perform this function.
+
+* **Post-Operative Renal Failure:** This is a term for Acute Kidney Injury (AKI), a common post-surgical complication that can have serious short and long-term effects. It’s often due to decreased blood flow to the kidneys, issues within the kidneys themselves, or problems with urine drainage.
+
+* **Post-Operative Stroke:** This is a stroke that occurs during surgery or within 30 days after surgery. It involves a disruption of blood flow to the brain, leading to motor, sensory, or cognitive dysfunction that lasts at least 24 hours.
+
+* **Prolonged Ventilation:** This is when a patient needs to be on a ventilator for more than 14–21 days due to a severe illness or injury. It can also refer to a situation where a patient takes more than 14 days to be successfully taken off a ventilator after multiple attempts.
+
+* **Re-Operative for Bleed:** This is when a patient has to undergo a second surgery due to bleeding or tamponade from the time they are admitted to the ICU after surgery until they are discharged from the hospital.
+
+Sources:
+
+* https://www.frontiersin.org/articles/10.3389/fcvm.2023.1156626/full
+* https://www.uptodate.com/contents/atrial-fibrillation-and-flutter-after-cardiac-surgery
+* https://www.acc.org/latest-in-cardiology/ten-points-to-remember/2021/04/19/16/53/perioperative-neurological-evaluation
+* https://www.mdpi.com/2077-0383/11/9/2451
+* https://cardiothoracicsurgery.biomedcentral.com/articles/10.1186/s13019-021-01545-4
+
 ## Question 1: Does our data change over time in terms of frequency of complications, readmissions, and demographics/medical information?
 
 ```{r}
@@ -210,6 +232,7 @@ race_counts$Complication = fct_relevel(race_counts$Complication, neworder)
 #| fig-width: 13
 #| fig-height: 7
 #| out-width: 100%
+#| out-height: 100%
 ggplot(age_counts) +
   geom_mosaic(aes(x=product(Age), fill = Complication)) +
   scale_fill_brewer(palette=p, direction = -1) +
@@ -224,6 +247,7 @@ It seems that the age group `Over 65` faces more `Post-Operative Atrial Fibrilla
 #| fig-width: 13
 #| fig-height: 7
 #| out-width: 100%
+#| out-height: 100%
 ggplot(cabg_counts) +
   geom_mosaic(aes(x=product(Surgical.Procedure), fill = Complication)) +
   scale_fill_brewer(palette=p, direction = -1) +
@@ -238,6 +262,7 @@ ggplot(cabg_counts) +
 #| fig-width: 13
 #| fig-height: 7
 #| out-width: 100%
+#| out-height: 100%
 ggplot(gender_counts) +
   geom_mosaic(aes(x=product(Gender), fill = Complication)) +
   scale_fill_brewer(palette=p, direction = -1) +
@@ -252,6 +277,7 @@ Compared to men, women are more likely to suffer complications in `Pronlonged Ve
 #| fig-width: 13
 #| fig-height: 7
 #| out-width: 100%
+#| out-height: 100%
 
 ggplot(pay_counts) +
   geom_mosaic(aes(x=product(Insurance.Type), fill = Complication)) +
@@ -263,10 +289,14 @@ ggplot(pay_counts) +
 
 ```
 
+It appears that `Other Insurance` is less likely to have every complication except `Post-Operative Atrial Fibrillation` relative to the rest of the insurance types. On the other hand, `Medi-Cal` is more likely to have every complication besides `Post-Operative Atrial Fibrillation` relative to the rest of the insurance types. `Medicare` seems to have the same likelihood for each complication relative to `Private` insurance.
+
+
 ```{r}
 #| fig-width: 13
 #| fig-height: 7
 #| out-width: 100%
+#| out-height: 100%
 ggplot(race_counts) +
   geom_mosaic(aes(x=product(Race), fill = Complication)) +
   scale_fill_brewer(palette=p, direction = -1) +
@@ -274,8 +304,12 @@ ggplot(race_counts) +
   labs(title="Mosaic Plot of Complication and Race")+
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1,plot.title = element_text(hjust =1), axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 ```
+It appears that `White` people are more likely to have `Post-Operative Atrial Fibrillation` relative to every other race, followed by `Asian` people, `Hispanic` people, and finally `Black` people. Conversely, `Black` and `Hispanic` people are more likely to have `Prolonged Ventilation` relative to the rest of the other races.
+
 
 ## Question 5: Does your demographic data and medical information impact your likelihood that you will be readmitted to the hospital regardless of complication?
+
+We decided that it would be interesting to see how the mosaic plots would look like if we looked at readmission as the dependent variable with each different demographic data as the independent variable. We also want to use a chi-squared test to determine if the variable in question is independent from readmission or not.
 
 ```{r}
 custom = c("#fdb462", "#80b1d3")
@@ -287,7 +321,7 @@ race_read_counts = cab_counts %>% subset(category == "Race") %>% group_by(readmi
 
 ggplot(age_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Age), fill = Readmission)) +
-  labs(title = "Mosaic Plots of Age and Readmission") +
+  labs(title = "Mosaic Plot of Age and Readmission") +
   scale_fill_manual(values = custom) +
   theme_minimal(16) +
   theme(aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
@@ -298,10 +332,13 @@ test = chisq.test(table(age_read_counts$Readmission, age_read_counts$Age))
 cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
+```
+As we can see from the chi-squared test, we cannot reject the null hypothesis, which is that these two variables are independent. This is also visible on the mosaic plot, in which we can see barely any change between the two age groups.
 
+```{r}
 ggplot(cabg_read_counts) +
   geom_mosaic(aes(x=product(Readmission, CABG.Type), fill = Readmission)) +
-  labs(title = "Mosaic Plots of Surgical Procedure and Readmission", x="Surgical Procedure") +
+  labs(title = "Mosaic Plot of Surgical Procedure\nand Readmission", x="Surgical Procedure") +
   scale_fill_manual(values = custom) +
   theme_minimal(16) +
   theme(axis.text.x = element_text(angle = 45, hjust=1), aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
@@ -312,11 +349,14 @@ test = chisq.test(table(cabg_read_counts$Readmission, cabg_read_counts$CABG.Type
 cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
+```
+We observe that the chi-squared test results in a p-value of less than 0.05. Therefore we can reject the null hypothesis and determine that the type of surgery does affect readmission likelihood. The mosaic plot supports this finding as well. We can see that `Isolated CABG` procedures are the least likely to result in a readmission despite being the most frequent type of surgical procedure in our dataset.
 
+```{r}
 ggplot(gender_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Gender), fill = Readmission)) +
   scale_fill_manual(values = custom) +
-  labs(title = "Mosaic Plots of Gender and Readmission") +
+  labs(title = "Mosaic Plot of Gender and Readmission") +
   theme_minimal(16) +
   theme(aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank())
 
@@ -326,8 +366,9 @@ test = chisq.test(table(gender_read_counts$Readmission, gender_read_counts$Gende
 cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
-
-
+```
+The chi-squared test for gender and readmission tells us that gender plays a role in readmission likelihood. It appears that women are more likely to be readmitted compared to men.
+```{r}
 ggplot(pay_read_counts) +
   geom_mosaic(aes(x=product(Readmission, PayorType), fill = Readmission)) +
   scale_fill_manual(values = custom) +
@@ -341,7 +382,9 @@ test = chisq.test(table(pay_read_counts$Readmission, pay_read_counts$PayorType))
 cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
-
+```
+The mosaic plot clearly supports the chi-squared test in this case. It appears that patients with `Other Insurance` are far less likely to be readmitted compared to other insurance types. On the other hand, `Medi-Cal` patients were found most likely to be readmitted.
+```{r}
 ggplot(race_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Race), fill = Readmission)) +
   scale_fill_manual(values = custom) +
@@ -356,6 +399,8 @@ cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
 ```
+While it appears that each race has relatively the same likelihood of readmission, according to the chi-squared test, race does affect the chances of readmission. `White` people seem to be less likely relative to other races to be readmitted. `Black` and `Hispanic` people seem more likely relative to the other races to be readmitted.
+
 
 ## Question 6: Does your demographic data, medical information, and complication impact your likelihood that you will be readmitted to the hospital?
 
@@ -380,7 +425,9 @@ ggplot(age_comp_read_counts) +
   labs(title = "Mosaic Plot of Age and Readmission for Each Complication") +
   theme_grey(13)+
   theme(aspect.ratio = 1, axis.ticks.x=element_blank(), line = element_blank(), axis.ticks.y=element_blank(), plot.title = element_text(hjust = 0.5))
-
+```
+It appears that for most complications, age does not really affect readmission chances according to the different mosaic plots. The chi-squared tests give us a more precise view:
+```{r}
 cat("----- Age -----\n")
 for (complication in unique(age_comp_read_counts$Complication)){
 cat(paste(complication, "\n"))
@@ -389,7 +436,11 @@ cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
 }
-
+```
+According to the chi-squared tests, for only 4 out of 6 complications, age does not affect readmission rates. Both `Post-Operative Atrial Fibrillation` and `Post-Operative Dialysis` seem to have opposite effects. The former seems to show that the older patients are less likely to be readmitted. However for `Post-Operative Dialysis`, older patients are more likely to be readmitted compared to middle-aged patients.
+```{r}
+#| fig.height: 7
+#| out-height: 100%
 ggplot(cabg_comp_read_counts) +
   geom_mosaic(aes(x=product(Readmission, CABG.Type), fill = Readmission)) +
   scale_fill_manual(values = custom) +
@@ -406,7 +457,11 @@ cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
 }
-
+```
+Despite each facet in the mosaic plot looking the same, the type of surgery affects readmission chances for only three complications. It appears that `Post-Operative Dialysis`, `Post-Operative Renal Failure` and `Post-Operative Stroke` are independent from readmission rates. However, for the complications that are affected by surgery types, `CABG+Valve` and `Other` seem to be more likely responsible for more readmissions relative to `Isolated CABG` procedures.
+```{r}
+#| fig.height: 7
+#| out-height: 100%
 ggplot(gender_comp_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Gender), fill = Readmission)) +
   scale_fill_manual(values = custom) +
@@ -423,7 +478,11 @@ cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
 }
-
+```
+For one complication, `Post-Operative Stroke`, gender is independent of readmission. For the rest, it appears that women are more likely to be readmitted compared to men.
+```{r}
+#| fig.height: 7
+#| out-height: 100%
 ggplot(pay_comp_read_counts) +
   geom_mosaic(aes(x=product(Readmission, PayorType), fill = Readmission)) +
   scale_fill_manual(values = custom) +
@@ -440,7 +499,12 @@ cat(paste(paste("Chi Squared Statistic:", round(test$statistic, 4))), "\n")
 cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
 }
+```
+We can observe that for each complication, `Insurance Type` affects readmission rates. Just as we determined from the earlier mosaic plots on `Insurance Type`, `Other Insurance` has drastically a lower rate of readmission compared to the rest of the insurance types. In particular we also note that `Medi-Cal` has the worst rates for readmission for every complication except for `Re-Operative for Bleed`.
 
+```{r}
+#| fig.height: 7
+#| out-height: 100%
 ggplot(race_comp_read_counts) +
   geom_mosaic(aes(x=product(Readmission, Race), fill = Readmission)) +
   scale_fill_manual(values = custom) +
@@ -458,3 +522,4 @@ cat(paste(paste("p-value:", round(test$p.value, 4))), "\n")
 cat(paste("-----------------", "\n"))
 }
 ```
+`Post-Operative Stroke`, `Prolonged Ventilation`, and `Re-Operative for Bleed`, are independent of `Readmission` according to the chi-squared tests. It appears that there is a significant dependent relationship for `Post-Operative Dialysis` patients, in which `Black` and `Hispanic` patients are more likely to be readmitted compared to `Asian` and `White` patients.

@@ -6,7 +6,7 @@ execute:
   echo: true
 
 book:
-  title: "Coronary Artery Bypass Graft (CABG) Complications"
+  title: "Coronary Artery Bypass Graft (CABG) Complications and Readmissions"
   author:
     - Jordan Jomsky (jj3379)
     - Jacob Meyer (jtm2217)
