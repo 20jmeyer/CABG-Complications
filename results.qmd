@@ -1,6 +1,6 @@
 # Results
 
-```{r}
+```{r echo=FALSE, results='hide',message=FALSE}
 library(ggplot2)
 library(tidyverse)
 library(dplyr)
