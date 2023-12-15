@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -56,11 +56,12 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -76,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./conclusion.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -90,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Coronary Artery Bypass Graft (CABG) Complications and Readmissions</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/20jmeyer/CABG-Complications" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/20jmeyer/CABG-Complications" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -137,7 +138,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link active" data-scroll-target="#main-takeaways"><span class="header-section-number">5.1</span> Main Takeaways</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations"><span class="header-section-number">5.2</span> Limitations</a></li>
+  <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions"><span class="header-section-number">5.3</span> Future Directions</a></li>
+  <li><a href="#lessons-learned" id="toc-lessons-learned" class="nav-link" data-scroll-target="#lessons-learned"><span class="header-section-number">5.4</span> Lessons Learned</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/20jmeyer/CABG-Complications/edit/main/conclusion.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/20jmeyer/CABG-Complications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -159,8 +169,27 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="main-takeaways" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="main-takeaways"><span class="header-section-number">5.1</span> Main Takeaways</h2>
+<p>From our analysis, we can draw several conclusions about the relationships between demographic and medical data, CABG complication data, and post-CABG hospital readmission data.</p>
+<p>First, <code>Other</code> Insurance type one of the greatest predictors of readmission. We saw nearly no one with <code>Other</code> Insurance be readmitted to the hospital no matter what their complication was. Even though we do not know what exact insurance this strata contains, we can speculate that it is group plans offered through work. In this case, it may be better overall insurance, increasing the quality of care they receive initially for their complications and thereby preventing readmission.</p>
+<p>Second, <code>Black</code> and <code>Hispanic</code> for the <code>Race</code> category and <code>Female</code> for the <code>Gender</code> category were almost always more likely to be readmitted to the hospital, especially for <code>Post-Operative Atrial Fibrillation</code>, <code>Post-Operative Dialysis</code>, and <code>Post-Operative Renal Failure</code>. This indicates a possible gap in quality care for these underrepresented communities, further backed up by the lack of actual patients for all these groups.</p>
+<p>We also saw some other tangential conclusions. We consistently saw an inverse relationship between <code>Post-Operative Atrial Fibrillation</code> and <code>Prolonged Ventilation</code> for nearly every strata and complication comparison. This may suggest that risk factors for each complication are opposite from each other. Also, <code>Age</code> is not as strong of a predictor than we previously thought would be due to the increased risk factors of heart disease with increased age.</p>
+</section>
+<section id="limitations" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="limitations"><span class="header-section-number">5.2</span> Limitations</h2>
+<p>One major limitation of this analysis is the fact that the data was privatized healthcare data. Chiefly, this data lacked the eventual health outcomes of the patients. While this is understandable safeguard for patient privacy, it made our eventual conclusions about the data weaker because we do not know if the readmissions or lack thereof were necessarily adverse outcomes without the information. Instead, our conclusions are related to readmission to the hospital which could lead to positive or negative outcome for overall health. Further, in analyzing demographic data, the lack of data showing the relationship between demographics prevents exploration into the intersectional nature of these factors and their relationship to surgical complications and hospital readmission rates. The ambiguity of the data overall including the lack of clarity on other categories in the <code>Insurance Type</code> and <code>Surgical Procedure</code> categories.</p>
+</section>
+<section id="future-directions" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="future-directions"><span class="header-section-number">5.3</span> Future Directions</h2>
+<p>A possible future direction would be to look into the several significant relationships our analysis uncovered. Data would need to be collected with specific attention paid to marginalized groups. Moreover, the relationship between <code>Insurance Type</code> and <code>Readmission</code> is puzzling at best, especially with the ambiguity of the data previously discussed. A study into this strong dependence would be illuminating to the cause of this relationship.</p>
+</section>
+<section id="lessons-learned" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="lessons-learned"><span class="header-section-number">5.4</span> Lessons Learned</h2>
+<p>Mosaics plots are much harder to compare across different sample sizes. When faceting on <code>Complication</code> to create mosaic plots for <code>Readmission</code> and each category’s strata, having the plots being the same size next to each other was a bit misleading about the differences in the length and width worked in relation to each other. The <span class="math inline">\(\chi^2\)</span> tests helped handle this issue as it showed empirically what relationships were significant and which were not. In the future, making some more custom visualization like a proportional mosaic combined into one plot to show all relationships at once with overall frequency considered.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -413,7 +442,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/20jmeyer/CABG-Complications/edit/main/conclusion.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/20jmeyer/CABG-Complications/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
   </div>
 </footer>
