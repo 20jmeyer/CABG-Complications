@@ -19,17 +19,17 @@ p="Set3"
 
 **Data dictionary:**
 
-* **Post-Operative Atrial Fibrillation:** This is when a patient develops an irregular heartbeat, known as atrial fibrillation, within a month following cardiac surgery. It can lead to a longer hospital stay and poorer long-term health outcomes.
+* **Post-Operative Atrial Fibrillation:** This is when a patient develops an irregular heartbeat within a month following cardiac surgery. It can lead to a longer hospital stay and poorer long-term health outcomes.
 
 * **Post-Operative Dialysis:** This refers to the situation where a patient needs to undergo dialysis, a process that cleanses the blood, after a surgical procedure. This is usually required when the kidneys are unable to perform this function.
 
-* **Post-Operative Renal Failure:** This is a term for Acute Kidney Injury (AKI), a common post-surgical complication that can have serious short and long-term effects. It’s often due to decreased blood flow to the kidneys, issues within the kidneys themselves, or problems with urine drainage.
+* **Post-Operative Renal Failure:** This is a common post-surgical complication that can have serious short and long-term effects, often due to decreased blood flow to the kidneys or issues within the kidneys themselves.
 
-* **Post-Operative Stroke:** This is a stroke that occurs during surgery or within 30 days after surgery. It involves a disruption of blood flow to the brain, leading to motor, sensory, or cognitive dysfunction that lasts at least 24 hours.
+* **Post-Operative Stroke:** This is a stroke, involving a disruption of blood flow to the brain, leading to motor, sensory, or cognitive dysfunction that lasts at least 24 hours after a surgery.
 
-* **Prolonged Ventilation:** This is when a patient needs to be on a ventilator for more than 14–21 days due to a severe illness or injury. It can also refer to a situation where a patient takes more than 14 days to be successfully taken off a ventilator after multiple attempts.
+* **Prolonged Ventilation:** This is when a patient needs to be on a ventilator due to a severe illness or injury after surgery.
 
-* **Re-Operative for Bleed:** This is when a patient has to undergo a second surgery due to bleeding or tamponade from the time they are admitted to the ICU after surgery until they are discharged from the hospital.
+* **Re-Operative for Bleed:** This is when a patient has to undergo a second surgery due to bleeding after surgery.
 
 Sources:
 
